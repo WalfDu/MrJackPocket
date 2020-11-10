@@ -11,6 +11,7 @@ public class Joueur {
 
   private Boolean roles;
   private String nom;
+  private int nombreSablier;
   
   //
   // Constructors

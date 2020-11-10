@@ -9,7 +9,7 @@ public class TableauTuiles {
   // Fields
   //
 
-  private TuilesQuartier tab;
+  private TableauTuiles plateau[][];
   
   //
   // Constructors
@@ -29,17 +29,12 @@ public class TableauTuiles {
    * Set the value of tab
    * @param newVar the new value of tab
    */
-  public void setTab (TuilesQuartier newVar) {
-    tab = newVar;
-  }
+
 
   /**
    * Get the value of tab
    * @return the value of tab
    */
-  public TuilesQuartier getTab () {
-    return tab;
-  }
 
   //
   // Other methods
