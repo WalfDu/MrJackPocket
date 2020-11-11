@@ -1,65 +1,26 @@
-
-
-/**
- * Class JetonsTemps
- */
 public class JetonsTemps {
 
-  //
-  // Fields
-  //
+	private Integer numero;
+	private Boolean sablier;
 
-  private Integer numero;
-  private Boolean sablier;
-  
-  //
-  // Constructors
-  //
-  public JetonsTemps () { };
-  
-  //
-  // Methods
-  //
+	//Constuctor
+	public JetonsTemps() {
+	};
 
+	public void setNumero(Integer newVar) {
+		numero = newVar;
+	}
 
-  //
-  // Accessor methods
-  //
+	public Integer getNumero() {
+		return numero;
+	}
 
-  /**
-   * Set the value of numero
-   * @param newVar the new value of numero
-   */
-  public void setNumero (Integer newVar) {
-    numero = newVar;
-  }
+	public void setSablier(Boolean newVar) {
+		sablier = newVar;
+	}
 
-  /**
-   * Get the value of numero
-   * @return the value of numero
-   */
-  public Integer getNumero () {
-    return numero;
-  }
-
-  /**
-   * Set the value of sablier
-   * @param newVar the new value of sablier
-   */
-  public void setSablier (Boolean newVar) {
-    sablier = newVar;
-  }
-
-  /**
-   * Get the value of sablier
-   * @return the value of sablier
-   */
-  public Boolean getSablier () {
-    return sablier;
-  }
-
-  //
-  // Other methods
-  //
+	public Boolean getSablier() {
+		return sablier;
+	}
 
 }
