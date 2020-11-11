@@ -19,6 +19,19 @@ public class Jeu {
   private JetonsTemps jeton6;
   private JetonsTemps jeton7;
   private JetonsTemps jeton8;
+  private TableauTuiles plateau[][];
+  private Alibi madame;
+  private Alibi sgtGoodlev;
+  private Alibi JeremyBert;
+  private Alibi williamGull;
+  private Alibi stealthy;
+  private Alibi johnSmith;
+  private Alibi lestrade;
+  private Alibi johnPizer;
+  private Alibi josephLane;
+  private Detectives toby;
+  private Detectives holmes;
+  private Detectives watson;
   
   //
   // Constructors
@@ -28,7 +41,9 @@ public class Jeu {
   //
   // Methods
   //
+public void lancementPartie(){
 
+  }
 
   //
   // Accessor methods
