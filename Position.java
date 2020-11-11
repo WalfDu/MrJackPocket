@@ -1,65 +1,32 @@
 
-
-/**
- * Class Position
- */
 public class Position {
 
-  //
-  // Fields
-  //
+    private int abscisse;
+    private int ordonne;
 
-  private Integer abscisse;
-  private Integer ordonne;
-  
-  //
-  // Constructors
-  //
-  public Position () { };
-  
-  //
-  // Methods
-  //
+    // Constructor
+    public Position() {
+    };
 
+    public Position(int abscisse, int ordonne) {
+        this.abscisse = abscisse;
+        this.ordonne = ordonne;
+    }
 
-  //
-  // Accessor methods
-  //
+    public void setAbscisse(Integer newVar) {
+        abscisse = newVar;
+    }
 
-  /**
-   * Set the value of abscisse
-   * @param newVar the new value of abscisse
-   */
-  public void setAbscisse (Integer newVar) {
-    abscisse = newVar;
-  }
+    public Integer getAbscisse() {
+        return abscisse;
+    }
 
-  /**
-   * Get the value of abscisse
-   * @return the value of abscisse
-   */
-  public Integer getAbscisse () {
-    return abscisse;
-  }
+    public void setOrdonne(Integer newVar) {
+        ordonne = newVar;
+    }
 
-  /**
-   * Set the value of ordonne
-   * @param newVar the new value of ordonne
-   */
-  public void setOrdonne (Integer newVar) {
-    ordonne = newVar;
-  }
-
-  /**
-   * Get the value of ordonne
-   * @return the value of ordonne
-   */
-  public Integer getOrdonne () {
-    return ordonne;
-  }
-
-  //
-  // Other methods
-  //
+    public int getOrdonne() {
+        return ordonne;
+    }
 
 }

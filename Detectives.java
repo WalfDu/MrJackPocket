@@ -1,65 +1,32 @@
 
-
-/**
- * Class Detectives
- */
 public class Detectives {
 
-  //
-  // Fields
-  //
+	private String nom;
+	private Position place;
 
-  private String nom;
-  private Position place;
-  
-  //
-  // Constructors
-  //
-  public Detectives () { };
-  
-  //
-  // Methods
-  //
+	// Constructors
+	public Detectives() {
+	};
 
+	public Detectives(String nom, Position place) {
+		this.nom = nom;
+		this.place = place;
+	}
 
-  //
-  // Accessor methods
-  //
+	public void setNom(String newVar) {
+		nom = newVar;
+	}
 
-  /**
-   * Set the value of nom
-   * @param newVar the new value of nom
-   */
-  public void setNom (String newVar) {
-    nom = newVar;
-  }
+	public String getNom() {
+		return nom;
+	}
 
-  /**
-   * Get the value of nom
-   * @return the value of nom
-   */
-  public String getNom () {
-    return nom;
-  }
+	public void setPlace(Position newVar) {
+		place = newVar;
+	}
 
-  /**
-   * Set the value of place
-   * @param newVar the new value of place
-   */
-  public void setPlace (Position newVar) {
-    place = newVar;
-  }
-
-  /**
-   * Get the value of place
-   * @return the value of place
-   */
-  public Position getPlace () {
-    return place;
-  }
-
-  //
-  // Other methods
-  //
+	public Position getPlace() {
+		return place;
+	}
 
 }
