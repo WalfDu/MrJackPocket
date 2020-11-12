@@ -3,7 +3,6 @@ public class Alibi {
 	//test numéro 3
 	//test num�ro 1
 
-	// test num�ro 2
 	private String nom;
 	private Integer nombreSablier;
 
