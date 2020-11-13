@@ -9,7 +9,7 @@ public class Jeu {
 	private JetonsTemps jeton6;
 	private JetonsTemps jeton7;
 	private JetonsTemps jeton8;
-	private TableauTuile plateau;
+	private TableauTuiles plateau;
 	private Alibi josephLane;
 	private Alibi johnPizer;
 	private Alibi johnSmith;
