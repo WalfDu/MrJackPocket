@@ -1,14 +1,14 @@
 
 public class Position {
 
-    private Integer abscisse;
-    private Integer ordonne;
+    private int abscisse;
+    private int ordonne;
 
     // Constructor
     public Position() {
     };
 
-    public Position(Integer abscisse, Integer ordonne) {
+    public Position(int abscisse, int ordonne) {
         this.abscisse = abscisse;
         this.ordonne = ordonne;
     }

@@ -1,5 +1,7 @@
 
 public class Alibi {
+	//test numéro 3
+	//test num�ro 1
 
 	private String nom;
 	private Integer nombreSablier;
@@ -11,10 +13,6 @@ public class Alibi {
 	public void setNom(String newVar) {
 		nom = newVar;
 	}
-
-	public static void main(String[] arg) {
-		System.out.println("test");
-	};
 
 	public String getNom() {
 		return nom;

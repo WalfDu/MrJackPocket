@@ -9,6 +9,18 @@ public class Jeu {
 	private JetonsTemps jeton6;
 	private JetonsTemps jeton7;
 	private JetonsTemps jeton8;
+	private TableauTuile plateau;
+	private Alibi josephLane;
+	private Alibi johnPizer;
+	private Alibi johnSmith;
+	private Alibi madame;
+	private Alibi jeremyBert;
+	private Alibi missStealthy;
+	private Alibi inspLestrade;
+	private Alibi williamGull;
+	private Alibi sgtGoodley;
+
+
 
 	// Constructors
 	public Jeu() {
