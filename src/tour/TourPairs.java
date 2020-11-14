@@ -1,3 +1,4 @@
+package tour;
 
 public class TourPairs {
 

@@ -1,3 +1,5 @@
+package jetons;
+
 public class JetonsTemps {
 
 	private Integer numero;
