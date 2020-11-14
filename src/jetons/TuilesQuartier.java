@@ -2,15 +2,14 @@ package jetons;
 
 public class TuilesQuartier {
 
-	private Boolean faceSuspect;
+	private String faceSuspect;
 	private int mur;
-	private Position place;
 	private String nomSuspect;
 
 	public TuilesQuartier() {
 	}
 
-	public TuilesQuartier(Boolean faceSuspect, int mur, String nomSuspect) {
+	public TuilesQuartier(String faceSuspect, int mur, String nomSuspect) {
 		this.faceSuspect = faceSuspect;
 		this.mur = mur;
 		this.nomSuspect = nomSuspect;
@@ -26,11 +25,11 @@ public class TuilesQuartier {
 		return out;
 	}
 
-	public void setFaceSuspect(Boolean newVar) {
-		faceSuspect = newVar;
+	public void innocenter() {
+		faceSuspect = "Innocent";
 	}
 
-	public Boolean getFaceSuspect() {
+	public String getFaceSuspect() {
 		return faceSuspect;
 	}
 
@@ -40,13 +39,5 @@ public class TuilesQuartier {
 
 	public int getMur() {
 		return mur;
-	}
-
-	public void setPlace(Position newVar) {
-		place = newVar;
-	}
-
-	public Position getPlace() {
-		return place;
 	}
 }
