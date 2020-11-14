@@ -67,17 +67,20 @@ public class TableauTuiles {
 				}
 				switch (board[i][j].getMur()) {
 					case 1:
-						nom = " " + nom + " ";
+						nom = " " + String.join("\u0305", nom.toString().split("", -1)) + " ";
+						//nom = " " + nom + " ";
 						break;
 					case 2:
 						nom = " " + nom + "|";
 						break;
 					case 3:
-						nom = " " + String.join("\u0332", nom.toString().split("", -1)) + " ";
+						nom = " " + String.join("\u035f", nom.toString().split("", -1)) + " ";
 						break;
 					case 4:
 						nom = "|" + nom + " ";
 						break;
+					default:
+						nom = " " + String.join("\u0336", nom.toString().split("", -1)) + " ";
 				}
 				out += nom + " ";
 			}
