@@ -1,11 +1,11 @@
-package jetons;
+package src;
 
 public class TableauTuiles {
 
-	private jetons.TuilesQuartier tab;
-	static jetons.Detectives Sherlock = new jetons.Detectives("Sherlock", 12);
-	static jetons.Detectives Watson = new jetons.Detectives("Watson", 4);
-	static jetons.Detectives Tobi = new jetons.Detectives("Tobi", 8);
+	private TuilesQuartier tab;
+	static Detectives Sherlock = new Detectives("Sherlock", 12);
+	static Detectives Watson = new Detectives("Watson", 4);
+	static Detectives Tobi = new Detectives("Tobi", 8);
 
 	static TuilesQuartier williamGull = new TuilesQuartier("Suspect", 1, "William Gull");
 	static TuilesQuartier sergentGoodley = new TuilesQuartier("Suspect", 3, "Sergent Goodley");

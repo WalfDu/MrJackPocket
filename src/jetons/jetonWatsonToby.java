@@ -1,9 +1,11 @@
 package src.jetons;
 
+import src.Detectives;
+
 import java.util.Scanner;
 
 public class jetonWatsonToby {
-    jetons.Detectives detective;
+    Detectives detective;
 
     public void deplacementWatson(){
         Scanner scanner = new Scanner(System.in);
