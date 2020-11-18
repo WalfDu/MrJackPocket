@@ -1,3 +1,5 @@
+package src;
+
 public class Joueur {
 	private Boolean roles;
 	private String nom;

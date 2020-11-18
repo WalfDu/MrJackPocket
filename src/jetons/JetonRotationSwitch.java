@@ -1,3 +1,7 @@
+package src.jetons;
+
+import java.util.Scanner;
+
 public class jetonRotationSwitch{
     public TuilesQuartiers choixTuile(){
         Scanner scanner  = new Scanner(System.in);
@@ -12,8 +16,17 @@ public class jetonRotationSwitch{
         boolean choixDef = false;
 
         while(!choixDef){
-            TuilesQuartier choix = choixTuile();
-            choix.setMur(int );
+            System.out.println("numero entre 1 et 4");
+            Scanner scanner  = new Scanner(System.in);
+            int nombreMur = scanner.nextInt();
+            TuilesQuartiers choix = choixTuile();
+            choix.setMur(int nombreMur);
         }
+    }
+
+    public void echanger(){
+        TuilesQuartiers choix1 = choixTuile();
+        TuilesQuartiers choix2 = choixTuile();
+
     }
 }

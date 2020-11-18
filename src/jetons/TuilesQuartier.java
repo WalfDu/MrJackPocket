@@ -6,6 +6,18 @@ public class TuilesQuartier {
 	private int mur;
 	private String nomSuspect;
 
+	public void setFaceSuspect(String faceSuspect) {
+		this.faceSuspect = faceSuspect;
+	}
+
+	public String getNomSuspect() {
+		return nomSuspect;
+	}
+
+	public void setNomSuspect(String nomSuspect) {
+		this.nomSuspect = nomSuspect;
+	}
+
 	public TuilesQuartier() {
 	}
 

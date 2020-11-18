@@ -1,3 +1,5 @@
+package src;
+
 public class Jeu {
 	private Joueur joueur1;
 	private Joueur joueur2;
