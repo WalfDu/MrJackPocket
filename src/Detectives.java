@@ -5,7 +5,6 @@ public class Detectives {
 	private String nom;
 	private int place;
 
-	//test git
 	// Constructors
 	public Detectives() {
 	};
