@@ -1,4 +1,4 @@
-package src;
+package Autres;
 
 public class Joueur {
 	private Boolean roles;
