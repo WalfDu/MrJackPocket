@@ -1,10 +1,22 @@
-package jetons;
+package src;
 
 public class TuilesQuartier {
 
 	private String faceSuspect;
 	private int mur;
 	private String nomSuspect;
+
+	public void setFaceSuspect(String faceSuspect) {
+		this.faceSuspect = faceSuspect;
+	}
+
+	public String getNomSuspect() {
+		return nomSuspect;
+	}
+
+	public void setNomSuspect(String nomSuspect) {
+		this.nomSuspect = nomSuspect;
+	}
 
 	public TuilesQuartier() {
 	}

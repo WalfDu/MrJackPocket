@@ -1,4 +1,4 @@
-package jetons;
+package src;
 
 public class Detectives {
 
