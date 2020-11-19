@@ -2,17 +2,17 @@ package src.jetons;
 
 import java.util.Scanner;
 
-public class jetonRotationSwitch{
-    public TuilesQuartiers choixTuile(){
+public class JetonRotationSwitch{
+    /*public TuilesQuartiers choixTuile(){
         Scanner scanner  = new Scanner(System.in);
         System.out.println("Entrez abscisse puis ordonne de la tuile")
         int abscisse = scanner.nextInt();
         int ordonne = scanner.nextInt();
         return TableauTuiles[abscisse][ordonne];
-    }
+    }*/
 
 
-    public void rotation(){
+    /*public void rotation(){
         boolean choixDef = false;
 
         while(!choixDef){
@@ -28,5 +28,5 @@ public class jetonRotationSwitch{
         TuilesQuartiers choix1 = choixTuile();
         TuilesQuartiers choix2 = choixTuile();
 
-    }
+    }*/
 }

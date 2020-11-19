@@ -1,4 +1,4 @@
-package InterfaceGraphique;
+package src.InterfaceGraphique;
 
 
 import javafx.application.Application;
