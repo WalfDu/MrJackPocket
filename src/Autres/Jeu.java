@@ -1,4 +1,4 @@
-package src;
+package Autres;
 
 public class Jeu {
 	private Joueur joueur1;
