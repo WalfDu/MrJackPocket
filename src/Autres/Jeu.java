@@ -1,4 +1,4 @@
-package Autres;
+package src.Autres;
 
 public class Jeu {
 	private Joueur joueur1;

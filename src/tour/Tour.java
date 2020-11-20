@@ -1,4 +1,4 @@
-package tour;
+package src.tour;
 
 abstract public class Tour {
 	// Constructors

@@ -1,4 +1,4 @@
-package tour;
+package src.tour;
 
 public class TourPairs {
 

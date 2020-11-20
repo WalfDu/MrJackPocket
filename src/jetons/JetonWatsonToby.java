@@ -1,19 +1,19 @@
 package src.jetons;
 
-import src.Detectives;
-
 import java.util.Scanner;
 
-public class jetonWatsonToby {
+import src.Detectives;
+
+public class JetonWatsonToby {
     Detectives detective;
 
-    public void deplacementWatson(){
+    public void deplacementWatson() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choisi 1 ou 2 pas");
         int choix = scanner.nextInt();
-        if(detective.getNom() == "Watson"){
-            detective.setPlace(detective.getPlace()+choix);
-            switch(detective.getPlace()){
+        if (detective.getNom() == "Watson") {
+            detective.setPlace(detective.getPlace() + choix);
+            switch (detective.getPlace()) {
                 case 13:
                     detective.setPlace(1);
                     break;
@@ -24,13 +24,13 @@ public class jetonWatsonToby {
         }
     }
 
-    public void deplacementToby(){
+    public void deplacementToby() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choisi 1 ou 2 pas");
         int choix = scanner.nextInt();
-        if(detective.getNom() == "Toby"){
-            detective.setPlace(detective.getPlace()+choix);
-            switch(detective.getPlace()){
+        if (detective.getNom() == "Toby") {
+            detective.setPlace(detective.getPlace() + choix);
+            switch (detective.getPlace()) {
                 case 13:
                     detective.setPlace(1);
                     break;

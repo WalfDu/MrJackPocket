@@ -1,4 +1,4 @@
-package Autres;
+package src.Autres;
 
 public class Joueur {
 	private Boolean roles;
