@@ -3,3 +3,5 @@
 .vscode
 pom.xml
 *.directory
+.*
+!.gitignore
