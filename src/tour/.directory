@@ -1,9 +1,0 @@
-[Dolphin]
-SortOrder=1
-SortRole=modificationtime
-Timestamp=2020,11,19,17,19,19
-Version=4
-VisibleRoles=Icons_text,Icons_size,Icons_modificationtime
-
-[Settings]
-HiddenFilesShown=true

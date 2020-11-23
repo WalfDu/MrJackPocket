@@ -1,7 +1,0 @@
-.classpath
-.directory
-.vscode
-pom.xml
-*.directory
-.*
-!.gitignore
