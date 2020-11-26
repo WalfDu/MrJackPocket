@@ -1,8 +1,8 @@
-package src;
+package src.Autres;
 
 public class Jeu {
-	private Joueur joueur1;
-	private Joueur joueur2;
+	private Autres.Joueur joueur1;
+	private Autres.Joueur joueur2;
 	/**
 	private JetonsTemps jeton1;
 	private JetonsTemps jeton2;
