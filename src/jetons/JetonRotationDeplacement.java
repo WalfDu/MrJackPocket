@@ -1,4 +1,5 @@
-package src.jetons;
+package jetons;
+import Autres.*;
 
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class JetonRotationDeplacement {
             System.out.println("numero entre 1 et 4");
             Scanner scanner  = new Scanner(System.in);
             int nombreMur = scanner.nextInt();
-            TuilesQuartiers choix = choixTuile();
+            TuilesQuartier choix = choixTuile();
             choix.setMur(int nombreMur);
         }
     }
@@ -19,14 +20,14 @@ public class JetonRotationDeplacement {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choisi le detective à deplacer");
         int choix = scanner.nextInt();
-        if(detective.getNom() == "Watson"){
-            detective.setPlace(detective.getPlace()+choix);
-            switch(detective.getPlace()){
+        if(Detectives.getNom() == "Watson"){
+            Detectives.setPlace(Detectives.getPlace()+choix);
+            switch(Detectives.getPlace()){
                 case 13:
-                    detective.setPlace(1);
+                    Detectives.setPlace(1);
                     break;
                 case 14:
-                    detective.setPlace(2);
+                    Detectives.setPlace(2);
                     break;
             }
         }

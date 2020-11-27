@@ -1,4 +1,5 @@
 .classpath
 .gitignore
 .vscode
-
+.project
+.directory

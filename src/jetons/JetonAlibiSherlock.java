@@ -1,6 +1,6 @@
-package src.jetons;
+package jetons;
 
-import src.Detectives;
+import Autres.Detectives;
 
 import java.util.Scanner;
 
