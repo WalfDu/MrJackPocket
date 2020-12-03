@@ -1,4 +1,4 @@
-package src;
+
 
 public class JetonsTemps {
 
@@ -8,6 +8,11 @@ public class JetonsTemps {
 	//Constuctor
 	public JetonsTemps() {
 	};
+
+	public JetonsTemps(Integer numero, Boolean sablier) {
+		this.numero = numero;
+		this.sablier = sablier;
+	}
 
 	public void setNumero(Integer newVar) {
 		numero = newVar;
