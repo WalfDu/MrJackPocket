@@ -1,21 +1,24 @@
 package src.InterfaceGraphique;
 
-
-import javafx.application.Application;
-
-import javafx.application.Platform;
+/**
+ * import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.stage.Stage;
-import javafx.scene.*;
-import javafx.scene.layout.*;
-import javafx.scene.control.*;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.*;
-import javafx.scene.paint.Color;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+
 
 public class HelloApp extends Application {
 	
@@ -30,7 +33,7 @@ public class HelloApp extends Application {
 		
 		
 		// ajouter une image
-		
+	
 		ImageView JohnSmith = new ImageView(getClass().getResource("JohnSmith-recto.png").toString());
 		ImageView JohnPizer = new ImageView(getClass().getResource("JohnPizer-recto.png").toString());
 		ImageView JosephLane = new ImageView(getClass().getResource("JosephLane-recto.png").toString());
@@ -45,8 +48,8 @@ public class HelloApp extends Application {
 		JohnPizer.setFitHeight(100);
 		JohnSmith.setFitWidth(100);
 		JohnPizer.setFitWidth(100);
-		JosephLane .setFitHeight(100);
-		JosephLane .setFitWidth(100);
+		JosephLane.setFitHeight(100);
+		JosephLane.setFitWidth(100);
 		SgtGoodley.setFitHeight(100);
 		SgtGoodley.setFitWidth(100);
 		InspLestrade.setFitHeight(100);
@@ -67,6 +70,7 @@ public class HelloApp extends Application {
 		vertical2.setAlignment(Pos.CENTER); //(centre tout)
 		
 		
+
 		Button tournertuile1 = new Button ();
 		tournertuile1.setGraphic(JohnSmith);
 		tournertuile1.setContentDisplay(ContentDisplay.RIGHT );
@@ -195,4 +199,4 @@ public class HelloApp extends Application {
 	
 
 }
- 
+*/

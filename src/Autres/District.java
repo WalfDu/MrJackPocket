@@ -1,18 +1,30 @@
 package src.Autres;
 
-public class TuilesQuartier {
+public class District {
 
 	private String faceSuspect;
 	private int mur;
 	private String nomSuspect;
+	private String sourceImage;
+	private String sourceImageVerso;
 
-	public TuilesQuartier() {
+	public District() {
 	}
 
-	public TuilesQuartier(String faceSuspect, int mur, String nomSuspect) {
+	public District(String faceSuspect, int mur, String nomSuspect) {
 		this.faceSuspect = faceSuspect;
 		this.mur = mur;
 		this.nomSuspect = nomSuspect;
+		String[] temp = nomSuspect.split(" ");
+		this.sourceImage = "../../images/districts/";
+		for (String i : temp) {
+			this.sourceImage += i;
+		}
+		this.sourceImage += "-recto.png";
+		this.sourceImageVerso = "../../images/districts/common-verso.png";
+		if (nomSuspect == "Joseph Lane") {
+			this.sourceImageVerso = "../../images/districts/JosephLane-verso.png";
+		}
 	}
 
 	@Override
@@ -23,6 +35,14 @@ public class TuilesQuartier {
 			out += i.substring(0, 1);
 		}
 		return out;
+	}
+
+	public String sourceImage() {
+		return sourceImage;
+	}
+
+	public String sourceImageVerso() {
+		return sourceImageVerso;
 	}
 
 	public void setFaceSuspect(String faceSuspect) {
@@ -39,6 +59,8 @@ public class TuilesQuartier {
 
 	public void innocenter() {
 		faceSuspect = "Innocent";
+		if (nomSuspect == "Sgt Goodley") {
+		}
 	}
 
 	public String getFaceSuspect() {

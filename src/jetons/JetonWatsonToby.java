@@ -1,6 +1,6 @@
 package src.jetons;
 
-import java.util.Scanner;
+/*import java.util.Scanner;
 
 import src.Detectives;
 
@@ -40,4 +40,4 @@ public class JetonWatsonToby {
             }
         }
     }
-}
+}*/

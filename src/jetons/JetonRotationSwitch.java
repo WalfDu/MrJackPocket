@@ -1,6 +1,6 @@
 package src.jetons;
 
-import java.util.Scanner;
+/*import java.util.Scanner;
 
 public class JetonRotationSwitch {
     public TuilesQuartiers choixTuile(){
@@ -28,4 +28,4 @@ public class JetonRotationSwitch {
         TuilesQuartiers choix2 = choixTuile();
 
     }
-}
+}*/

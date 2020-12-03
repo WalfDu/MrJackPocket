@@ -1,20 +1,19 @@
 package src.jetons;
 
-import java.util.Scanner;
+/*import java.util.Scanner;
 
-import src.Detectives;
-import src.TuilesQuartier;
+import src.Autres.Detectives;
 
 public class JetonRotationDeplacement {
-    public void rotation() {
+    public void rotation(District district) {
         boolean choixDef = false;
 
         while (!choixDef) {
             System.out.println("numero entre 1 et 4");
             Scanner scanner = new Scanner(System.in);
             int nombreMur = scanner.nextInt();
-            TuilesQuartier choix = choixTuile();
-            choix.setMur(nombreMur);
+            district.choixTuile();
+            choixTuile.setMur(nombreMur);
         }
     }
 
@@ -34,4 +33,4 @@ public class JetonRotationDeplacement {
             }
         }
     }
-}
+}*/
