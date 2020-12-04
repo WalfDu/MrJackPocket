@@ -45,10 +45,6 @@ public class District {
 		return sourceImageVerso;
 	}
 
-	public void setFaceSuspect(String faceSuspect) {
-		this.faceSuspect = faceSuspect;
-	}
-
 	public String getNomSuspect() {
 		return nomSuspect;
 	}
@@ -59,8 +55,6 @@ public class District {
 
 	public void innocenter() {
 		faceSuspect = "Innocent";
-		if (nomSuspect == "Sgt Goodley") {
-		}
 	}
 
 	public String getFaceSuspect() {

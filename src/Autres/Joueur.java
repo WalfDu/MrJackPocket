@@ -11,10 +11,6 @@ public class Joueur {
 		this.nom = nom;
 	};
 
-	public void setNom(String newVar) {
-		nom = newVar;
-	}
-
 	public String getNom() {
 		return nom;
 	}

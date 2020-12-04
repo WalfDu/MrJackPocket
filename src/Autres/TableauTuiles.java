@@ -2,20 +2,19 @@ package src.Autres;
 
 public class TableauTuiles {
 
-	private District tab;
 	static Detectives Sherlock = new Detectives("Sherlock", 12);
 	static Detectives Watson = new Detectives("Watson", 4);
 	static Detectives Tobi = new Detectives("Tobi", 8);
 
-	static District williamGull = new District("Suspect", 1, "William Gull");
-	static District sergentGoodley = new District("Suspect", 3, "Sgt Goodley");
-	static District missStealthy = new District("Suspect", 4, "Miss Stealthy");
-	static District madame = new District("Suspect", 2, "Madame");
-	static District josephLane = new District("Suspect", 1, "Joseph Lane");
-	static District johnSmith = new District("Suspect", 3, "John Smith");
-	static District johnPizer = new District("Suspect", 4, "John Pizer");
-	static District jeremyBert = new District("Suspect", 2, "Jeremy Bert");
-	static District inspectorLestrade = new District("Suspect", 1, "Insp Lestrade");
+	static District williamGull = new District("Suspect", (int) Math.random() * 4, "William Gull");
+	static District sergentGoodley = new District("Suspect", (int) Math.random() * 4, "Sgt Goodley");
+	static District missStealthy = new District("Suspect", (int) Math.random() * 4, "Miss Stealthy");
+	static District madame = new District("Suspect", (int) Math.random() * 4, "Madame");
+	static District josephLane = new District("Suspect", (int) Math.random() * 4, "Joseph Lane");
+	static District johnSmith = new District("Suspect", (int) Math.random() * 4, "John Smith");
+	static District johnPizer = new District("Suspect", (int) Math.random() * 4, "John Pizer");
+	static District jeremyBert = new District("Suspect", (int) Math.random() * 4, "Jeremy Bert");
+	static District inspectorLestrade = new District("Suspect", (int) Math.random() * 4, "Insp Lestrade");
 
 	static private District[] initialBoard = { williamGull, sergentGoodley, missStealthy, madame, josephLane, johnSmith,
 			johnPizer, jeremyBert, inspectorLestrade };
@@ -23,16 +22,12 @@ public class TableauTuiles {
 			{ madame, josephLane, johnSmith }, { johnPizer, jeremyBert, inspectorLestrade } };;
 
 	public TableauTuiles() {
-	};
-
-	public static void main(String[] arg) {
-		for (District i : initialBoard) {
-			System.out.println(i.sourceImage());
-		}
-
-		//tuilesRetournees(initialBoard);
-		//printBoard(initialiseBoard(shuffleArray(initialBoard)));
 	}
+
+	public void lancement() {
+		//tuilesRetournees(initialBoard);
+		printBoard(initialiseBoard(shuffleArray(initialBoard)));
+	};
 
 	public static void tuilesRetournees(District[] board) {
 		for (District i : board) {
@@ -88,13 +83,5 @@ public class TableauTuiles {
 			out += "\n\n";
 		}
 		System.out.print(out);
-	}
-
-	public void setTab(District newVar) {
-		tab = newVar;
-	}
-
-	public District getTab() {
-		return tab;
 	}
 }

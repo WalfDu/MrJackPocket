@@ -25,15 +25,29 @@ public class Alibi {
 		}
 	}
 
-	public String retirerCarte() {
+	public String[] retirerCarte() {
 		if (!this.pileAlibi.isEmpty()) {
 			String carte = this.pileAlibi.pollFirst();
-			return carte;
+			String nomAlibi = carte.substring(0, carte.length() - 4);
+			String sablier = carte.substring(carte.length() - 1, carte.length());
+			String[] out = { nomAlibi, sablier };
+			return out;
 		}
-		return "La pileAlibi est vide";
+		String[] out = { "La pile est vide", "-1" };
+		return out;
 	}
 
 	public int getSize() {
 		return this.pileAlibi.size();
+	}
+
+	public String sourceImage(String nomSuspect) {
+		String sourceImage = "../../images/alibis/";
+		String[] temp = nomSuspect.substring(0, nomSuspect.length() - 4).split(" ");
+		for (String i : temp) {
+			sourceImage += i;
+		}
+		sourceImage += "-alibi.png";
+		return sourceImage;
 	}
 }
