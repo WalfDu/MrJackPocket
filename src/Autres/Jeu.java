@@ -28,7 +28,7 @@ public class Jeu {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print(listeJoueurs[0].getNom() + ", c'est ton tour. Es-tu prêt ?");
 		scanner.nextLine();
-		String nomMrJack = pileAlibi.retirerCarte()[0];
+		String nomMrJack = pileAlibi.piocherCarte()[0];
 		System.out.println("Tu es " + nomMrJack);
 		scanner.close();
 	}

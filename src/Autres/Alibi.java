@@ -25,7 +25,7 @@ public class Alibi {
 		}
 	}
 
-	public String[] retirerCarte() {
+	public String[] piocherCarte() {
 		if (!this.pileAlibi.isEmpty()) {
 			String carte = this.pileAlibi.pollFirst();
 			String nomAlibi = carte.substring(0, carte.length() - 4);
