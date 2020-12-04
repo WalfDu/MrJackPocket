@@ -1,6 +1,6 @@
 package Autres;
 
-public class TuilesQuartier {
+public class TuilesQuartier { // renomme district
 
 	private String faceSuspect;
 	private int mur;
