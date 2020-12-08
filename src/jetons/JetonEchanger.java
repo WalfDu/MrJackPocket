@@ -14,7 +14,7 @@ public class JetonEchanger extends Jetons {
     }
 
     @Override
-    public void action(Detectives[] listeDetectives, District[][] board) {
+    public void action(Detectives[] listeDetectives, District[][] board, String joueurActuel) {
         System.out.println(
                 "Quelle est la 1ère tuile que vous voulez échanger (entrez l'abscisse puis l'ordonnée de la tuile)");
         int abscisse = scanner.nextInt() - 1;

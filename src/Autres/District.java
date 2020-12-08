@@ -55,6 +55,7 @@ public class District {
 
 	public void innocenter() {
 		faceSuspect = "Innocent";
+		Jeu.innocents.addLast(nomSuspect);
 	}
 
 	public String getFaceSuspect() {
@@ -69,6 +70,9 @@ public class District {
 	}
 
 	public int getMur() {
+		if (nomSuspect.equals("Joseph Lane") && faceSuspect.equals("Innocent")) {
+			return -1;
+		}
 		return mur;
 	}
 }

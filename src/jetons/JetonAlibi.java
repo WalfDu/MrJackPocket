@@ -22,18 +22,32 @@ public class JetonAlibi extends Jetons {
 	}
 
 	@Override
-	public void action(Detectives[] listeDetectives, District[][] board) {
+	public void action(Detectives[] listeDetectives, District[][] board, String joueurActuel) {
 		String[] carte = piocherCarte();
-		String out = "Vous avez pioché la carte " + carte[0] + ", vous ";
-		switch (Integer.parseInt(carte[1])) {
-			case 0:
-				out += "ne gagnez aucun sablier";
+		String out = "Vous avez pioché la carte " + carte[0];
+		switch (joueurActuel) {
+			case "Mr. Jack":
+				out += ", vous ";
+				switch (Integer.parseInt(carte[1])) {
+					case 0:
+						out += "ne gagnez aucun sablier";
+						break;
+					case 1:
+						out += "gagnez 1 sablier";
+						break;
+					case 2:
+						out += "gagnez 2 sabliers";
+						break;
+				}
 				break;
-			case 1:
-				out += "gagnez 1 sablier";
-				break;
-			case 2:
-				out += "gagnez 2 sabliers";
+			case "M. le détective":
+				for (District[] i : board) {
+					for (District j : i) {
+						if (j.getNomSuspect().equals(carte[0])) {
+							j.innocenter();
+						}
+					}
+				}
 				break;
 		}
 		System.out.println(out);
@@ -44,14 +58,14 @@ public class JetonAlibi extends Jetons {
 		return nom;
 	}
 
-	public void shuffleArray(String[] initialBoard) {
-		for (int i = initialBoard.length - 1; i > 0; i--) {
+	public void shuffleArray(String[] initialAlibi) {
+		for (int i = initialAlibi.length - 1; i > 0; i--) {
 			int j = (int) (Math.random() * (i + 1));
-			String temp = initialBoard[i];
-			initialBoard[i] = initialBoard[j];
-			initialBoard[j] = temp;
+			String temp = initialAlibi[i];
+			initialAlibi[i] = initialAlibi[j];
+			initialAlibi[j] = temp;
 		}
-		for (String i : initialBoard) {
+		for (String i : initialAlibi) {
 			this.pileAlibi.addLast(i);
 		}
 	}

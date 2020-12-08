@@ -1,5 +1,6 @@
 package src.Autres;
 
+import java.util.ArrayDeque;
 import java.util.Scanner;
 
 import src.jetons.JetonAlibi;
@@ -11,23 +12,16 @@ public class Jeu {
 	/*private static Joueur mrJack = new Joueur("Mr. Jack");
 	private static Joueur detective = new Joueur("Detective");
 	private static Joueur[] listeJoueurs = { mrJack, detective };*/
-	static JetonAlibi pileAlibi = new JetonAlibi("");
+	static JetonAlibi pileAlibi = new JetonAlibi("test");
 	static String[][] jetonsAction = { { "Echanger", "Tourner" }, { "Tobie", "Watson" }, { "Sherlock", "Alibi" },
 			{ "Detective", "Tourner" } };
 	static District[][] board = TableauTuiles.shuffleArray();
 	static Detectives[] listeDetectives = TableauTuiles.listeDetectives();
 	static int action;
 	static String joueurActuel;
+	static ArrayDeque<String> visibles = new ArrayDeque<>();
+	static ArrayDeque<String> innocents = new ArrayDeque<>();
 
-	/**
-	private JetonsTemps jeton1;
-	private JetonsTemps jeton2;
-	private JetonsTemps jeton3;
-	private JetonsTemps jeton4;
-	private JetonsTemps jeton5;
-	private JetonsTemps jeton6;
-	private JetonsTemps jeton7;
-	private JetonsTemps jeton8;*/
 	private static TableauTuiles plateau = new TableauTuiles();
 
 	public static void main(String[] args) {
@@ -42,6 +36,7 @@ public class Jeu {
 					tourPairs();
 					break;
 			}
+			finDuTour();
 		}
 	}
 
@@ -64,16 +59,7 @@ public class Jeu {
 					joueurActuel = "Mr. Jack";
 					break;
 			}
-			System.out.println("\n" + joueurActuel + ", c'est votre tour, quelle action voulez-vous faire ?");
-			for (int nbActions = 0; nbActions < nbActionsRestantes; nbActions++) {
-				System.out.println(nbActions + 1 + ": " + choixActions[nbActions].getNom());
-			}
-			action = scanner.nextInt() - 1;
-			choixActions[action].action(listeDetectives, board);
-			Jetons temp = choixActions[action];
-			choixActions[action] = choixActions[nbActionsRestantes - 1];
-			choixActions[nbActionsRestantes - 1] = temp;
-			TableauTuiles.printBoardConsole(board);
+			finAction(choixActions, nbActionsRestantes);
 		}
 	}
 
@@ -88,16 +74,35 @@ public class Jeu {
 					joueurActuel = "M. le détective";
 					break;
 			}
-			System.out.println("\n" + joueurActuel + ", c'est votre tour, quelle action voulez-vous faire ?");
-			for (int nbActions = 0; nbActions < nbActionsRestantes; nbActions++) {
-				System.out.println(nbActions + 1 + ": " + choixActions[nbActions].getNom());
-			}
-			action = scanner.nextInt() - 1;
-			choixActions[action].action(listeDetectives, board);
-			Jetons temp = choixActions[action];
-			choixActions[action] = choixActions[nbActionsRestantes - 1];
-			choixActions[nbActionsRestantes - 1] = temp;
-			TableauTuiles.printBoardConsole(board);
+			finAction(choixActions, nbActionsRestantes);
 		}
+	}
+
+	public static void finAction(Jetons[] choixActions, int nbActionsRestantes) {
+		System.out.println("\n" + joueurActuel + ", c'est votre tour, quelle action voulez-vous faire ?");
+		for (int nbActions = 0; nbActions < nbActionsRestantes; nbActions++) {
+			System.out.println(nbActions + 1 + ": " + choixActions[nbActions].getNom());
+		}
+		action = scanner.nextInt() - 1;
+		choixActions[action].action(listeDetectives, board, joueurActuel);
+		Jetons temp = choixActions[action];
+		choixActions[action] = choixActions[nbActionsRestantes - 1];
+		choixActions[nbActionsRestantes - 1] = temp;
+		TableauTuiles.printBoardConsole(board);
+	}
+
+	public static void finDuTour() {
+		System.out.println("Mr. Jack, est-ce que l'un des détective vous voit ?\n1: Oui\n2: Non");
+		int i = scanner.nextInt();
+		switch (i) {
+			case 1:
+				break;
+			case 2:
+				break;
+		}
+	}
+
+	public static void estVisible() {
+
 	}
 }

@@ -12,11 +12,11 @@ public class TourPairs {
 	public static Jetons[] debut(Jetons[] actionTourPrécédent) {
 		Jetons[] actionsDuTour = new Jetons[4];
 		for (int i = 0; i < actionsDuTour.length; i++) {
-			actionsDuTour[i] = jetonsAction[i][1];
+			actionsDuTour[i] = jetonsAction[i][0];
 		}
 		for (int i = 0; i < actionsDuTour.length; i++) {
 			if (actionsDuTour[i].equals(actionTourPrécédent[i])) {
-				actionsDuTour[i] = jetonsAction[i][2];
+				actionsDuTour[i] = jetonsAction[i][1];
 			}
 		}
 		return actionsDuTour;

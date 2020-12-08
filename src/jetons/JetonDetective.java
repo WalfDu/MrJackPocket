@@ -8,6 +8,7 @@ import src.Autres.District;
 public class JetonDetective extends Jetons {
 	Scanner scanner = new Scanner(System.in);
 	String nom;
+	int choix;
 
 	public JetonDetective() {
 	}
@@ -17,11 +18,23 @@ public class JetonDetective extends Jetons {
 	}
 
 	@Override
-	public void action(Detectives[] listeDetectives, District[][] board) {
-		System.out
-				.println("Quel détective souhaitez-vous faire avancer d'une case ?\n1: Sherlock\n2: Watson\n3: Tobie");
-		int choix = scanner.nextInt() - 1;
-		listeDetectives[choix].setPlace(1);
+	public void action(Detectives[] listeDetectives, District[][] board, String joueurActuel) {
+		switch (joueurActuel) {
+			case "M. le détective":
+				System.out.println(
+						"Quel détective souhaitez-vous faire avancer d'une case ?\n1: Sherlock\n2: Watson\n3: Tobie");
+				choix = scanner.nextInt() - 1;
+				listeDetectives[choix].setPlace(1);
+				break;
+			case "Mr. Jack":
+				System.out.println(
+						"Quel détective souhaitez-vous faire avancer d'une case ?\n0: Aucun détective\n1: Sherlock\n2: Watson\n3: Tobie");
+				if (choix > 0) {
+					choix = scanner.nextInt() - 1;
+					listeDetectives[choix].setPlace(1);
+				}
+				break;
+		}
 	}
 
 	@Override

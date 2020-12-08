@@ -18,7 +18,7 @@ public class JetonRotation extends Jetons {
     }
 
     @Override
-    public void action(Detectives[] listeDetectives, District[][] board) {
+    public void action(Detectives[] listeDetectives, District[][] board, String joueurActuel) {
         System.out.println("Entrez l'abscisse puis l'ordonnée de la tuile que vous voulez tourner:");
         int abscisse = scanner.nextInt() - 1;
         int ordonne = scanner.nextInt() - 1;
