@@ -1,17 +1,48 @@
-package src.Autres;
+package src.jetons;
 
 import java.util.ArrayDeque;
+import java.util.Scanner;
 
-public class Alibi {
+import src.Autres.Detectives;
+import src.Autres.District;
 
+public class JetonAlibi extends Jetons {
+	Scanner scanner = new Scanner(System.in);
+	String nom;
 	ArrayDeque<String> pileAlibi = new ArrayDeque<>();
 	static String[] debutPile = { "William Gull 1", "Sgt Goodley 0", "Madame 2", "Joseph Lane 1", "John Smith 1",
 			"John Pizer 1", "Inspecteur Lestrade 0", "Jeremy Bert 1", "Miss Stealthy 1" };
 
-	// Constructor
-	public Alibi() {
+	public JetonAlibi() {
+	}
+
+	public JetonAlibi(String nom) {
 		shuffleArray(debutPile);
-	};
+		this.nom = nom;
+	}
+
+	@Override
+	public void action(Detectives[] listeDetectives, District[][] board) {
+		String[] carte = piocherCarte();
+		String out = "Vous avez pioché la carte " + carte[0] + ", vous ";
+		switch (Integer.parseInt(carte[1])) {
+			case 0:
+				out += "ne gagnez aucun sablier";
+				break;
+			case 1:
+				out += "gagnez 1 sablier";
+				break;
+			case 2:
+				out += "gagnez 2 sabliers";
+				break;
+		}
+		System.out.println(out);
+	}
+
+	@Override
+	public String getNom() {
+		return nom;
+	}
 
 	public void shuffleArray(String[] initialBoard) {
 		for (int i = initialBoard.length - 1; i > 0; i--) {
@@ -50,4 +81,5 @@ public class Alibi {
 		sourceImage += "-alibi.png";
 		return sourceImage;
 	}
+
 }

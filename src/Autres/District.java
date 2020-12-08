@@ -61,8 +61,11 @@ public class District {
 		return faceSuspect;
 	}
 
-	public void setMur(int newVar) {
-		mur = newVar;
+	public void setMur() {
+		mur++;
+		if (mur > 3) {
+			mur -= 4;
+		}
 	}
 
 	public int getMur() {
