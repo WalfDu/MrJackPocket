@@ -3,16 +3,16 @@ package src.tour;
 import src.jetons.JetonAlibi;
 import src.jetons.JetonDetective;
 import src.jetons.JetonEchanger;
-import src.jetons.JetonRotation;
 import src.jetons.JetonSherlock;
 import src.jetons.JetonTobie;
+import src.jetons.JetonTourner;
 import src.jetons.JetonWatson;
 import src.jetons.Jetons;
 
 public class TourImpairs {
 	static Jetons echanger = new JetonEchanger("Échanger les places de deux tuiles");
-	static Jetons tourner = new JetonRotation("Faire tourner une tuile");
-	static Jetons tourner2 = new JetonRotation("Faire tourner une tuile");
+	static Jetons tourner = new JetonTourner("Faire tourner une tuile");
+	static Jetons tourner2 = new JetonTourner("Faire tourner une tuile");
 	static Jetons tobie = new JetonTobie("Avancer Tobie");
 	static Jetons watson = new JetonWatson("Avancer Watson");
 	static Jetons sherlock = new JetonSherlock("Avancer Sherlock");

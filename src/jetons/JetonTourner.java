@@ -6,14 +6,14 @@ import src.Autres.Detectives;
 import src.Autres.District;
 import src.Autres.TableauTuiles;
 
-public class JetonRotation2 extends Jetons {
+public class JetonTourner extends Jetons {
     Scanner scanner = new Scanner(System.in);
     String nom;
 
-    public JetonRotation2() {
+    public JetonTourner() {
     }
 
-    public JetonRotation2(String nom) {
+    public JetonTourner(String nom) {
         this.nom = nom;
     }
 
