@@ -1,6 +1,6 @@
-package src.tour;
+package tour;
 
-import src.jetons.Jetons;
+import jetons.Jetons;
 
 public class TourPairs {
 	static Jetons[][] jetonsAction = TourImpairs.jetonsAction();

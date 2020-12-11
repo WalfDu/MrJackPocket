@@ -1,10 +1,10 @@
-package src.jetons;
+package jetons;
+
+import Autres.Detectives;
+import Autres.District;
+import Autres.TableauTuiles;
 
 import java.util.Scanner;
-
-import src.Autres.Detectives;
-import src.Autres.District;
-import src.Autres.TableauTuiles;
 
 public class JetonRotation extends Jetons {
     Scanner scanner = new Scanner(System.in);

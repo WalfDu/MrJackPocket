@@ -1,10 +1,10 @@
-package src.jetons;
+package jetons;
 
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
-import src.Autres.Detectives;
-import src.Autres.District;
+import Autres.Detectives;
+import Autres.District;
 
 public class JetonAlibi extends Jetons {
 	Scanner scanner = new Scanner(System.in);
