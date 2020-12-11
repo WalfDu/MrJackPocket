@@ -1,10 +1,12 @@
 package tour;
 
+
 import jetons.*;
 
 public class TourImpairs {
 	static Jetons echanger = new JetonEchanger("Échanger les places de deux tuiles");
-	static Jetons tourner = new JetonRotation("Faire tourner une tuile");
+	static Jetons tourner = new JetonTourner("Faire tourner une tuile");
+	static Jetons tourner2 = new JetonTourner("Faire tourner une tuile");
 	static Jetons tobie = new JetonTobie("Avancer Tobie");
 	static Jetons watson = new JetonWatson("Avancer Watson");
 	static Jetons sherlock = new JetonSherlock("Avancer Sherlock");
@@ -17,7 +19,7 @@ public class TourImpairs {
 	};
 
 	public static Jetons[][] jetonsAction() {
-		Jetons[][] jetonsAction = { { echanger, tourner }, { tobie, watson }, { sherlock, alibi },
+		Jetons[][] jetonsAction = { { echanger, tourner2 }, { tobie, watson }, { sherlock, alibi },
 				{ tourner, detective } };
 		return jetonsAction;
 	}

@@ -6,14 +6,14 @@ import Autres.TableauTuiles;
 
 import java.util.Scanner;
 
-public class JetonRotation extends Jetons {
+public class JetonTourner extends Jetons {
     Scanner scanner = new Scanner(System.in);
     String nom;
 
-    public JetonRotation() {
+    public JetonTourner() {
     }
 
-    public JetonRotation(String nom) {
+    public JetonTourner(String nom) {
         this.nom = nom;
     }
 

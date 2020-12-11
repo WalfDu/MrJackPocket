@@ -9,6 +9,7 @@ import java.util.ArrayDeque;
 import java.util.Scanner;
 
 
+
 public class Jeu {
     private static Jetons[] choixActions = TourImpairs.debut();
     static Scanner scanner = new Scanner(System.in);
@@ -26,6 +27,7 @@ public class Jeu {
     static ArrayDeque<String> innocents = new ArrayDeque<>();
 
     private static TableauTuiles plateau = new TableauTuiles();
+
 
     public static void main(String[] args) {
         initialisation();
@@ -46,6 +48,7 @@ public class Jeu {
             System.out.println(i);
         }
     }
+
 
     public static void initialisation() {
         System.out.print("Mr Jack, nous allons vous réveler votre identité. Êtes-vous prêt ?");
@@ -106,6 +109,7 @@ public class Jeu {
         TableauTuiles.printBoardConsole(board);
     }
 
+
     public static void finDuTour() {
         System.out.println("Mr. Jack, est-ce que l'un des détective vous voit ?\n1: Oui\n2: Non");
         int i = scanner.nextInt();
@@ -115,6 +119,7 @@ public class Jeu {
                 break;
         }
     }
+
 
     public static void estVisible(Detectives[] listeDetectives) {
         int abscisse = -1;
