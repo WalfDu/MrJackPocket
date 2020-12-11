@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import Autres.Detectives;
 import Autres.District;
+import Autres.Jeu;
 
 public class JetonAlibi extends Jetons {
 	Scanner scanner = new Scanner(System.in);
@@ -39,6 +40,7 @@ public class JetonAlibi extends Jetons {
 						out += "gagnez 2 sabliers";
 						break;
 				}
+				Jeu.sabliersCaches += Integer.valueOf(carte[1]);
 				break;
 			case "M. le détective":
 				for (District[] i : board) {

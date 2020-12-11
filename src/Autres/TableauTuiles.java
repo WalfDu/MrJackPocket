@@ -4,7 +4,7 @@ public class TableauTuiles {
 
 	static Detectives sherlock = new Detectives("Sherlock", 12);
 	static Detectives watson = new Detectives("Watson", 4);
-	static Detectives tobie = new Detectives("Tobi", 8);
+	static Detectives toby = new Detectives("Toby", 8);
 
 	static Detectives[] listeDetectives = listeDetectives();
 
@@ -63,7 +63,7 @@ public class TableauTuiles {
 	}
 
 	public static Detectives[] listeDetectives() {
-		Detectives[] listeDetectives = { sherlock, watson, tobie };
+		Detectives[] listeDetectives = { sherlock, watson, toby };
 		return listeDetectives;
 	}
 

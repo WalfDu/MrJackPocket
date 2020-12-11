@@ -1,27 +1,27 @@
 package jetons;
 
+import java.util.Scanner;
+
 import Autres.Detectives;
 import Autres.District;
 
-import java.util.Scanner;
-
-public class JetonTobie extends Jetons {
+public class JetonToby extends Jetons {
 	Scanner scanner = new Scanner(System.in);
 	String nom;
 
-	public JetonTobie() {
+	public JetonToby() {
 	}
 
-	public JetonTobie(String nom) {
+	public JetonToby(String nom) {
 		this.nom = nom;
 	}
 
 	@Override
 	public void action(Detectives[] listeDetectives, District[][] board, String joueurActuel) {
-		System.out.println("Tobie peut se déplacer d'une ou deux cases. Entrez 1 ou 2 pour le nombre de pas.");
+		System.out.println("Toby peut se déplacer d'une ou deux cases. Entrez 1 ou 2 pour le nombre de pas.");
 		int choix = scanner.nextInt();
 		listeDetectives[2].setPlace(choix);
-		System.out.println("Tobie a avancé de " + choix + " pas.");
+		System.out.println("Toby a avancé de " + choix + " pas.");
 	}
 
 	@Override

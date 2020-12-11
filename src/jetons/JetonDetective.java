@@ -1,9 +1,9 @@
 package jetons;
 
+import java.util.Scanner;
+
 import Autres.Detectives;
 import Autres.District;
-
-import java.util.Scanner;
 
 public class JetonDetective extends Jetons {
 	Scanner scanner = new Scanner(System.in);
@@ -22,13 +22,13 @@ public class JetonDetective extends Jetons {
 		switch (joueurActuel) {
 			case "M. le détective":
 				System.out.println(
-						"Quel détective souhaitez-vous faire avancer d'une case ?\n1: Sherlock\n2: Watson\n3: Tobie");
+						"Quel détective souhaitez-vous faire avancer d'une case ?\n1: Sherlock\n2: Watson\n3: Toby");
 				choix = scanner.nextInt() - 1;
 				listeDetectives[choix].setPlace(1);
 				break;
 			case "Mr. Jack":
 				System.out.println(
-						"Quel détective souhaitez-vous faire avancer d'une case ?\n0: Aucun détective\n1: Sherlock\n2: Watson\n3: Tobie");
+						"Quel détective souhaitez-vous faire avancer d'une case ?\n0: Aucun détective\n1: Sherlock\n2: Watson\n3: Toby");
 				choix = scanner.nextInt() - 1;
 				if (choix > -1) {
 					listeDetectives[choix].setPlace(1);

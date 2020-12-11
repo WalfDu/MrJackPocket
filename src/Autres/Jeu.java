@@ -21,6 +21,9 @@ public class Jeu {
     static ArrayDeque<String> innocents = new ArrayDeque<>();
     private static TableauTuiles plateau = new TableauTuiles();
     private static String[] nomMrJack;
+    public static int sabliers = 0;
+    public static int sabliersCaches = 0;
+    public static String winner;
 
     public static void main(String[] args) {
         initialisation();
@@ -35,6 +38,7 @@ public class Jeu {
                     break;
             }
             finDuTour();
+            finPartie(i);
         }
     }
 
@@ -109,6 +113,7 @@ public class Jeu {
         } else {
             for (District i : visibles) {
                 i.innocenter();
+                sabliers++;
             }
         }
         TableauTuiles.printBoardConsole(board);
@@ -190,6 +195,19 @@ public class Jeu {
                 }
 
             }
+        }
+    }
+
+    public static void finPartie(int i) {
+        if (sabliers + sabliersCaches >= 8) {
+            i = 9;
+            winner = "Mr. Jack";
+        }
+        if (i == 8) {
+            winner = "Mr. Jack";
+        }
+        if (innocents.size() >= 8) {
+            winner = "M. le détective";
         }
     }
 }
