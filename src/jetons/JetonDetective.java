@@ -29,8 +29,8 @@ public class JetonDetective extends Jetons {
 			case "Mr. Jack":
 				System.out.println(
 						"Quel détective souhaitez-vous faire avancer d'une case ?\n0: Aucun détective\n1: Sherlock\n2: Watson\n3: Tobie");
-				if (choix > 0) {
-					choix = scanner.nextInt() - 1;
+				choix = scanner.nextInt() - 1;
+				if (choix > -1) {
 					listeDetectives[choix].setPlace(1);
 				}
 				break;

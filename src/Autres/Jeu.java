@@ -6,22 +6,18 @@ import java.util.Scanner;
 import src.jetons.JetonAlibi;
 import src.jetons.Jetons;
 import src.tour.TourImpairs;
+import src.tour.TourPairs;
 
 public class Jeu {
 	static Scanner scanner = new Scanner(System.in);
-	/*private static Joueur mrJack = new Joueur("Mr. Jack");
-	private static Joueur detective = new Joueur("Detective");
-	private static Joueur[] listeJoueurs = { mrJack, detective };*/
 	static JetonAlibi pileAlibi = new JetonAlibi("test");
-	static String[][] jetonsAction = { { "Echanger", "Tourner" }, { "Tobie", "Watson" }, { "Sherlock", "Alibi" },
-			{ "Detective", "Tourner" } };
 	static District[][] board = TableauTuiles.shuffleArray();
 	static Detectives[] listeDetectives = TableauTuiles.listeDetectives();
 	static int action;
 	static String joueurActuel;
 	static ArrayDeque<String> visibles = new ArrayDeque<>();
 	static ArrayDeque<String> innocents = new ArrayDeque<>();
-
+	static Jetons[] choixActions = TourImpairs.debut();
 	private static TableauTuiles plateau = new TableauTuiles();
 
 	public static void main(String[] args) {
@@ -41,7 +37,7 @@ public class Jeu {
 	}
 
 	public static void initialisation() {
-		System.out.print("Mr Jack, nous allons vous réveler votre identité. Êtes-vous prêt ?");
+		System.out.print("Mr. Jack, nous allons vous réveler votre identité. Êtes-vous prêt ?");
 		scanner.nextLine();
 		String[] nomMrJack = pileAlibi.piocherCarte();
 		System.out.print("Vous êtes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
@@ -49,7 +45,7 @@ public class Jeu {
 	}
 
 	public static void tourImpairs() {
-		Jetons[] choixActions = TourImpairs.debut();
+		choixActions = TourImpairs.debut();
 		for (int nbActionsRestantes = 4; nbActionsRestantes > 0; nbActionsRestantes--) {
 			switch (nbActionsRestantes) {
 				case 1, 4:
@@ -64,7 +60,7 @@ public class Jeu {
 	}
 
 	public static void tourPairs() {
-		Jetons[] choixActions = TourImpairs.debut();
+		choixActions = TourPairs.debut(choixActions);
 		for (int nbActionsRestantes = 4; nbActionsRestantes > 0; nbActionsRestantes--) {
 			switch (nbActionsRestantes) {
 				case 1, 4:
@@ -92,7 +88,7 @@ public class Jeu {
 	}
 
 	public static void finDuTour() {
-		System.out.println("Mr. Jack, est-ce que l'un des détective vous voit ?\n1: Oui\n2: Non");
+		System.out.println("Mr. Jack, est-ce que l'un des détectives vous voit ?\n1: Oui\n2: Non");
 		int i = scanner.nextInt();
 		switch (i) {
 			case 1:

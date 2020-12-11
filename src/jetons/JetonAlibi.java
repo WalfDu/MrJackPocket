@@ -95,5 +95,4 @@ public class JetonAlibi extends Jetons {
 		sourceImage += "-alibi.png";
 		return sourceImage;
 	}
-
 }

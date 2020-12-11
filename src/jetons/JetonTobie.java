@@ -28,5 +28,4 @@ public class JetonTobie extends Jetons {
 	public String getNom() {
 		return nom;
 	}
-
 }
