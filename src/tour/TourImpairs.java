@@ -1,13 +1,7 @@
-package src.tour;
+package tour;
 
-import src.jetons.JetonAlibi;
-import src.jetons.JetonDetective;
-import src.jetons.JetonEchanger;
-import src.jetons.JetonSherlock;
-import src.jetons.JetonTobie;
-import src.jetons.JetonTourner;
-import src.jetons.JetonWatson;
-import src.jetons.Jetons;
+
+import jetons.*;
 
 public class TourImpairs {
 	static Jetons echanger = new JetonEchanger("Échanger les places de deux tuiles");

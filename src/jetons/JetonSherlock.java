@@ -1,9 +1,9 @@
-package src.jetons;
+package jetons;
+
+import Autres.Detectives;
+import Autres.District;
 
 import java.util.Scanner;
-
-import src.Autres.Detectives;
-import src.Autres.District;
 
 public class JetonSherlock extends Jetons {
     Scanner scanner = new Scanner(System.in);

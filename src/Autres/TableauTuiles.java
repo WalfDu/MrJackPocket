@@ -1,4 +1,4 @@
-package src.Autres;
+package Autres;
 
 public class TableauTuiles {
 
@@ -16,7 +16,7 @@ public class TableauTuiles {
 	static District johnSmith = new District("Suspect", (int) (Math.random() * 3), "John Smith");
 	static District johnPizer = new District("Suspect", (int) (Math.random() * 3), "John Pizer");
 	static District jeremyBert = new District("Suspect", (int) (Math.random() * 3), "Jeremy Bert");
-	static District inspectorLestrade = new District("Suspect", (int) (Math.random() * 3), "Insp Lestrade");
+	static District inspectorLestrade = new District("Suspect", (int) (Math.random() * 3), "Inspecteur Lestrade");
 
 	static private District[] initialBoard = { williamGull, sergentGoodley, missStealthy, madame, josephLane, johnSmith,
 			johnPizer, jeremyBert, inspectorLestrade };
@@ -50,6 +50,15 @@ public class TableauTuiles {
 				board[i][j] = initialBoard[i * 3 + j];
 			}
 		}
+		while (board[0][0].getMur() != 3) {
+			board[0][0].setMur();
+		}
+		while (board[0][2].getMur() != 1) {
+			board[0][2].setMur();
+		}
+		while (board[2][1].getMur() != 2) {
+			board[2][1].setMur();
+		}
 		return board;
 	}
 
@@ -79,6 +88,9 @@ public class TableauTuiles {
 					case 3:
 						nom = "|" + nom + " ";
 						break;
+					case -1:
+						nom = "  " + nom + " ";
+						break;
 				}
 				out += nom + " ";
 			}
@@ -86,7 +98,8 @@ public class TableauTuiles {
 		}
 		System.out.print(out);
 		for (Detectives i : listeDetectives) {
-			System.out.println(i.getNom() + " est positioné en " + i.getPlace());
+			System.out.print(i.getNom() + ": " + i.getPlace() + ",     ");
 		}
+		System.out.println();
 	}
 }

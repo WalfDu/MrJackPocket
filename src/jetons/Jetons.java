@@ -1,7 +1,7 @@
-package src.jetons;
+package jetons;
 
-import src.Autres.Detectives;
-import src.Autres.District;
+import Autres.Detectives;
+import Autres.District;
 
 public abstract class Jetons {
 	boolean joue = false;
