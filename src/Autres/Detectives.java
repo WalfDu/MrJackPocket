@@ -26,16 +26,15 @@ public class Detectives {
 			return 1;
 	}
 
-	public void setNom(String newVar) {
-		nom = newVar;
-	}
-
 	public String getNom() {
 		return nom;
 	}
 
 	public void setPlace(int newVar) {
-		place = newVar;
+		place += newVar;
+		if (place > 12) {
+			place -= 12;
+		}
 	}
 
 	public int getPlace() {

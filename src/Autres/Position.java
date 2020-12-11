@@ -1,11 +1,9 @@
+package src.Autres;
+
 public class Position {
 
     private int abscisse;
     private int ordonne;
-
-    // Constructor
-    public Position() {
-    };
 
     public Position(int abscisse, int ordonne) {
         this.abscisse = abscisse;
