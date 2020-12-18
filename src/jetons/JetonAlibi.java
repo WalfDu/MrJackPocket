@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import Autres.Detectives;
 import Autres.District;
+import Autres.Jeu;
 
 public class JetonAlibi extends Jetons {
 	Scanner scanner = new Scanner(System.in);
@@ -22,9 +23,9 @@ public class JetonAlibi extends Jetons {
 	}
 
 	@Override
-	public void action(Detectives[] listeDetectives, District[][] board, String joueurActuel) {
+	public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
 		String[] carte = piocherCarte();
-		String out = "Vous avez pioché la carte " + carte[0];
+		String out = "Vous avez pioche la carte " + carte[0];
 		switch (joueurActuel) {
 			case "Mr. Jack":
 				out += ", vous ";
@@ -39,13 +40,12 @@ public class JetonAlibi extends Jetons {
 						out += "gagnez 2 sabliers";
 						break;
 				}
+				Jeu.sabliersCaches += Integer.valueOf(carte[1]);
 				break;
-			case "M. le détective":
-				for (District[] i : board) {
-					for (District j : i) {
-						if (j.getNomSuspect().equals(carte[0])) {
-							j.innocenter();
-						}
+			case "M. le detective":
+				for (District i : board) {
+					if (i.getNomSuspect().equals(carte[0])) {
+						i.innocenter();
 					}
 				}
 				break;
@@ -73,7 +73,7 @@ public class JetonAlibi extends Jetons {
 	public String[] piocherCarte() {
 		if (!this.pileAlibi.isEmpty()) {
 			String carte = this.pileAlibi.pollFirst();
-			String nomAlibi = carte.substring(0, carte.length() - 1);
+			String nomAlibi = carte.substring(0, carte.length() - 2);
 			String sablier = carte.substring(carte.length() - 1, carte.length());
 			String[] out = { nomAlibi, sablier };
 			return out;
@@ -87,8 +87,8 @@ public class JetonAlibi extends Jetons {
 	}
 
 	public String sourceImage(String nomSuspect) {
-		String sourceImage= "";// "../../images/alibis/";
-		String[] temp = nomSuspect.substring(0, nomSuspect.length() - 1).split(" ");
+		String sourceImage = ""; //"../../images/alibis/";
+		String[] temp = nomSuspect.substring(0, nomSuspect.length()).split(" ");
 		for (String i : temp) {
 			sourceImage += i;
 		}

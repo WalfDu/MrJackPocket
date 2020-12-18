@@ -1,3 +1,5 @@
+//import javafx.scene.image.ImageView;
+
 /*package InterfaceGraphique;
 
 import java.util.ArrayList;
@@ -7,7 +9,91 @@ import javafx.scene.image.ImageView;
 public class Sauvegarde {
 	
 	/*
-	 ImageView JohnSmith = new ImageView(getClass().getResource("JohnSmith-recto.png").toString());
+	 
+	 /*
+		 * ImageView AlibiInspLestrade = new
+		 * ImageView(getClass().getResource("InspLestrade-alibi.png").toString());
+		 * ImageView AlibiJeremyBert = new
+		 * ImageView(getClass().getResource("JeremyBert-alibi.png").toString());
+		 * ImageView AlibiJohnPizer = new
+		 * ImageView(getClass().getResource("JohnPizer-alibi.png").toString());
+		 * ImageView AlibiJohnSmith = new
+		 * ImageView(getClass().getResource("JohnSmith-alibi.png").toString());
+		 * ImageView AlibiJosephLane = new
+		 * ImageView(getClass().getResource("JosephLane-alibi.png").toString());
+		 * ImageView AlibiMadame = new
+		 * ImageView(getClass().getResource("Madame-alibi.png").toString()); ImageView
+		 * AlibiMissStealthy = new
+		 * ImageView(getClass().getResource("MissStealthy-alibi.png").toString());
+		 * ImageView AlibiSgtGoodley = new
+		 * ImageView(getClass().getResource("SgtGoodley-alibi.png").toString());
+		 * ImageView AlibiWilliamGull= new
+		 * ImageView(getClass().getResource("WilliamGull-alibi.png").toString());
+		 */
+
+		/*
+		 * 
+		 * 
+		 * 
+		 * // Retourner une carte passage quartier à ville
+		 * 
+		 * 
+		 * tuile2.setOnAction(new EventHandler<ActionEvent>() {
+		 * 
+		 * @Override public void handle(ActionEvent e) { Node imTuile2 =
+		 * tuile2.getGraphic(); Double Rotation = imTuile2.getRotate(); if (imTuile2 ==
+		 * JosephLane) { tuile2.setGraphic(JosephLaneVerso); } else {
+		 * tuile2.setGraphic(Verso2); Verso2.setRotate(Rotation);} } });
+		 * tuile3.setOnAction(new EventHandler<ActionEvent>() {
+		 * 
+		 * @Override public void handle(ActionEvent e) { Node imTuile3=
+		 * tuile3.getGraphic(); Double Rotation = imTuile3.getRotate(); if (imTuile3 ==
+		 * JosephLane) { tuile3.setGraphic(JosephLaneVerso); } else {
+		 * tuile3.setGraphic(Verso3); Verso3.setRotate(Rotation);} } });
+		 * tuile4.setOnAction(new EventHandler<ActionEvent>() {
+		 * 
+		 * @Override public void handle(ActionEvent e) { Node imTuile4 =
+		 * uile4.getGraphic(); Double Rotation = imTuile4.getRotate(); if (imTuile4 ==
+		 * JosephLane) { tuile4.setGraphic(JosephLaneVerso); } else {
+		 * tuile4.setGraphic(Verso4); Verso4.setRotate(Rotation);} } });
+		 * tuile5.setOnAction(new EventHandler<ActionEvent>() {
+		 * 
+		 * @Override public void handle(ActionEvent e) { Node imTuile5 =
+		 * tuile5.getGraphic(); Double Rotation = imTuile5.getRotate(); if (imTuile5 ==
+		 * JosephLane) { tuile5.setGraphic(JosephLaneVerso); } else {
+		 * tuile5.setGraphic(Verso5); Verso5.setRotate(Rotation);} } });
+		 * tuile6.setOnAction(new EventHandler<ActionEvent>() {
+		 * 
+		 * @Override public void handle(ActionEvent e) { Node imTuile6 =
+		 * tuile6.getGraphic(); Double Rotation = imTuile6.getRotate(); if (imTuile6 ==
+		 * JosephLane) { tuile6.setGraphic(JosephLaneVerso); } else {
+		 * tuile6.setGraphic(Verso6); Verso6.setRotate(Rotation);} } });
+		 * tuile7.setOnAction(new EventHandler<ActionEvent>() {
+		 * 
+		 * @Override public void handle(ActionEvent e) { Node imTuile7 =
+		 * tuile7.getGraphic(); Double Rotation = imTuile7.getRotate(); if (imTuile7 ==
+		 * JosephLane) { tuile7.setGraphic(JosephLaneVerso); } else {
+		 * tuile7.setGraphic(Verso7); Verso7.setRotate(Rotation);} } });
+		 * tuile8.setOnAction(new EventHandler<ActionEvent>() {
+		 * 
+		 * @Override public void handle(ActionEvent e) { Node imTuile8 =
+		 * tuile8.getGraphic(); Double Rotation = imTuile8.getRotate(); if (imTuile8 ==
+		 * JosephLane) { tuile8.setGraphic(JosephLaneVerso); } else {
+		 * tuile8.setGraphic(Verso8); Verso8.setRotate(Rotation);} } });
+		 * tuile9.setOnAction(new EventHandler<ActionEvent>() {
+		 * 
+		 * @Override public void handle(ActionEvent e) { Node imTuile9 =
+		 * tuile9.getGraphic(); Double Rotation = imTuile9.getRotate(); if (imTuile9 ==
+		 * JosephLane) { tuile9.setGraphic(JosephLaneVerso); } else {
+		 * tuile9.setGraphic(Verso9); Verso9.setRotate(Rotation);} } });
+		 * 
+		 * } });
+		 * 
+		 * 
+		 */
+		// ImageView fond = new
+		// ImageView(getClass().getResource("fond.jpg").toString());
+	/* ImageView JohnSmith = new ImageView(getClass().getResource("JohnSmith-recto.png").toString());
 		ImageView JohnPizer = new ImageView(getClass().getResource("JohnPizer-recto.png").toString());
 		ImageView JosephLane = new ImageView(getClass().getResource("JosephLane-recto.png").toString());
 		ImageView Madame = new ImageView(getClass().getResource("Madame-rector.png").toString());
@@ -339,6 +425,38 @@ public class Sauvegarde {
 	//root.add(ChoixTourner, 3,0);
 	//root.add(innocent, 4, 6);
 	//root.add(tuile[0],1,2);
+
+/*ImageView Verso1 = new ImageView(getClass().getResource("common-verso.png").toString());
+		ImageView Verso2 = new ImageView(getClass().getResource("common-verso.png").toString());
+		ImageView Verso3 = new ImageView(getClass().getResource("common-verso.png").toString());
+		ImageView Verso4 = new ImageView(getClass().getResource("common-verso.png").toString());
+		ImageView Verso5 = new ImageView(getClass().getResource("common-verso.png").toString());
+		ImageView Verso6 = new ImageView(getClass().getResource("common-verso.png").toString());
+		ImageView Verso7 = new ImageView(getClass().getResource("common-verso.png").toString());
+		ImageView Verso8 = new ImageView(getClass().getResource("common-verso.png").toString());
+		ImageView Verso9 = new ImageView(getClass().getResource("common-verso.png").toString());
+		ImageView JosephLaneVerso = new ImageView(getClass().getResource("JosephLane-verso.png").toString());
+				Verso1.setFitWidth(100);
+		Verso1.setFitHeight(100);
+		Verso2.setFitWidth(100);
+		Verso2.setFitHeight(100);
+		Verso3.setFitWidth(100);
+		Verso3.setFitHeight(100);
+		Verso4.setFitWidth(100);
+		Verso4.setFitHeight(100);
+		Verso5.setFitWidth(100);
+		Verso5.setFitHeight(100);
+		Verso6.setFitWidth(100);
+		Verso6.setFitHeight(100);
+		Verso7.setFitWidth(100);
+		Verso7.setFitHeight(100);
+		Verso8.setFitWidth(100);
+		Verso8.setFitHeight(100);
+		Verso9.setFitWidth(100);
+		Verso9.setFitHeight(100);
+		JosephLaneVerso.setFitWidth(100);
+		JosephLaneVerso.setFitHeight(100);
+		*/
 
 	/*root.add(D1, 1, 1);
 	root.add(D2, 2, 1);

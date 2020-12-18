@@ -13,7 +13,7 @@ public class TourImpairs {
 	static Jetons echanger = new JetonEchanger("Échanger les places de deux tuiles");
 	static Jetons tourner = new JetonTourner("Faire tourner une tuile");
 	static Jetons tourner2 = new JetonTourner("Faire tourner une tuile");
-	static Jetons tobie = new JetonTobie("Avancer Tobie");
+	static Jetons toby = new JetonTobie("Avancer Toby");
 	static Jetons watson = new JetonWatson("Avancer Watson");
 	static Jetons sherlock = new JetonSherlock("Avancer Sherlock");
 	static Jetons alibi = new JetonAlibi("Piocher une carte alibi");
@@ -25,7 +25,7 @@ public class TourImpairs {
 	};
 
 	public static Jetons[][] jetonsAction() {
-		Jetons[][] jetonsAction = { { echanger, tourner2 }, { tobie, watson }, { sherlock, alibi },
+		Jetons[][] jetonsAction = { { echanger, tourner2 }, { toby, watson }, { sherlock, alibi },
 				{ tourner, detective } };
 		return jetonsAction;
 	}

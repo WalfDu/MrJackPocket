@@ -1,5 +1,6 @@
 package Autres;
 
+import InterfaceGraphique.HelloApp;
 import javafx.scene.image.ImageView;
 
 public class District {
@@ -7,7 +8,7 @@ public class District {
 	private String faceSuspect;
 	private int mur;
 	private String nomSuspect;
-	public String sourceImage;
+	private String sourceImage;
 	private String sourceImageVerso;
 
 	public District() {
@@ -18,14 +19,14 @@ public class District {
 		this.mur = mur;
 		this.nomSuspect = nomSuspect;
 		String[] temp = nomSuspect.split(" ");
-		this.sourceImage = ""; // "../../images/districts/";
+		this.sourceImage = "" ;// "../../images/districts/";
 		for (String i : temp) {
 			this.sourceImage += i;
 		}
 		this.sourceImage += "-recto.png";
-		this.sourceImageVerso = "../../images/districts/common-verso.png";
+		this.sourceImageVerso ="common-verso.png"; //"../../images/districts/common-verso.png";
 		if (nomSuspect == "Joseph Lane") {
-			this.sourceImageVerso = "../../images/districts/JosephLane-verso.png";
+			this.sourceImageVerso = "JosephLane-verso.png" ;//"../../images/districts/JosephLane-verso.png";
 		}
 	}
 
@@ -46,8 +47,11 @@ public class District {
 		return out;
 	}
 
-	public String sourceImageVerso() {
-		return sourceImageVerso;
+	public ImageView sourceImageVerso() {
+		ImageView out = new ImageView(getClass().getResource(sourceImageVerso).toString());
+		out.setFitHeight(100);
+		out.setFitWidth(100);
+		return out;
 	}
 
 	public String getNomSuspect() {
@@ -59,6 +63,7 @@ public class District {
 	}
 
 	public void innocenter() {
+		HelloApp.innocenter(nomSuspect);
 		faceSuspect = "Innocent";
 		Jeu.innocents.addLast(nomSuspect);
 	}

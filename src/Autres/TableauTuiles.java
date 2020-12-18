@@ -1,10 +1,12 @@
 package Autres;
 
+import InterfaceGraphique.HelloApp;
+
 public class TableauTuiles {
 
 	static Detectives sherlock = new Detectives("Sherlock", 12);
 	static Detectives watson = new Detectives("Watson", 4);
-	static Detectives tobie = new Detectives("Tobi", 8);
+	static Detectives toby = new Detectives("Toby", 8);
 
 	static Detectives[] listeDetectives = listeDetectives();
 
@@ -18,14 +20,15 @@ public class TableauTuiles {
 	static District jeremyBert = new District("Suspect", (int) (Math.random() * 3), "Jeremy Bert");
 	static District inspectorLestrade = new District("Suspect", (int) (Math.random() * 3), "Insp Lestrade");
 
-	static private District[] initialBoard = { williamGull, sergentGoodley, missStealthy, madame, josephLane, johnSmith,
+	static private District[] board = { williamGull, sergentGoodley, missStealthy, madame, josephLane, johnSmith,
 			johnPizer, jeremyBert, inspectorLestrade };
-	public static District[][] board = new District[3][3];
+
 
 	public TableauTuiles() {
 	}
 
 	public void lancement() {
+		HelloApp.printBoardInterface();
 		//tuilesRetournees(initialBoard);
 		printBoardConsole(shuffleArray());
 	};
@@ -38,55 +41,61 @@ public class TableauTuiles {
 		}
 	}
 
-	public static District[][] shuffleArray() {
-		for (int i = initialBoard.length - 1; i > 0; i--) {
+	public static District[] shuffleArray() {
+		for (int i = board.length - 1; i > 0; i--) {
 			int j = (int) (Math.random() * (i + 1));
-			District temp = initialBoard[i];
-			initialBoard[i] = initialBoard[j];
-			initialBoard[j] = temp;
+			District temp = board[i];
+			board[i] = board[j];
+			board[j] = temp;
 		}
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board.length; j++) {
-				board[i][j] = initialBoard[i * 3 + j];
-			}
+		while (board[0].getMur() != 3) {
+			board[0].setMur();
+		}
+		while (board[2].getMur() != 1) {
+			board[2].setMur();
+		}
+		while (board[7].getMur() != 2) {
+			board[7].setMur();
 		}
 		return board;
 	}
 
 	public static Detectives[] listeDetectives() {
-		Detectives[] listeDetectives = { sherlock, watson, tobie };
+		Detectives[] listeDetectives = { sherlock, watson, toby };
 		return listeDetectives;
 	}
 
-	public static void printBoardConsole(District[][] board) {
+	public static void printBoardConsole(District[] board) {
 		String out = "\n";
 		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[0].length; j++) {
-				String nom = board[i][j].toString();
-				if (board[i][j].getFaceSuspect() == "Innocent") {
-					nom = "  ";
-				}
-				switch (board[i][j].getMur()) {
-					case 0:
-						nom = " " + String.join("\u0305", nom.toString().split("", -1)) + " ";
-						break;
-					case 1:
-						nom = " " + nom + "|";
-						break;
-					case 2:
-						nom = " " + String.join("\u035f", nom.toString().split("", -1)) + " ";
-						break;
-					case 3:
-						nom = "|" + nom + " ";
-						break;
-				}
-				out += nom + " ";
+			String nom = board[i].toString();
+			if (board[i].getFaceSuspect() == "Innocent") {
+				nom = "  ";
 			}
+			switch (board[i].getMur()) {
+				case 0:
+					nom = " " + String.join("\u0305", nom.toString().split("", -1)) + " ";
+					break;
+				case 1:
+					nom = " " + nom + "|";
+					break;
+				case 2:
+					nom = " " + String.join("\u035f", nom.toString().split("", -1)) + " ";
+					break;
+				case 3:
+					nom = "|" + nom + " ";
+					break;
+				case -1:
+					nom = "  " + nom + " ";
+					break;
+			}
+			out += nom + " ";
 			out += "\n\n";
 		}
 		System.out.print(out);
 		for (Detectives i : listeDetectives) {
-			System.out.println(i.getNom() + " est positioné en " + i.getPlace());
+			System.out.print(i.getNom() + ": " + i.getPlace() + ",     ");
 		}
+		System.out.println();
 	}
 }
