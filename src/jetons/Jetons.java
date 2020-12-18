@@ -8,5 +8,5 @@ public abstract class Jetons {
 
 	abstract public String getNom();
 
-	abstract public void action(Detectives[] listeDetectives, District[][] board, String joueurActuel);
+	abstract public void action(Detectives[] listeDetectives, District[] board, String joueurActuel);
 }

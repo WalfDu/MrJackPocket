@@ -12,7 +12,7 @@ public class Jeu {
     private static Jetons[] choixActions = TourImpairs.debut();
     private static Scanner scanner = new Scanner(System.in);
     private static JetonAlibi pileAlibi = new JetonAlibi("test");
-    private static District[][] board = TableauTuiles.shuffleArray();
+    private static District[] board = TableauTuiles.shuffleArray();
     private static Detectives[] listeDetectives = TableauTuiles.listeDetectives();
     private static int action;
     private static String joueurActuel;
@@ -103,11 +103,9 @@ public class Jeu {
             visiblesStr.add(i.getNomSuspect());
         }
         if (visiblesStr.contains(nomMrJack[0])) {
-            for (District[] i : board) {
-                for (District j : i) {
-                    if (!visibles.contains(j)) {
-                        j.innocenter();
-                    }
+            for (District i : board) {
+                if (!visibles.contains(i)) {
+                    i.innocenter();
                 }
             }
         } else {
@@ -134,6 +132,7 @@ public class Jeu {
         //Les abscisses et ordonnees servent à définir les abscisses et ordonnees de la tuiles du suspect que l'on va regarder
         int abscisse = -1;
         int ordonnee = -1;
+        int coordonnee = 3 * abscisse + ordonnee;
         District tuile = new District();
         //La variable détective intancie les 3 détectives les uns après les autres
         Detectives detective;
@@ -165,9 +164,10 @@ public class Jeu {
                     abscisse = 0;
                     ordonnee = 2 - detectiveInc;
             }
+            coordonnee = 3 * abscisse + ordonnee;
             //On effectue 3 fois les instructions suivantes, car un détective peut voir 3 suspects au maximum
             for (int k = 0; k < 3; k++) {
-                tuile = board[ordonnee][abscisse];
+                tuile = board[coordonnee];
                 if (tuile.getMur() == detectivePosition) {
                     //Si le mur est entre le détective et le suspect, on termine la boucle for, et on passe au détective suivant
                     k = 3;

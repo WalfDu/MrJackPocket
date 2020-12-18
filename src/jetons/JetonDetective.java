@@ -18,7 +18,7 @@ public class JetonDetective extends Jetons {
 	}
 
 	@Override
-	public void action(Detectives[] listeDetectives, District[][] board, String joueurActuel) {
+	public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
 		switch (joueurActuel) {
 			case "M. le détective":
 				System.out.println(
