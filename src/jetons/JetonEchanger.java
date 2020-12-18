@@ -16,12 +16,12 @@ public class JetonEchanger extends Jetons {
     @Override
     public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
         System.out.println(
-                "Quelle est la 1ère tuile que vous voulez échanger (entrez l'abscisse puis l'ordonnée de la tuile)");
+                "Quelle est la 1ere tuile que vous voulez echanger (entrez l'abscisse puis l'ordonnee de la tuile (entre 1 et 3)");
         int abscisse = scanner.nextInt() - 1;
         int ordonnee = scanner.nextInt() - 1;
         int coordonnee = 3 * abscisse + ordonnee;
         System.out.println(
-                "Quelle est la 2ème tuile que vous voulez échanger (entrez l'abscisse puis l'ordonnée de la tuile)");
+                "Quelle est la 2eme tuile que vous voulez échanger (entrez l'abscisse puis l'ordonnée de la tuile (entre 1 et 3))");
         int abscisse2 = scanner.nextInt() - 1;
         int ordonnee2 = scanner.nextInt() - 1;
         int coordonnee2 = 3 * abscisse2 + ordonnee2;
@@ -30,7 +30,6 @@ public class JetonEchanger extends Jetons {
         board[coordonnee2] = temp;
     }
 
-    @Override
     public String getNom() {
         return nom;
     }

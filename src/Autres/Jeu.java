@@ -43,10 +43,10 @@ public class Jeu {
     }
 
     public static void initialisation() {
-        System.out.print("Mr Jack, nous allons vous réveler votre identité. Êtes-vous prêt ?");
+        System.out.print("Mr Jack, nous allons vous reveler votre identite. Êtes-vous pret ?");
         scanner.nextLine();
         nomMrJack = pileAlibi.piocherCarte();
-        System.out.print("Vous êtes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
+        System.out.print("Vous etes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
         scanner.nextLine();
     }
 
@@ -56,7 +56,7 @@ public class Jeu {
             switch (nbActionsRestantes) {
                 case 1:
                 case 4:
-                    joueurActuel = "M. le détective";
+                    joueurActuel = "M. le detective";
                     break;
                 case 2:
                 case 3:
@@ -77,7 +77,7 @@ public class Jeu {
                     break;
                 case 2:
                 case 3:
-                    joueurActuel = "M. le détective";
+                    joueurActuel = "M. le detective";
                     break;
             }
             finAction(choixActions, nbActionsRestantes);

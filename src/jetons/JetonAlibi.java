@@ -87,8 +87,8 @@ public class JetonAlibi extends Jetons {
 	}
 
 	public String sourceImage(String nomSuspect) {
-		String sourceImage = "../../images/alibis/";
-		String[] temp = nomSuspect.substring(0, nomSuspect.length() - 1).split(" ");
+		String sourceImage = ""; //"../../images/alibis/";
+		String[] temp = nomSuspect.substring(0, nomSuspect.length()).split(" ");
 		for (String i : temp) {
 			sourceImage += i;
 		}

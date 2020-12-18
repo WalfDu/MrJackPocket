@@ -16,11 +16,10 @@ public class TableauTuiles {
 	static District johnSmith = new District("Suspect", (int) (Math.random() * 3), "John Smith");
 	static District johnPizer = new District("Suspect", (int) (Math.random() * 3), "John Pizer");
 	static District jeremyBert = new District("Suspect", (int) (Math.random() * 3), "Jeremy Bert");
-	static District inspectorLestrade = new District("Suspect", (int) (Math.random() * 3), "Inspecteur Lestrade");
+	static District inspectorLestrade = new District("Suspect", (int) (Math.random() * 3), "Insp Lestrade");
 
-	static private District[] initialBoard = { williamGull, sergentGoodley, missStealthy, madame, josephLane, johnSmith,
+	static private District[] board = { williamGull, sergentGoodley, missStealthy, madame, josephLane, johnSmith,
 			johnPizer, jeremyBert, inspectorLestrade };
-	public static District[] board = new District[9];
 
 	public TableauTuiles() {
 	}
@@ -39,11 +38,11 @@ public class TableauTuiles {
 	}
 
 	public static District[] shuffleArray() {
-		for (int i = initialBoard.length - 1; i > 0; i--) {
+		for (int i = board.length - 1; i > 0; i--) {
 			int j = (int) (Math.random() * (i + 1));
-			District temp = initialBoard[i];
-			initialBoard[i] = initialBoard[j];
-			initialBoard[j] = temp;
+			District temp = board[i];
+			board[i] = board[j];
+			board[j] = temp;
 		}
 		while (board[0].getMur() != 3) {
 			board[0].setMur();
@@ -51,8 +50,8 @@ public class TableauTuiles {
 		while (board[2].getMur() != 1) {
 			board[2].setMur();
 		}
-		while (board[8].getMur() != 2) {
-			board[8].setMur();
+		while (board[7].getMur() != 2) {
+			board[7].setMur();
 		}
 		return board;
 	}

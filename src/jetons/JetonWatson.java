@@ -16,15 +16,13 @@ public class JetonWatson extends Jetons {
         this.nom = nom;
     }
 
-    @Override
     public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
-        System.out.println("Waston peut se déplacer d'une ou deux cases. Entrez 1 ou 2 pour le nombre de pas.");
+        System.out.println("Waston peut se deplacer d'une ou deux cases. Entrez 1 ou 2 pour le nombre de pas.");
         int choix = scanner.nextInt();
         listeDetectives[1].setPlace(choix);
-        System.out.println("Watson a avancé de " + choix + " pas.");
+        System.out.println("Watson a avance de " + choix + " pas.");
     }
 
-    @Override
     public String getNom() {
         return nom;
     }
