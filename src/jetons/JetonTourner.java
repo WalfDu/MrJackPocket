@@ -16,9 +16,14 @@ public class JetonTourner extends Jetons {
     public JetonTourner(String nom) {
         this.nom = nom;
     }
+    
     @Override
     public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
         System.out.println("Entrez l'abscisse puis l'ordonnée de la tuile que vous voulez tourner:");
+        if (scanner.nextLine().equals("")) {
+        	
+        }
+        else {
         int abscisse = scanner.nextInt() - 1;
         int ordonnee = scanner.nextInt() - 1;
         int coordonnee = 3 * abscisse + ordonnee;
@@ -28,7 +33,9 @@ public class JetonTourner extends Jetons {
             board[coordonnee].setMur();
             TableauTuiles.printBoardConsole(board);
         } while (!scanner.nextLine().equals("stop"));
+        }
     }
+    
     @Override
     public String getNom() {
         return nom;

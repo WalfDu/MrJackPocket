@@ -23,6 +23,7 @@ public class JetonWatson extends Jetons {
         System.out.println("Watson a avance de " + choix + " pas.");
     }
     @Override
+
     public String getNom() {
         return nom;
     }

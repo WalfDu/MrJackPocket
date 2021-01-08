@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Scanner;
 
 import InterfaceGraphique.HelloApp;
+import javafx.scene.Scene;
 import jetons.JetonAlibi;
 import jetons.Jetons;
 import tour.TourImpairs;
@@ -28,9 +29,10 @@ public class Jeu {
     private static HelloApp interfaceG = new HelloApp();
     
     public static void main(String string) {
-        String chaine1 = "Bonjour";
-        String chaine2 = "Bonjour";
-        System.out.println(chaine1 == chaine2);
+    	HelloApp.printBoardInterface();
+    	//Scene scene = new Scene(root);
+		//primaryStage.setScene(scene);
+		//primaryStage.show();
         /*initialisation();
         plateau.lancement();
         for (int i = 1; i <= 8; i++) {
@@ -198,7 +200,6 @@ public class Jeu {
                             break;
                     }
                 }
-
             }
         }
     }

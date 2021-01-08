@@ -9,14 +9,14 @@ public class TourPairs {
 	public TourPairs() {
 	};
 
-	public static Jetons[] debut(Jetons[] actionTourPrécédent) {
+	public static Jetons[] debut(Jetons[] actionTourPrecedent) {
 		Jetons[] actionsDuTour = new Jetons[4];
 		for (int i = 0; i < actionsDuTour.length; i++) {
 			actionsDuTour[i] = jetonsAction[i][0];
 		}
 		for (int i = 0; i < actionsDuTour.length; i++) {
 			for (int j = 0; j < actionsDuTour.length; j++) {
-				if (actionsDuTour[i].equals(actionTourPrécédent[j])) {
+				if (actionsDuTour[i].equals(actionTourPrecedent[j])) {
 					actionsDuTour[i] = jetonsAction[i][1];
 				}
 			}
