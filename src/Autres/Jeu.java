@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Scanner;
 
 import InterfaceGraphique.HelloApp;
+import javafx.scene.Scene;
 import jetons.JetonAlibi;
 import jetons.Jetons;
 import tour.TourImpairs;
@@ -28,7 +29,11 @@ public class Jeu {
     private static HelloApp interfaceG = new HelloApp();
     
     public static void main(String string) {
-        initialisation();
+    	HelloApp.printBoardInterface();
+    	//Scene scene = new Scene(root);
+		//primaryStage.setScene(scene);
+		//primaryStage.show();
+        /*initialisation();
         plateau.lancement();
         for (int i = 1; i <= 8; i++) {
             switch (i % 2) {
@@ -41,11 +46,11 @@ public class Jeu {
             }
             finDuTour();
             finPartie(i);
-        }
+        }*/
     }
 
     public static void initialisation() {
-        System.out.print("Mr Jack, nous allons vous réveler votre identité. Êtes-vous prêt ?");
+        System.out.print("Mr Jack, nous allons vous reveler votre identité. Etes-vous prêt ?");
         scanner.nextLine();
         nomMrJack = pileAlibi.piocherCarte();
         System.out.print("Vous êtes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
@@ -79,7 +84,7 @@ public class Jeu {
                     break;
                 case 2:
                 case 3:
-                    joueurActuel = "M. le détective";
+                    joueurActuel = "M. le detective";
                     break;
             }
             finAction(choixActions, nbActionsRestantes);
@@ -96,7 +101,7 @@ public class Jeu {
         Jetons temp = choixActions[action];
         choixActions[action] = choixActions[nbActionsRestantes - 1];
         choixActions[nbActionsRestantes - 1] = temp;
-       HelloApp.printBoardInterface();
+        HelloApp.printBoardInterface();
     }
 
     public static void finDuTour() {

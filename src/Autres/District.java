@@ -19,7 +19,9 @@ public class District {
 		this.mur = mur;
 		this.nomSuspect = nomSuspect;
 		String[] temp = nomSuspect.split(" ");
+
 		this.sourceImage = "" ;// "../../images/districts/";
+
 		for (String i : temp) {
 			this.sourceImage += i;
 		}

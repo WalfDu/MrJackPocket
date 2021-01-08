@@ -9,14 +9,18 @@ import java.util.List;
 import java.util.Random;
 import java.util.Stack;
 
+
 import Autres.District;
 import Autres.Jeu;
 import javafx.application.Application;
+
 import javafx.application.Platform;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+
 import javafx.stage.Stage;
 import jetons.JetonAlibi;
 import jetons.JetonTourner;
@@ -29,6 +33,7 @@ import javafx.scene.paint.Color;
 
 import javafx.scene.layout.*;
 
+
 public class HelloApp extends Application {
 
 	//public static void main(String[] args) {
@@ -37,29 +42,60 @@ public class HelloApp extends Application {
 	//}
 
 	static GridPane root = new GridPane();
+	static GridPane root2 = new GridPane();
 
 	public static void printBoardInterface() {
-		root.add(tuile[0], 1, 2);
-		root.add(tuile[1], 2, 2);
-		root.add(tuile[2], 3, 2);
-		root.add(tuile[3], 1, 3);
-		root.add(tuile[4], 2, 3);
-		root.add(tuile[5], 3, 3);
-		root.add(tuile[6], 1, 4);
-		root.add(tuile[7], 2, 4);
-		root.add(tuile[8], 3, 4);
-		root.add(D[0], 1, 1);
-		root.add(D[1], 2, 1);
-		root.add(D[2], 3, 1);
-		root.add(D[3], 4, 2);
-		root.add(D[4], 4, 3);
-		root.add(D[5], 4, 4);
-		root.add(D[6], 3, 5);
-		root.add(D[7], 2, 5);
-		root.add(D[8], 1, 5);
-		root.add(D[9], 0, 4);
-		root.add(D[10], 0, 3);
-		root.add(D[11], 0, 2);
+		root.add(tuile[0], 2, 3);
+		root.add(tuile[1], 3, 3);
+		root.add(tuile[2], 4, 3);
+		root.add(tuile[3], 2, 4);
+		root.add(tuile[4], 3, 4);
+		root.add(tuile[5], 4, 4);
+		root.add(tuile[6], 2, 5);
+		root.add(tuile[7], 3, 5);
+		root.add(tuile[8], 4, 5);
+		root.add(D[0], 2, 2);
+		root.add(D[1], 3, 2);
+		root.add(D[2], 4, 2);
+		root.add(D[3], 5, 3);
+		root.add(D[4], 5, 4);
+		root.add(D[5], 5, 5);
+		root.add(D[6], 4, 6);
+		root.add(D[7], 3, 6);
+		root.add(D[8], 2, 6);
+		root.add(D[9], 1, 5);
+		root.add(D[10], 1, 4);
+		root.add(D[11], 1, 3);
+		
+		for (int i = 12; i<24; i++) {		
+		if (i<15) {
+			root.add(D[i], i -10, 1);
+		}
+		else if(i<18) {
+			root.add(D[i], 6, i-12);
+		}
+		else if (i<21) {
+			root.add(D[i], 22-i, 7);
+		}
+		else if (i<24) {
+			root.add(D[i], 0, 26-i);
+		}
+		
+		
+		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		root.add(Alibi2, 1, 7);
 		root.add(Alibi, 0, 7);
 		root.add(DeplacementT, 1, 0);
@@ -83,7 +119,7 @@ public class HelloApp extends Application {
 
 	Button ChoixTourner = new Button();
 	Button choixEchangerTuile = new Button();
-	static Button[] D = new Button[12];
+	static Button[] D = new Button[24];
 	static Button TroisD = new Button();
 	static Button DeplacementW = new Button();
 	static Button DeplacementS = new Button();
@@ -95,7 +131,8 @@ public class HelloApp extends Application {
 	Button finDuTour = new Button();
 
 	@Override
-	public void start(Stage primaryStage) throws Exception { // primaryStage est juste un nom de parametre on peut le
+
+	public void start(Stage primaryStage) throws Exception { 
 		
 		
 		PileHautALibi.setFitHeight(100);
@@ -129,6 +166,7 @@ public class HelloApp extends Application {
 		finDuTour.setContentDisplay(ContentDisplay.CENTER);
 		root.add(finDuTour, 5, 6);
 		finDuTour.setText("FIN");
+
 		
 		finDuTour.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -181,7 +219,7 @@ public class HelloApp extends Application {
 
 		// Boutons détectives
 
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < 24; i++) {
 			D[i] = new Button();
 			D[i].setMinWidth(50);
 			D[i].setMinHeight(50);
@@ -431,7 +469,18 @@ public class HelloApp extends Application {
 		 * //Annuler.setText("Annuler     ");
 		 */
 	 
-		        Jeu.initialisation();
+		printBoardInterface();
+		Scene scene = new Scene(root);
+		Scene scene2 = new Scene(root2);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		Stage otherStage = new Stage();
+		otherStage.setScene(scene2);
+		otherStage.show();
+		
+		
+		
+		        /*Jeu.initialisation();
 		        Jeu.plateau.lancement();
 		        for (int i = 1; i <= 8; i++) {
 		            switch (i % 2) {
@@ -444,13 +493,10 @@ public class HelloApp extends Application {
 		            }
 		            Jeu.finDuTour();
 		            Jeu.finPartie(i);
-		        }
+		        }*/
 		    
 		
-		printBoardInterface();
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		
 	}
 
 	public static void innocenter(String nomSuspect) {
@@ -466,4 +512,6 @@ public class HelloApp extends Application {
 
 	}
 
+
 }
+

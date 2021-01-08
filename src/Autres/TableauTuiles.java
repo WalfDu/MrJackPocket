@@ -1,6 +1,8 @@
 package Autres;
 
+
 import InterfaceGraphique.HelloApp;
+
 
 public class TableauTuiles {
 
@@ -24,11 +26,13 @@ public class TableauTuiles {
 			johnPizer, jeremyBert, inspectorLestrade };
 
 
+
+
 	public TableauTuiles() {
 	}
 
 	public void lancement() {
-		HelloApp.printBoardInterface();
+
 		//tuilesRetournees(initialBoard);
 		printBoardConsole(shuffleArray());
 	};

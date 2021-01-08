@@ -25,7 +25,7 @@ public class JetonAlibi extends Jetons {
 	@Override
 	public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
 		String[] carte = piocherCarte();
-		String out = "Vous avez pioche la carte " + carte[0];
+		String out = "Vous avez pioché la carte " + carte[0];
 		switch (joueurActuel) {
 			case "Mr. Jack":
 				out += ", vous ";
@@ -42,7 +42,7 @@ public class JetonAlibi extends Jetons {
 				}
 				Jeu.sabliersCaches += Integer.valueOf(carte[1]);
 				break;
-			case "M. le detective":
+			case "M. le détective":
 				for (District i : board) {
 					if (i.getNomSuspect().equals(carte[0])) {
 						i.innocenter();

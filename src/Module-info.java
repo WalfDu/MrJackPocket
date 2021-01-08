@@ -1,3 +1,4 @@
+
 module MrJackPocket {
 	//requires javafx.graphics;
 	requires javafx.controls;
@@ -5,3 +6,4 @@ module MrJackPocket {
 	//requires javafx.base; // pour le label  + englobe le module graphics 
 	exports InterfaceGraphique;
 }
+
