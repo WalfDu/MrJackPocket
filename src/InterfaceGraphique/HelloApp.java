@@ -1,63 +1,32 @@
-<<<<<<< HEAD
-/*package src.InterfaceGraphique;
-=======
 package InterfaceGraphique;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.List;
-import java.util.Random;
-import java.util.Stack;
->>>>>>> Mathieu
-
-import Autres.District;
 import Autres.Jeu;
 import javafx.application.Application;
-<<<<<<< HEAD
-=======
-import javafx.application.Platform;
->>>>>>> Mathieu
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-<<<<<<< HEAD
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
-=======
-import javafx.stage.Stage;
 import jetons.JetonAlibi;
-import jetons.JetonTourner;
 import javafx.scene.*;
 import javafx.scene.layout.*;
-import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.shape.*;
-import javafx.scene.paint.Color;
-
-import javafx.scene.layout.*;
->>>>>>> Mathieu
 
 public class HelloApp extends Application {
 
-	//public static void main(String[] args) {
+	public static void main(String[] args) {
 		//Jeu.main(args);
-		//launch(args);
-	//}
+		launch(args);
+	}
 
 	static GridPane root = new GridPane();
 
@@ -118,7 +87,6 @@ public class HelloApp extends Application {
 	Button finDuTour = new Button();
 
 	@Override
-<<<<<<< HEAD
 	public void start(Stage primaryStage) throws Exception { // primaryStage est juste un nom de parametre on peut le modifier
 		
 		
@@ -203,42 +171,7 @@ public class HelloApp extends Application {
 		tournertuile9.setContentDisplay(ContentDisplay.RIGHT);
 		
 		
-=======
-	public void start(Stage primaryStage) throws Exception { // primaryStage est juste un nom de parametre on peut le
-		
-		
-		PileHautALibi.setFitHeight(100);
-		ticverte.setFitWidth(50);
-		ticverte.setFitHeight(50);
-		False.setFitWidth(50);
-		False.setFitHeight(50);
-		Echanger.setFitWidth(50);
-		Echanger.setFitHeight(50);
-		Tourner.setFitWidth(50);
-		Tourner.setFitHeight(50);
-		TroisDetectives.setFitWidth(50);
-		TroisDetectives.setFitHeight(50);
-		PileHautALibi.setFitWidth(60);
-		PileHautALibi.setFitHeight(100);
-		DeplacementWatson.setFitHeight(50);
-		DeplacementWatson.setFitWidth(50);
-		DeplacementTobi.setFitHeight(50);
-		DeplacementTobi.setFitWidth(50);
-		DeplacementSherlock.setFitHeight(50);
-		DeplacementSherlock.setFitWidth(50);
-		Tobi.setFitWidth(50);
-		Tobi.setFitHeight(50);
-		Sherlock.setFitWidth(50);
-		Sherlock.setFitHeight(50);
-		Watson.setFitWidth(50);
-		Watson.setFitHeight(50);
 
-		// Les jetons
-
-		finDuTour.setContentDisplay(ContentDisplay.CENTER);
-		root.add(finDuTour, 5, 6);
-		finDuTour.setText("FIN");
->>>>>>> Mathieu
 		
 		finDuTour.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -259,14 +192,14 @@ public class HelloApp extends Application {
 		choixEchangerTuile.setContentDisplay(ContentDisplay.CENTER);
 		root.add(choixEchangerTuile, 5, 0);
 
-		// Création des Bouttons
+		// Crï¿½ation des Bouttons
 
 		ArrayList<ImageView> tuiles2 = new ArrayList<ImageView>();
 		for (int i = 0; i < 9; i++) {
 			tuiles2.add(Jeu.board[i].sourceImage());
 		}
 
-		// création des tuiles
+		// crï¿½ation des tuiles
 
 		for (int i = 0; i < 9; i++) {
 			tuile[i] = new Button();
@@ -289,7 +222,7 @@ public class HelloApp extends Application {
 		root.add(tuile[7], 2, 4);
 		root.add(tuile[8], 3, 4);*/
 
-		// Boutons détectives
+		// Boutons dï¿½tectives
 
 		for (int i = 0; i < 12; i++) {
 			D[i] = new Button();
@@ -340,7 +273,7 @@ public class HelloApp extends Application {
 			}
 		});
 
-		// Echange de tuile a revoir problème avec j et i qui doivent être final
+		// Echange de tuile a revoir problï¿½me avec j et i qui doivent ï¿½tre final
 
 		choixEchangerTuile.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -369,7 +302,7 @@ public class HelloApp extends Application {
 			}
 		});
 
-		// Déplacement des détectives
+		// Dï¿½placement des dï¿½tectives
 
 		TroisD.setGraphic(TroisDetectives);
 		TroisD.setContentDisplay(ContentDisplay.RIGHT);
@@ -473,7 +406,7 @@ public class HelloApp extends Application {
 			}
 		});
 
-		// Révélation alibi
+		// Rï¿½vï¿½lation alibi
 
 		Alibi.setGraphic(PileHautALibi);
 		Alibi.setContentDisplay(ContentDisplay.RIGHT);
@@ -492,7 +425,7 @@ public class HelloApp extends Application {
 			public void handle(ActionEvent e) {
 				String[] carte = pileAlibi.piocherCarte();
 				String sourceImage = pileAlibi.sourceImage(carte[0]);
-				if (!sourceImage.equals("Lapileestvide-alibi.png")) { // a modifier pour éviter la syntaxe bizzare
+				if (!sourceImage.equals("Lapileestvide-alibi.png")) { // a modifier pour ï¿½viter la syntaxe bizzare
 					ImageView carteRetournee = new ImageView(getClass().getResource(sourceImage).toString());
 					carteRetournee.setFitHeight(100);
 					carteRetournee.setFitWidth(60);
@@ -575,10 +508,4 @@ public class HelloApp extends Application {
 		}
 
 	}
-
-<<<<<<< HEAD
 }
-*/
-=======
-}
->>>>>>> Mathieu

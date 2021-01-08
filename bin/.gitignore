@@ -1,4 +1,1 @@
-*.directory
-.vscode
-.project
-/bin/
+/InterfaceGraphique/

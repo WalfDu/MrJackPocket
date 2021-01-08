@@ -1,10 +1,7 @@
 package Autres;
 
-<<<<<<< HEAD
-=======
 import InterfaceGraphique.HelloApp;
 
->>>>>>> Mathieu
 public class TableauTuiles {
 
 	static Detectives sherlock = new Detectives("Sherlock", 12);
@@ -26,18 +23,11 @@ public class TableauTuiles {
 	static private District[] board = { williamGull, sergentGoodley, missStealthy, madame, josephLane, johnSmith,
 			johnPizer, jeremyBert, inspectorLestrade };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Mathieu
 	public TableauTuiles() {
 	}
 
 	public void lancement() {
-<<<<<<< HEAD
-=======
 		HelloApp.printBoardInterface();
->>>>>>> Mathieu
 		//tuilesRetournees(initialBoard);
 		printBoardConsole(shuffleArray());
 	};
