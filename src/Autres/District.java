@@ -19,14 +19,14 @@ public class District {
 		this.mur = mur;
 		this.nomSuspect = nomSuspect;
 		String[] temp = nomSuspect.split(" ");
-		this.sourceImage = ""; //"file:/images/districts/";
+		this.sourceImage = ""; // "file:/images/districts/";
 		for (String i : temp) {
 			this.sourceImage += i;
 		}
 		this.sourceImage += "-recto.png";
-		this.sourceImageVerso = /*"../../images/districts/*/"common-verso.png";
+		this.sourceImageVerso = /* "../../images/districts/ */"common-verso.png";
 		if (nomSuspect == "Joseph Lane") {
-			this.sourceImageVerso = /*"../../images/districts/*/"JosephLane-verso.png";
+			this.sourceImageVerso = /* "../../images/districts/ */"JosephLane-verso.png";
 		}
 	}
 
@@ -63,7 +63,7 @@ public class District {
 	}
 
 	public void innocenter() {
-		//InterfaceGraphique.HelloApp.innocenter(nomSuspect);
+		// InterfaceGraphique.HelloApp.innocenter(nomSuspect);
 		faceSuspect = "Innocent";
 		Jeu.innocents.addLast(nomSuspect);
 	}
