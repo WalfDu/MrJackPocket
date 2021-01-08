@@ -1,5 +1,9 @@
 package Autres;
 
+<<<<<<< HEAD
+=======
+import InterfaceGraphique.HelloApp;
+>>>>>>> Mathieu
 import javafx.scene.image.ImageView;
 
 public class District {
@@ -18,14 +22,24 @@ public class District {
 		this.mur = mur;
 		this.nomSuspect = nomSuspect;
 		String[] temp = nomSuspect.split(" ");
+<<<<<<< HEAD
 		this.sourceImage = ""; //"../../images/districts/";
+=======
+		this.sourceImage = "" ;// "../../images/districts/";
+>>>>>>> Mathieu
 		for (String i : temp) {
 			this.sourceImage += i;
 		}
 		this.sourceImage += "-recto.png";
+<<<<<<< HEAD
 		this.sourceImageVerso = /*"../../images/districts/*/"common-verso.png";
 		if (nomSuspect == "Joseph Lane") {
 			this.sourceImageVerso = /*"../../images/districts/*/"JosephLane-verso.png";
+=======
+		this.sourceImageVerso ="common-verso.png"; //"../../images/districts/common-verso.png";
+		if (nomSuspect == "Joseph Lane") {
+			this.sourceImageVerso = "JosephLane-verso.png" ;//"../../images/districts/JosephLane-verso.png";
+>>>>>>> Mathieu
 		}
 	}
 
@@ -62,7 +76,11 @@ public class District {
 	}
 
 	public void innocenter() {
+<<<<<<< HEAD
 		//InterfaceGraphique.HelloApp.innocenter(nomSuspect);
+=======
+		HelloApp.innocenter(nomSuspect);
+>>>>>>> Mathieu
 		faceSuspect = "Innocent";
 		Jeu.innocents.addLast(nomSuspect);
 	}

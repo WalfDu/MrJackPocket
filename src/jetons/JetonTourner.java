@@ -17,8 +17,14 @@ public class JetonTourner extends Jetons {
         this.nom = nom;
     }
 
+<<<<<<< HEAD
     public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
         System.out.println("Entrez l'abscisse puis l'ordonnee de la tuile que vous voulez tourner:");
+=======
+    @Override
+    public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
+        System.out.println("Entrez l'abscisse puis l'ordonnée de la tuile que vous voulez tourner:");
+>>>>>>> Mathieu
         int abscisse = scanner.nextInt() - 1;
         int ordonnee = scanner.nextInt() - 1;
         int coordonnee = 3 * abscisse + ordonnee;
@@ -30,6 +36,10 @@ public class JetonTourner extends Jetons {
         } while (!scanner.nextLine().equals("stop"));
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+>>>>>>> Mathieu
     public String getNom() {
         return nom;
     }

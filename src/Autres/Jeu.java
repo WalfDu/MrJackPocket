@@ -3,6 +3,7 @@ package Autres;
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
+import InterfaceGraphique.HelloApp;
 import jetons.JetonAlibi;
 import jetons.Jetons;
 import tour.TourImpairs;
@@ -12,21 +13,25 @@ public class Jeu {
     private static Jetons[] choixActions = TourImpairs.debut();
     private static Scanner scanner = new Scanner(System.in);
     private static JetonAlibi pileAlibi = new JetonAlibi("test");
-    private static District[] board = TableauTuiles.shuffleArray();
-    private static Detectives[] listeDetectives = TableauTuiles.listeDetectives();
+    public static District[] board = TableauTuiles.shuffleArray();
+    public static Detectives[] listeDetectives = TableauTuiles.listeDetectives();
     private static int action;
     private static String joueurActuel;
     private static ArrayDeque<District> visibles = new ArrayDeque<>();
     private static ArrayDeque<String> visiblesStr = new ArrayDeque<>();
     static ArrayDeque<String> innocents = new ArrayDeque<>();
-    private static TableauTuiles plateau = new TableauTuiles();
+    public static TableauTuiles plateau = new TableauTuiles();
     private static String[] nomMrJack;
     public static int sabliers = 0;
     public static int sabliersCaches = 0;
     public static String winner;
-
-    public static void main(String[] args) {
-        initialisation();
+    private static HelloApp interfaceG = new HelloApp();
+    
+    public static void main(String string) {
+        String chaine1 = "Bonjour";
+        String chaine2 = "Bonjour";
+        System.out.println(chaine1 == chaine2);
+        /*initialisation();
         plateau.lancement();
         for (int i = 1; i <= 8; i++) {
             switch (i % 2) {
@@ -39,14 +44,14 @@ public class Jeu {
             }
             finDuTour();
             finPartie(i);
-        }
+        }*/
     }
 
     public static void initialisation() {
-        System.out.print("Mr Jack, nous allons vous reveler votre identite. Êtes-vous pret ?");
+        System.out.print("Mr Jack, nous allons vous reveler votre identité. Etes-vous prêt ?");
         scanner.nextLine();
         nomMrJack = pileAlibi.piocherCarte();
-        System.out.print("Vous etes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
+        System.out.print("Vous êtes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
         scanner.nextLine();
     }
 
@@ -56,7 +61,7 @@ public class Jeu {
             switch (nbActionsRestantes) {
                 case 1:
                 case 4:
-                    joueurActuel = "M. le detective";
+                    joueurActuel = "M. le détective";
                     break;
                 case 2:
                 case 3:
@@ -94,7 +99,7 @@ public class Jeu {
         Jetons temp = choixActions[action];
         choixActions[action] = choixActions[nbActionsRestantes - 1];
         choixActions[nbActionsRestantes - 1] = temp;
-        TableauTuiles.printBoardConsole(board);
+        HelloApp.printBoardInterface();
     }
 
     public static void finDuTour() {
@@ -207,7 +212,7 @@ public class Jeu {
             winner = "Mr. Jack";
         }
         if (innocents.size() >= 8) {
-            winner = "M. le détective";
+            winner = "M. le detective";
         }
     }
 }
