@@ -2,7 +2,105 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a875d20e-ad75-4b84-9de2-a32637951c39" name="Default Changelist" comment="&quot;jeton actions&#10;&quot;">
-      <change beforePath="$PROJECT_DIR$/src/Module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/Autres/Detectives.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/Autres/District.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/Autres/JetonsTemps.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/Autres/Jeu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/Autres/Joueur.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/Autres/Position.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/Autres/TableauTuiles.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/InterfaceGraphique/BouttonTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/MrJackPocket.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/UmlJack.xmi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/actions/Jeton1-Face1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/actions/Jeton1-Face2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/actions/Jeton2-Face1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/actions/Jeton2-Face2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/actions/Jeton3-Face1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/actions/Jeton3-Face2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/actions/Jeton4-Face1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/actions/Jeton4-Face2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/alibis/InspLestrade-alibi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/alibis/JeremyBert-alibi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/alibis/JohnPizer-alibi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/alibis/JohnSmith-alibi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/alibis/JosephLane-alibi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/alibis/Madame-alibi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/alibis/MissStealthy-alibi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/alibis/SgtGoodley-alibi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/alibis/WilliamGull-alibi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/alibis/alibi-card.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/detectives/Sherlock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/detectives/Tobi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/detectives/Watson.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/JosephLane-verso.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/common-verso.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/jetons/JetonAlibi.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/jetons/JetonDetective.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/jetons/JetonEchanger.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/jetons/JetonSherlock.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/jetons/JetonTobie.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/jetons/JetonTourner.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/jetons/JetonWatson.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/jetons/Jetons.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/module-info.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/src/Autres/Alibi.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/src/tour/Tour.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/tour/TourImpairs.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/tour/TourPairs.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/districts/Madame-recto.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Autres/Alibi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Autres/Detectives.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Autres/District.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Autres/JetonsTemps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Autres/Jeu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Autres/Joueur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Autres/Position.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Autres/TableauTuiles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InterfaceGraphique/BouttonTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InterfaceGraphique/HelloApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jetons/JetonAlibi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jetons/JetonDetective.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jetons/JetonEchanger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jetons/JetonSherlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jetons/JetonTobie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jetons/JetonTourner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jetons/JetonWatson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jetons/Jetons.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tour/Tour.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tour/TourImpairs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tour/TourPairs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MrJackPocket.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MrJackPocket.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/com_bluecatcode_junit_junit_4_10_extended_1_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Autres/Alibi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Autres/Jeu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Autres/Joueur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/MrJackPocket/InterfaceGraphique/InspLestrade-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/InspLestrade-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/MrJackPocket/InterfaceGraphique/JeremyBert-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/JeremyBert-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/MrJackPocket/InterfaceGraphique/JohnPizer-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/JohnPizer-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/MrJackPocket/InterfaceGraphique/JohnSmith-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/JohnSmith-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/MrJackPocket/InterfaceGraphique/JosephLane-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/JosephLane-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/MrJackPocket/InterfaceGraphique/Madame-rector.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/Madame-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/MrJackPocket/InterfaceGraphique/MissStealthy-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/MissStealthy-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/MrJackPocket/InterfaceGraphique/SgtGoodley-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/SgtGoodley-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/MrJackPocket/InterfaceGraphique/WilliamGull-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/MrJackPocket/images/districts/WilliamGull-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/tour/Tour.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/tour/TourImpairs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/tour/TourPairs.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +123,10 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -65,11 +167,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="file.status.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -85,7 +188,7 @@
       <recent name="C:\Users\jad\MrJackPocket\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloApp">
+  <component name="RunManager" selected="Application.Jeu.java">
     <configuration name="HelloApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="InterfaceGraphique.HelloApp" />
       <module name="MrJackPocket" />
@@ -168,8 +271,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApp" />
         <item itemvalue="Application.Jeu.java" />
+        <item itemvalue="Application.HelloApp" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.TableauTuiles" />
         <item itemvalue="Application.Jeu.java" />
@@ -232,6 +335,11 @@
       <workItem from="1610091039479" duration="1150000" />
       <workItem from="1610099116191" duration="1604000" />
       <workItem from="1610122715396" duration="325000" />
+      <workItem from="1610210907934" duration="646000" />
+      <workItem from="1610211618472" duration="360000" />
+      <workItem from="1610211993722" duration="1425000" />
+      <workItem from="1610213440059" duration="20000" />
+      <workItem from="1610213465224" duration="828000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;jeton rotation switch&#10;&quot;">
       <created>1605446251031</created>
@@ -294,10 +402,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="125" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1607681659406" />
-    <state x="490" y="231" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1605444138871">
+    <state x="490" y="231" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1610213566055">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="490" y="231" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1605444138871" />
+    <state x="490" y="231" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1610213566055" />
     <state x="480" y="105" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1605800404865">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -318,62 +426,70 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="360" y="0" key="#java/0.0.1280.680@0.0.1280.680" timestamp="1607679591741" />
-    <state x="389" y="74" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1605445199901">
+    <state x="389" y="74" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1610213295531">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="389" y="74" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1605445199901" />
+    <state x="389" y="74" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1610213295531" />
     <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1607273201575">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1607273201575" />
-    <state x="395" y="57" key="DetectedRootsChooserDialog" timestamp="1609425024754">
+    <state x="395" y="57" key="DetectedRootsChooserDialog" timestamp="1610212130617">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="395" y="57" key="DetectedRootsChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1609425024754" />
-    <state x="337" y="56" key="FileChooserDialogImpl" timestamp="1609425037886">
+    <state x="395" y="57" key="DetectedRootsChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1610212130617" />
+    <state x="337" y="56" key="FileChooserDialogImpl" timestamp="1610213504274">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="56" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1609425037886" />
-    <state width="1237" height="137" key="GridCell.Tab.0.bottom" timestamp="1610104998661">
+    <state x="337" y="56" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1610213504274" />
+    <state width="1237" height="137" key="GridCell.Tab.0.bottom" timestamp="1610211554102">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="137" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1610104998661" />
-    <state width="1237" height="137" key="GridCell.Tab.0.center" timestamp="1610104998661">
+    <state width="1237" height="137" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1610211554102" />
+    <state width="1237" height="137" key="GridCell.Tab.0.center" timestamp="1610211554102">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="137" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1610104998661" />
-    <state width="1237" height="137" key="GridCell.Tab.0.left" timestamp="1610104998661">
+    <state width="1237" height="137" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1610211554102" />
+    <state width="1237" height="137" key="GridCell.Tab.0.left" timestamp="1610211554102">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="137" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1610104998661" />
-    <state width="1237" height="137" key="GridCell.Tab.0.right" timestamp="1610104998661">
+    <state width="1237" height="137" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1610211554102" />
+    <state width="1237" height="137" key="GridCell.Tab.0.right" timestamp="1610211554102">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="137" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1610104998661" />
-    <state x="354" y="58" key="MultipleFileMergeDialog" timestamp="1607673167060">
+    <state width="1237" height="137" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1610211554102" />
+    <state x="354" y="58" key="MultipleFileMergeDialog" timestamp="1610214289850">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="354" y="58" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1607673167060" />
+    <state x="354" y="58" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1610214289850" />
     <state x="314" y="40" key="NewModule_or_Project.wizard" timestamp="1607676354003">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="314" y="40" key="NewModule_or_Project.wizard/0.0.1280.680@0.0.1280.680" timestamp="1607676354003" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1610210929990">
+    <state x="121" y="0" key="SettingsEditor" timestamp="1610214219456">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1610210929990" />
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1610214219456" />
     <state x="362" y="82" width="540" height="524" key="StructurePopup" timestamp="1606387846302">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="362" y="82" width="540" height="524" key="StructurePopup/0.0.1280.680@0.0.1280.680" timestamp="1606387846302" />
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1610210908610">
+    <state x="452" y="120" key="chooseDestDirectoryDialog" timestamp="1610211201249">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1610210908610" />
+    <state x="452" y="120" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1610211201249" />
+    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1610213440146">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1610213440146" />
     <state x="375" y="235" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1605527131074">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="375" y="235" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1605527131074" />
+    <state x="207" y="0" width="896" height="500" key="dock-window-1" timestamp="1610211207829">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="207" y="0" width="896" height="500" key="dock-window-1/0.0.1280.680@0.0.1280.680" timestamp="1610211207829" />
     <state x="2" y="0" width="742" height="680" key="find.popup" timestamp="1606387353085">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -382,6 +498,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="424" y="55" key="git4idea.branch.GitSmartOperationDialog/0.0.1280.680@0.0.1280.680" timestamp="1607673142014" />
+    <state x="442" y="133" key="git4idea.merge.GitMergeDialog" timestamp="1610213606068">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="442" y="133" key="git4idea.merge.GitMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1610213606068" />
     <state x="232" y="0" key="new project wizard" timestamp="1606384691633">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
