@@ -26,10 +26,10 @@ public class Jeu {
     public static int sabliers = 0;
     public static int sabliersCaches = 0;
     public static String winner;
-    private static HelloApp interfaceG = new HelloApp();
+    //private static HelloApp interfaceG = new HelloApp();
     
     public static void main(String string) {
-    	HelloApp.printBoardInterface();
+    	//interfaceG.printBoardInterface();
     	//Scene scene = new Scene(root);
 		//primaryStage.setScene(scene);
 		//primaryStage.show();
@@ -50,13 +50,48 @@ public class Jeu {
     }
 
     public static void initialisation() {
+    	//HelloApp.root.add(HelloApp.d[3], 1, 1);
+    	//HelloApp.printBoardInterface();
         System.out.print("Mr Jack, nous allons vous reveler votre identité. Etes-vous prêt ?");
         scanner.nextLine();
         nomMrJack = pileAlibi.piocherCarte();
         System.out.print("Vous êtes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
         scanner.nextLine();
     }
-
+    public static void printBoardInterface() {
+		for (int i = 0; i < 9; i++) {
+			HelloApp.root.add(HelloApp.tuile[i], 2 + i % 3, 3 + i / 3);
+		}
+		for (int i = 0; i < 24; i++) {
+			if (i < 3) {
+				HelloApp.root.add(HelloApp.d[i], i + 2, 2);
+			} else if (i < 6) {
+				HelloApp.root.add(HelloApp.d[i], 5, i);
+			} else if (i < 9) {
+				HelloApp.root.add(HelloApp.d[i], 10 - i, 6);
+			} else if (i < 12) {
+				HelloApp.root.add(HelloApp.d[i], 1, 14 - i);
+			} else if (i < 15) {
+				HelloApp.root.add(HelloApp.d[i], i - 10, 1);
+			} else if (i < 18) {
+				HelloApp.root.add(HelloApp.d[i], 6, i - 12);
+			} else if (i < 21) {
+				HelloApp.root.add(HelloApp.d[i], 22 - i, 7);
+			} else if (i < 24) {
+				HelloApp.root.add(HelloApp.d[i], 0, 26 - i);
+			}
+		}
+		HelloApp.root.add(HelloApp.alibi, 0, 7);
+		HelloApp.root.add(HelloApp.deplacementT, 1, 0);
+		HelloApp.root.add(HelloApp.deplacementS, 2, 0);
+		HelloApp.root.add(HelloApp.deplacementW, 3, 0);
+		HelloApp.root.add(HelloApp.troisD, 4, 0);
+		HelloApp.root.add(HelloApp.finDuTour, 5, 6);
+		HelloApp.root.add(HelloApp.choixTourner, 6, 0);
+		HelloApp.root.add(HelloApp.choixEchangerTuile, 5, 0);
+	}
+    
+    
     public static void tourImpairs() {
         choixActions = TourImpairs.debut();
         for (int nbActionsRestantes = 4; nbActionsRestantes > 0; nbActionsRestantes--) {
@@ -101,7 +136,7 @@ public class Jeu {
         Jetons temp = choixActions[action];
         choixActions[action] = choixActions[nbActionsRestantes - 1];
         choixActions[nbActionsRestantes - 1] = temp;
-        HelloApp.printBoardInterface();
+        //interfaceG.printBoardInterface();
     }
 
     public static void finDuTour() {

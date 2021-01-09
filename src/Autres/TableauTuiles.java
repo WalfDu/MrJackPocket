@@ -31,7 +31,7 @@ public class TableauTuiles {
 	public void lancement() {
 
 		//tuilesRetournees(initialBoard);
-		printBoardConsole(shuffleArray());
+		//printBoardConsole(shuffleArray());
 	};
 
 	public static void tuilesRetournees(District[] board) {

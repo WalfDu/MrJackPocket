@@ -1,6 +1,7 @@
 package Autres;
 
 import InterfaceGraphique.HelloApp;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class District {
@@ -19,7 +20,7 @@ public class District {
 		this.mur = mur;
 		this.nomSuspect = nomSuspect;
 		String[] temp = nomSuspect.split(" ");
-		this.sourceImage = ""; // "file:/images/districts/";
+		this.sourceImage = "file:images/districts/";
 		for (String i : temp) {
 			this.sourceImage += i;
 		}
@@ -41,17 +42,15 @@ public class District {
 	}
 
 	public ImageView sourceImage() {
-		ImageView out = new ImageView(getClass().getResource(sourceImage).toString());
-		out.setFitHeight(100);
-		out.setFitWidth(100);
-		return out;
+		Image out = new Image(sourceImage, 100, 100, false, false);
+		ImageView outView = new ImageView(out);
+		return outView;
 	}
 
 	public ImageView sourceImageVerso() {
-		ImageView out = new ImageView(getClass().getResource(sourceImageVerso).toString());
-		out.setFitHeight(100);
-		out.setFitWidth(100);
-		return out;
+		Image out = new Image(sourceImageVerso, 100, 100, false, false);
+		ImageView outView = new ImageView(out);
+		return outView;
 	}
 
 	public String getNomSuspect() {

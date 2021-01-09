@@ -1,45 +1,32 @@
 package InterfaceGraphique;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.List;
-import java.util.Random;
-import java.util.Stack;
 
-import Autres.District;
 import Autres.Jeu;
 import javafx.application.Application;
-
-import javafx.application.Platform;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
 import jetons.JetonAlibi;
-import javafx.scene.*;
-import javafx.scene.layout.*;
-import javafx.scene.shape.*;
 
 public class HelloApp extends Application {
 
 	public static void main(String[] args) {
 		// Jeu.main(args);
 		launch(args);
+
 	}
 
-	static GridPane root = new GridPane();
+	public static GridPane root = new GridPane();
 	static GridPane root2 = new GridPane();
 
 	public static void printBoardInterface() {
@@ -70,88 +57,53 @@ public class HelloApp extends Application {
 		root.add(deplacementS, 2, 0);
 		root.add(deplacementW, 3, 0);
 		root.add(troisD, 4, 0);
+		root.add(finDuTour, 5, 6);
+		root.add(choixTourner, 6, 0);
+		root.add(choixEchangerTuile, 5, 0);
 	}
 
-	ImageView ticverteView = new ImageView(getClass().getResource("ticverte.png").toString());
-	ImageView faux = new ImageView(getClass().getResource("False.png").toString());
-	ImageView echanger = new ImageView(getClass().getResource("Jeton1-Face1.png").toString());
-	ImageView tourner = new ImageView(getClass().getResource("Jeton1-Face2.png").toString());
-	ImageView deplacementWatson = new ImageView(getClass().getResource("Jeton2-Face2.png").toString());
-	ImageView deplacementSherlock = new ImageView(getClass().getResource("Jeton3-Face1.png").toString());
-	ImageView deplacementToby = new ImageView(getClass().getResource("Jeton2-Face1.png").toString());
-	ImageView watson = new ImageView(getClass().getResource("Watson.png").toString());
-	ImageView toby = new ImageView(getClass().getResource("Tobi.png").toString());
-	ImageView sherlock = new ImageView(getClass().getResource("Sherlock.png").toString());
-	ImageView troisDetectives = new ImageView(getClass().getResource("Jeton4-Face1.png").toString());
-	ImageView pileHautAlibi = new ImageView(getClass().getResource("alibi-card.png").toString());
+	Image echanger = new Image("file:images/actions/Jeton1-Face1.png", 50, 50, false, false);
+	ImageView echangerView = new ImageView(echanger);
+	Image tourner = new Image("file:images/actions/Jeton1-Face2.png", 50, 50, false, false);
+	ImageView tournerView = new ImageView(tourner);
+	Image deplacementWatson = new Image("file:images/actions/Jeton2-Face2.png", 50, 50, false, false);
+	ImageView deplacementWatsonView = new ImageView(deplacementWatson);
+	Image deplacementSherlock = new Image("file:images/actions/Jeton3-Face1.png", 50, 50, false, false);
+	ImageView deplacementSherlockView = new ImageView(deplacementSherlock);
+	Image deplacementToby = new Image("file:images/actions/Jeton2-Face1.png", 50, 50, false, false);
+	ImageView deplacementTobyView = new ImageView(deplacementToby);
+	Image actionAlibi = new Image("file:images/actions/Jeton3-Face2.png", 50, 50, false, false);
+	ImageView actionAlibiView = new ImageView(actionAlibi);
+	Image troisDetectives = new Image("file:images/actions/Jeton4-Face1.png", 50, 50, false, false);
+	ImageView troisDetectivesView = new ImageView(troisDetectives);
+	Image toby = new Image("file:images/detectives/Toby.png", 50, 50, false, false);
+	ImageView tobyView = new ImageView(toby);
+	Image sherlock = new Image("file:images/detectives/Sherlock.png", 50, 50, false, false);
+	ImageView sherlockView = new ImageView(sherlock);
+	Image watson = new Image("file:images/detectives/Watson.png", 50, 50, false, false);
+	ImageView watsonView = new ImageView(watson);
+	Image pileHautAlibi = new Image("file:images/alibis/alibi-card.png", 60, 100, false, false);
+	ImageView pileHautAlibiView = new ImageView(pileHautAlibi);
 
-	Button choixTourner = new Button();
-	Button choixEchangerTuile = new Button();
-	static Button[] d = new Button[24];
-	static Button troisD = new Button();
-	static Button deplacementW = new Button();
-	static Button deplacementS = new Button();
-	static Button deplacementT = new Button();
-	static Button alibi = new Button();
-	static Button alibi2 = new Button();
+	public static Button choixTourner = new Button();
+	public static Button choixEchangerTuile = new Button();
+	public static Button[] d = new Button[24];
+	public static Button troisD = new Button();
+	public static Button deplacementW = new Button();
+	public static Button deplacementS = new Button();
+	public static Button deplacementT = new Button();
+	public static Button alibi = new Button();
+	public static Button alibi2 = new Button();
 	Button innocent = new Button();
-	static Button[] tuile = new Button[9];
-	Button finDuTour = new Button();
+	public static Button[] tuile = new Button[9];
+	public static Button finDuTour = new Button();
 
 	@Override
 	public void start(Stage primaryStage) throws Exception { // primaryStage est juste un nom de parametre on peut le
 																// modifier
 
-		VBox vertical1 = new VBox(); // met un espace entre les infos
-		VBox vertical2 = new VBox();
-		VBox vertical3 = new VBox();
-
-		// ajouter une image
-		/*
-		 * ImageView johnSmith = new
-		 * ImageView(getClass().getResource("JohnSmith-recto.png").toString());
-		 * ImageView johnPizer = new
-		 * ImageView(getClass().getResource("JohnPizer-recto.png").toString());
-		 * ImageView josephLane = new
-		 * ImageView(getClass().getResource("JosephLane-recto.png").toString());
-		 * ImageView madame = new
-		 * ImageView(getClass().getResource("Madame-recto.png").toString()); ImageView
-		 * sgtGoodley = new
-		 * ImageView(getClass().getResource("SgtGoodley-recto.png").toString());
-		 * ImageView inspLestrade = new
-		 * ImageView(getClass().getResource("InspLestrade-recto.png").toString());
-		 * ImageView missStealthy = new
-		 * ImageView(getClass().getResource("MissStealthy-recto.png").toString());
-		 * ImageView williamGull = new
-		 * ImageView(getClass().getResource("WilliamGull-recto.png").toString());
-		 * ImageView jeremyBert = new
-		 * ImageView(getClass().getResource("JeremyBert-recto.png").toString());
-		 * 
-		 * 
-		 * ImageVie johnSmith.setFitHeight(100); johnPizer.setFitHeight(100);
-		 * johnSmith.setFitWidth(100); johnPizer.setFitWidth(100);
-		 * josephLane.setFitHeight(100); josephLane.setFitWidth(100);
-		 * sgtGoodley.setFitHeight(100); sgtGoodley.setFitWidth(100);
-		 * inspLestrade.setFitHeight(100); inspLestrade.setFitWidth(100);
-		 * MissStealthy.setFitHeight(100); MissStealthy.setFitWidth(100);
-		 * WilliamGull.setFitHeight(100); WilliamGull.setFitWidth(100);
-		 * Madame.setFitHeight(100); Madame.setFitWidth(100);
-		 * JeremyBert.setFitHeight(100); JeremyBert.setFitWidth(100);
-		 */
-
-		ImageView[] listeBouttons = new ImageView[] { faux, echanger, tourner, troisDetectives, toby, sherlock, watson,
-				deplacementSherlock, deplacementWatson, deplacementToby };
-
-		for (ImageView i : listeBouttons) {
-			i.setFitWidth(50);
-			i.setFitHeight(50);
-		}
-		pileHautAlibi.setFitWidth(60);
-		pileHautAlibi.setFitHeight(100);
-
 		// Les jetons
 		finDuTour.setContentDisplay(ContentDisplay.CENTER);
-		root.add(finDuTour, 5, 6);
 		finDuTour.setText("FIN");
 
 		finDuTour.setOnAction(new EventHandler<ActionEvent>() {
@@ -161,17 +113,15 @@ public class HelloApp extends Application {
 			}
 		});
 
-		choixTourner.setGraphic(tourner);
+		choixTourner.setGraphic(tournerView);
 		choixTourner.setShape(new Circle(30));
 		choixTourner.setStyle("-fx-background-color: transparent;");
 		choixTourner.setContentDisplay(ContentDisplay.CENTER);
-		root.add(choixTourner, 6, 0);
 
-		choixEchangerTuile.setGraphic(echanger);
+		choixEchangerTuile.setGraphic(echangerView);
 		choixEchangerTuile.setShape(new Circle(30));
 		choixEchangerTuile.setStyle("-fx-background-color: transparent;");
 		choixEchangerTuile.setContentDisplay(ContentDisplay.CENTER);
-		root.add(choixEchangerTuile, 5, 0);
 
 		// Creation des Bouttons
 		ArrayList<ImageView> tuiles2 = new ArrayList<ImageView>();
@@ -200,13 +150,13 @@ public class HelloApp extends Application {
 			d[i].setStyle("-fx-background-color: transparent;");
 			d[i].setContentDisplay(ContentDisplay.CENTER);
 			if (i == 3) {
-				d[i].setGraphic(watson);
+				d[i].setGraphic(watsonView);
 			}
 			if (i == 11) {
-				d[i].setGraphic(sherlock);
+				d[i].setGraphic(sherlockView);
 			}
 			if (i == 7) {
-				d[i].setGraphic(toby);
+				d[i].setGraphic(tobyView);
 			}
 		}
 
@@ -221,6 +171,7 @@ public class HelloApp extends Application {
 						public void handle(ActionEvent e) {
 							imTuile.setRotate(imTuile.getRotate() + 90);
 						}
+						// tuileTournante = i;
 					});
 				}
 			}
@@ -256,13 +207,12 @@ public class HelloApp extends Application {
 
 		// Deplacement des detectives
 		Button[] listPionDetectives = new Button[] { troisD, deplacementW, deplacementS, deplacementT };
-		troisD.setGraphic(troisDetectives);
-		deplacementW.setGraphic(deplacementWatson);
-		deplacementS.setGraphic(deplacementSherlock);
-		deplacementT.setGraphic(deplacementToby);
+		troisD.setGraphic(troisDetectivesView);
+		deplacementW.setGraphic(deplacementWatsonView);
+		deplacementS.setGraphic(deplacementSherlockView);
+		deplacementT.setGraphic(deplacementTobyView);
 
 		for (Button i : listPionDetectives) {
-			i.setContentDisplay(ContentDisplay.CENTER);
 			i.setShape(new Circle(30));
 			i.setStyle("-fx-background-color: transparent;");
 		}
@@ -346,7 +296,7 @@ public class HelloApp extends Application {
 		});
 
 		// Revelation alibi
-		alibi.setGraphic(pileHautAlibi);
+		alibi.setGraphic(pileHautAlibiView);
 		alibi.setContentDisplay(ContentDisplay.RIGHT);
 		alibi.setStyle("-fx-background-color: transparent;");
 
@@ -395,33 +345,37 @@ public class HelloApp extends Application {
 		});
 
 		// Bouttons actions
-		/*
+		/**
 		 * Button Valider = new Button (); Valider.setGraphic(ticverte);
 		 * Valider.setStyle("-fx-background-color: transparent;");
-		 * Valider.setContentDisplay(ContentDisplay.RIGHT);
-		 * //Valider.setText("Valider     ");
+		 * Valider.setContentDisplay(ContentDisplay.RIGHT); //Valider.setText("Valider
+		 * ");
 		 * 
 		 * Button Annuler = new Button (); Annuler.setGraphic(False);
 		 * Annuler.setStyle("-fx-background-color: transparent;");
-		 * Annuler.setContentDisplay(ContentDisplay.RIGHT);
-		 * //Annuler.setText("Annuler     ");
+		 * Annuler.setContentDisplay(ContentDisplay.RIGHT); //Annuler.setText("Annuler
+		 * ");
 		 */
 
-		printBoardInterface();
+		// printBoardInterface();
 		Scene scene = new Scene(root);
-		Scene scene2 = new Scene(root2);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		Stage otherStage = new Stage();
-		otherStage.setScene(scene2);
+		// Scene scene2 = new Scene(root2);
+		// Stage otherStage = new Stage();
+		// otherStage.setScene(scene2);
 		// otherStage.show();
+		organisationJeu();
+	}
 
+	public void organisationJeu() {
+
+		Jeu.initialisation();
 		/*
-		 * Jeu.initialisation(); Jeu.plateau.lancement(); for (int i = 1; i <= 8; i++) {
-		 * switch (i % 2) { case 1: Jeu.tourImpairs(); break; case 0: Jeu.tourPairs();
-		 * break; } Jeu.finDuTour(); Jeu.finPartie(i); }
+		 * Jeu.plateau.lancement(); for (int i = 1; i <= 8; i++) { switch (i % 2) { case
+		 * 1: Jeu.tourImpairs(); break; case 0: Jeu.tourPairs(); break; }
+		 * Jeu.finDuTour(); Jeu.finPartie(i); }
 		 */
-
 	}
 
 	public static void innocenter(String nomSuspect) {

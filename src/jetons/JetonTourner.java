@@ -5,10 +5,12 @@ import java.util.Scanner;
 import Autres.Detectives;
 import Autres.District;
 import Autres.TableauTuiles;
+import InterfaceGraphique.HelloApp;
 
 public class JetonTourner extends Jetons {
     Scanner scanner = new Scanner(System.in);
     String nom;
+    private static HelloApp interfaceG = new HelloApp();    
 
     public JetonTourner() {
     }
@@ -31,7 +33,8 @@ public class JetonTourner extends Jetons {
         scanner.nextLine();
         do {
             board[coordonnee].setMur();
-            TableauTuiles.printBoardConsole(board);
+            interfaceG.printBoardInterface();
+            //TableauTuiles.printBoardConsole(board);
         } while (!scanner.nextLine().equals("stop"));
         }
     }
