@@ -4,10 +4,14 @@ import java.util.Scanner;
 
 import Autres.Detectives;
 import Autres.District;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class JetonDetective extends Jetons {
 	Scanner scanner = new Scanner(System.in);
 	String nom;
+	public static Image im = new Image("file:images/actions/Jeton4-Face1.png", 50, 50, false, false);
+	public static ImageView imView = new ImageView(im);
 	int choix;
 
 	public JetonDetective() {
@@ -24,15 +28,14 @@ public class JetonDetective extends Jetons {
 		switch (joueurActuel) {
 			case "M. le détective":
 				System.out.println(
-						"Quel détective souhaitez-vous faire avancer d'une case ?\n1: Sherlock\n2: Watson\n3: Toby");
-
+						"Quel detective souhaitez-vous faire avancer d'une case ?\n1: Sherlock\n2: Watson\n3: Toby");
 				choix = scanner.nextInt() - 1;
 				listeDetectives[choix].setPlace(1);
 				break;
 			case "Mr. Jack":
 				System.out.println(
+						"Quel detective souhaitez-vous faire avancer d'une case ?\n0: Aucun détective\n1: Sherlock\n2: Watson\n3: Toby");
 
-						"Quel détective souhaitez-vous faire avancer d'une case ?\n0: Aucun détective\n1: Sherlock\n2: Watson\n3: Toby");
 
 				choix = scanner.nextInt() - 1;
 				if (choix > -1) {
@@ -46,5 +49,10 @@ public class JetonDetective extends Jetons {
 	@Override
 	public String getNom() {
 		return nom;
+	}
+	
+	@Override
+	public ImageView getImView() {
+		return imView;
 	}
 }

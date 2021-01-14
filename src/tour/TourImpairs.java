@@ -6,32 +6,34 @@ import jetons.JetonEchanger;
 import jetons.JetonSherlock;
 import jetons.JetonToby;
 import jetons.JetonTourner;
+import jetons.JetonTourner2;
 import jetons.JetonWatson;
 import jetons.Jetons;
 
 public class TourImpairs {
 	static Jetons echanger = new JetonEchanger("Échanger les places de deux tuiles");
 	static Jetons tourner = new JetonTourner("Faire tourner une tuile");
-	static Jetons tourner2 = new JetonTourner("Faire tourner une tuile");
-	static Jetons toby = new JetonToby("Avancer Toby");
-	static Jetons watson = new JetonWatson("Avancer Watson");
-	static Jetons sherlock = new JetonSherlock("Avancer Sherlock");
-	static Jetons alibi = new JetonAlibi("Piocher une carte alibi");
-	static Jetons detective = new JetonDetective("Avancer l'un des trois détectives");
+	static Jetons tourner2 = new JetonTourner2("Faire tourner une tuile");
+	static Jetons deplacementToby = new JetonToby("Avancer Toby");
+	static Jetons deplacementWatson = new JetonWatson("Avancer Watson");
+	static Jetons deplacementSherlock = new JetonSherlock("Avancer Sherlock");
+	public static Jetons actionAlibi = new JetonAlibi("Piocher une carte alibi");
+	static Jetons troisDetectives = new JetonDetective("Avancer l'un des trois détectives");
 	static Jetons[][] jetonsAction = jetonsAction();
+	static Jetons[] actionsDuTour;
 
 	// Constructors
 	public TourImpairs() {
 	};
 
 	public static Jetons[][] jetonsAction() {
-		Jetons[][] jetonsAction = { { echanger, tourner2 }, { toby, watson }, { sherlock, alibi },
-				{ tourner, detective } };
+		Jetons[][] jetonsAction = { { echanger, tourner2 }, { deplacementToby, deplacementWatson }, { deplacementSherlock, actionAlibi },
+				{ tourner, troisDetectives } };
 		return jetonsAction;
 	}
 
 	public static Jetons[] debut() {
-		Jetons[] actionsDuTour = new Jetons[4];
+		actionsDuTour = new Jetons[4];
 		for (int i = 0; i < actionsDuTour.length; i++) {
 			actionsDuTour[i] = jetonsAction[i][(int) Math.round(Math.random())];
 		}

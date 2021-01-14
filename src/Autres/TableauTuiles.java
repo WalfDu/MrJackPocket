@@ -1,9 +1,5 @@
 package Autres;
 
-
-import InterfaceGraphique.HelloApp;
-
-
 public class TableauTuiles {
 
 	static Detectives sherlock = new Detectives("Sherlock", 12);
@@ -20,13 +16,10 @@ public class TableauTuiles {
 	static District johnSmith = new District("Suspect", (int) (Math.random() * 3), "John Smith");
 	static District johnPizer = new District("Suspect", (int) (Math.random() * 3), "John Pizer");
 	static District jeremyBert = new District("Suspect", (int) (Math.random() * 3), "Jeremy Bert");
-	static District inspectorLestrade = new District("Suspect", (int) (Math.random() * 3), "Insp Lestrade");
+	static District inspectorLestrade = new District("Suspect", (int) (Math.random() * 3), "Inspector Lestrade");
 
 	static private District[] board = { williamGull, sergentGoodley, missStealthy, madame, josephLane, johnSmith,
 			johnPizer, jeremyBert, inspectorLestrade };
-
-
-
 
 	public TableauTuiles() {
 	}
@@ -34,7 +27,7 @@ public class TableauTuiles {
 	public void lancement() {
 
 		//tuilesRetournees(initialBoard);
-		printBoardConsole(shuffleArray());
+		//printBoardConsole(shuffleArray());
 	};
 
 	public static void tuilesRetournees(District[] board) {

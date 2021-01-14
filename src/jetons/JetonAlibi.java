@@ -6,11 +6,15 @@ import java.util.Scanner;
 import Autres.Detectives;
 import Autres.District;
 import Autres.Jeu;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class JetonAlibi extends Jetons {
 	Scanner scanner = new Scanner(System.in);
-	String nom;
-	ArrayDeque<String> pileAlibi = new ArrayDeque<>();
+	public static String nom;
+	public static Image im = new Image("file:images/actions/Jeton3-Face2.png", 50, 50, false, false);
+	public static ImageView imView = new ImageView(im);
+	public static ArrayDeque<String> pileAlibi = new ArrayDeque<>();
 	static String[] debutPile = { "William Gull 1", "Sgt Goodley 0", "Madame 2", "Joseph Lane 1", "John Smith 1",
 			"John Pizer 1", "Inspecteur Lestrade 0", "Jeremy Bert 1", "Miss Stealthy 1" };
 
@@ -19,7 +23,7 @@ public class JetonAlibi extends Jetons {
 
 	public JetonAlibi(String nom) {
 		shuffleArray(debutPile);
-		this.nom = nom;
+		JetonAlibi.nom = nom;
 	}
 
 	@Override
@@ -94,5 +98,10 @@ public class JetonAlibi extends Jetons {
 		}
 		sourceImage += "-alibi.png";
 		return sourceImage;
+	}
+	
+	@Override
+	public ImageView getImView() {
+		return imView;
 	}
 }

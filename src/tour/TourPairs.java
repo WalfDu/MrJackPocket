@@ -16,9 +16,7 @@ public class TourPairs {
 		}
 		for (int i = 0; i < actionsDuTour.length; i++) {
 			for (int j = 0; j < actionsDuTour.length; j++) {
-
 				if (actionsDuTour[i].equals(actionTourPrecedent[j])) {
-
 					actionsDuTour[i] = jetonsAction[i][1];
 				}
 			}
