@@ -29,7 +29,8 @@ public class Jeu {
 	public static int sabliersCaches = 0;
 	public static String winner;
 	public int tourEnCours = -1;
-	public int actionEnCours = -1;
+	public Jetons actionEnCours;
+	public int nbActionsRestantes = -1;
 	// private static HelloApp interfaceG = new HelloApp();
 
 	public static void main(String string) {
