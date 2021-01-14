@@ -16,7 +16,7 @@ public class TableauTuiles {
 	static District johnSmith = new District("Suspect", (int) (Math.random() * 3), "John Smith");
 	static District johnPizer = new District("Suspect", (int) (Math.random() * 3), "John Pizer");
 	static District jeremyBert = new District("Suspect", (int) (Math.random() * 3), "Jeremy Bert");
-	static District inspectorLestrade = new District("Suspect", (int) (Math.random() * 3), "Insp Lestrade");
+	static District inspectorLestrade = new District("Suspect", (int) (Math.random() * 3), "Inspector Lestrade");
 
 	static private District[] board = { williamGull, sergentGoodley, missStealthy, madame, josephLane, johnSmith,
 			johnPizer, jeremyBert, inspectorLestrade };
@@ -31,9 +31,9 @@ public class TableauTuiles {
 	};
 
 	public static void tuilesRetournees(District[] board) {
-		for (District i : board) {
+		for (int i=0; i<9; i++) {
 			if (Math.random() > .5) {
-				i.innocenter();
+				board[i].innocenter(i);
 			}
 		}
 	}

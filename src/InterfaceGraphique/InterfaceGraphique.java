@@ -7,15 +7,19 @@ import Autres.Jeu;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import jetons.JetonAlibi;
 import tour.TourImpairs;
@@ -46,6 +50,10 @@ public class InterfaceGraphique extends Application {
 	ImageView watsonView = new ImageView(watson);
 	Image pileHautAlibi = new Image("file:images/alibis/alibi-card.png", 60, 100, false, false);
 	ImageView pileHautAlibiView = new ImageView(pileHautAlibi);
+	Image mrJack = new Image(JetonAlibi.sourceImage(Jeu.nomMrJack[0]), 60, 100, false, false);
+	ImageView mrJackView = new ImageView(mrJack);
+	public static Image alibi2 = new Image("file:/image", 60, 100, false, false);
+	public static ImageView alibi2View = new ImageView(alibi2);
 
 	public static Button choixTourner = new Button();
 	public static Button choixEchangerTuile = new Button();
@@ -55,7 +63,7 @@ public class InterfaceGraphique extends Application {
 	public static Button deplacementS = new Button();
 	public static Button deplacementT = new Button();
 	public static Button alibi = new Button();
-	public static Button alibi2 = new Button();
+	//public static Button alibi2 = new Button();
 	Button innocent = new Button();
 	public static Button[] tuile = new Button[9];
 	public static Button finDuTour = new Button();
@@ -63,17 +71,24 @@ public class InterfaceGraphique extends Application {
 	Button commencer = new Button();
 	Button terminer = new Button();
 	Button joueurSuivant = new Button();
-
+	final Text vousEtes = new Text("Vous etes:");
 	public static String idEnCours;
-	String[] joueurActuel = {"M. le detective" ,"Mr. Jack"};
-	int jActuel = 0;
+	
+	ColumnConstraints column = new ColumnConstraints();
+	RowConstraints row = new RowConstraints();
+
 
 	public static void main(String[] args) {
 		// Jeu.main(args);
+		Jeu.initialisation();
 		launch(args);
 	}
 
 	public void printBoardInterface() {
+		root.getChildren().remove(joueurSuivant);
+		root.getRowConstraints().remove(row);
+		root.getColumnConstraints().remove(column);
+		
 		for (int i = 0; i < 9; i++) {
 			root.add(tuile[i], 2 + i % 3, 3 + i / 3);
 		}
@@ -100,8 +115,18 @@ public class InterfaceGraphique extends Application {
 			root.add(action[i], i + 2, 0);
 		}
 		root.add(alibi, 0, 7);
-		root.add(commencer, 0, 0);
-		root.add(terminer, 6, 7);
+		root.add(alibi2View, 1, 7);
+		root.add(terminer, 6, 0);
+		//Si le joueur actuel est Mr. Jack, on affiche qui il est et son nombre de sablier
+		if (Jeu.jActuel == 1) {
+			root.add(vousEtes, 6, 6);
+			root.add(mrJackView, 6, 7);
+		//Cas MrJack : montrer la carte + sablier
+		}
+		for (int nbActions = 0; nbActions < 4; nbActions++) {
+			InterfaceGraphique.action[nbActions].setGraphic((Jeu.choixActions[nbActions]).getImView());
+		}
+		
 		/*
 		 * root.add(deplacementT, 1, 0); root.add(deplacementS, 2, 0);
 		 * root.add(deplacementW, 3, 0); root.add(troisD, 4, 0); root.add(finDuTour, 5,
@@ -120,16 +145,25 @@ public class InterfaceGraphique extends Application {
 			root.getChildren().remove(i);
 		}
 		root.getChildren().remove(alibi);
-		root.getChildren().remove(commencer);
 		root.getChildren().remove(terminer);
-		root.add(joueurSuivant, 3, 3);
+		root.getChildren().remove(vousEtes);
+		root.getColumnConstraints().add(column);
+		root.getRowConstraints().add(row);
+		root.add(joueurSuivant, 5, 0);
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception { // primaryStage est juste un nom de parametre on peut le
-																// modifier
+															// modifier
+		
+		column.setPercentWidth(32);
+		row.setPercentHeight(90);
+		root.getColumnConstraints().add(column);
+		root.getRowConstraints().add(row);
+		root.add(joueurSuivant, 5, 0);
+		root.add(commencer, 0, 0);
+		
 		// Les jetons
-		finDuTour.setContentDisplay(ContentDisplay.CENTER);
 		finDuTour.setText("FIN");
 
 		finDuTour.setOnAction(new EventHandler<ActionEvent>() {
@@ -139,38 +173,30 @@ public class InterfaceGraphique extends Application {
 			}
 		});
 
-		commencer.setContentDisplay(ContentDisplay.CENTER);
 		commencer.setText("Commencer");
 		commencer.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
+				Jeu.jActuel = (++Jeu.jActuel % 2);
+				joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel] + " de jouer.\nSi vous etes pret, cliquez sur ce message");
 				joueurSuivant();
+				root.getChildren().remove(commencer);
 			}
 		});
-		
-		terminer.setContentDisplay(ContentDisplay.CENTER);
-		terminer.setText("Terminer le tour");
+
+		terminer.setText("Terminer l'action");
 		terminer.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				jActuel = (++jActuel % 2);
-				System.out.println(jActuel + "" + joueurActuel[jActuel]);
-				jActuel = (++jActuel % 2);
-				System.out.println(jActuel + "" + joueurActuel[jActuel]);
-				jActuel = (++jActuel % 2);
-				System.out.println(jActuel + "" + joueurActuel[jActuel]);
-				jActuel = (++jActuel % 2);
-				System.out.println(jActuel + "" + joueurActuel[jActuel]);
+				Jeu.jActuel = (++Jeu.jActuel % 2);
+				joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel] + " de jouer.\nSi vous etes pret, cliquez sur ce message");
 				joueurSuivant();
 			}
 		});
 		
-		joueurSuivant.setContentDisplay(ContentDisplay.CENTER);
-		joueurSuivant.setText("C'est à " + joueurActuel[jActuel] + " de jouer.\n Si vous etes pret, cliquer sur ce message");
 		joueurSuivant.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				root.getChildren().remove(joueurSuivant);
 				printBoardInterface();
 			}
 		});
@@ -185,16 +211,10 @@ public class InterfaceGraphique extends Application {
 		choixEchangerTuile.setStyle("-fx-background-color: transparent;");
 		choixEchangerTuile.setContentDisplay(ContentDisplay.CENTER);*/
 
-		// Creation des Bouttons
-		ArrayList<ImageView> tuiles2 = new ArrayList<ImageView>();
-		for (int i = 0; i < 9; i++) {
-			tuiles2.add(Jeu.board[i].sourceImage());
-		}
-
 		// creation des tuiles
 		for (int i = 0; i < 9; i++) {
 			tuile[i] = new Button();
-			tuile[i].setGraphic(tuiles2.get(i));
+			tuile[i].setGraphic(Jeu.board[i].sourceImage());
 			tuile[i].setStyle("-fx-background-color: transparent;");
 			tuile[i].setRotate((double) Jeu.board[i].getMur() * 90 + 180);
 			tuile[i].setId("Q" + i);
@@ -208,7 +228,7 @@ public class InterfaceGraphique extends Application {
 			d[i].setMinHeight(50);
 			d[i].setShape(new Circle(30));
 			d[i].setStyle("-fx-background-color: transparent;");
-			d[i].setContentDisplay(ContentDisplay.CENTER);
+			//d[i].setContentDisplay(ContentDisplay.CENTER);
 			if (i == 3) {
 				d[i].setGraphic(watsonView);
 			}
@@ -412,11 +432,7 @@ public class InterfaceGraphique extends Application {
 
 		// Revelation alibi
 		alibi.setGraphic(pileHautAlibiView);
-		alibi.setContentDisplay(ContentDisplay.RIGHT);
 		alibi.setStyle("-fx-background-color: transparent;");
-
-		alibi2.setContentDisplay(ContentDisplay.RIGHT);
-		alibi2.setStyle("-fx-background-color: transparent;");
 
 		// JetonAlibi pileAlibi = new JetonAlibi("alibi");
 
@@ -429,7 +445,7 @@ public class InterfaceGraphique extends Application {
 					ImageView carteRetournee = new ImageView(getClass().getResource(sourceImage).toString());
 					carteRetournee.setFitHeight(100);
 					carteRetournee.setFitWidth(60);
-					alibi2.setGraphic(carteRetournee);
+					//alibi2.setGraphic(carteRetournee);
 				} else {
 					// Enlever image alibi
 				}
@@ -438,7 +454,6 @@ public class InterfaceGraphique extends Application {
 		});
 
 		// innocent.setGraphic();
-		innocent.setContentDisplay(ContentDisplay.RIGHT);
 		innocent.setText("Innocent");
 
 		innocent.setOnAction(new EventHandler<ActionEvent>() {
@@ -476,32 +491,6 @@ public class InterfaceGraphique extends Application {
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		// organisationJeu();
-		// System.out.println("out");
-	}
-
-	public void organisationJeu() {
-
-		Jeu.plateau.lancement();
-		/*
-		 * try { Thread.sleep(1000); } catch (InterruptedException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
-
-		Jeu.initialisation();
-		for (int i = 1; i <= 8; i++) {
-			switch (i % 2) {
-			case 1:
-				Jeu.tourImpairs();
-				break;
-			case 0:
-				Jeu.tourPairs();
-				break;
-			}
-			Jeu.finDuTour();
-			Jeu.finPartie(i);
-		}
-
 	}
 
 	public static void innocenter(String nomSuspect) {

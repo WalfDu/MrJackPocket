@@ -22,7 +22,7 @@ public class JetonTourner extends Jetons {
 	}
 
 	@Override
-	public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
+	public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
 		// HelloApp.idEnCours = "";
 		System.out.println("Entrez l'abscisse puis l'ordonnée de la tuile que vous voulez tourner:");
 		/*

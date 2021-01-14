@@ -24,15 +24,15 @@ public class JetonDetective extends Jetons {
 
 	@Override
 
-	public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
-		switch (joueurActuel) {
-			case "M. le détective":
+	public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
+		switch (jActuel) {
+			case 0:
 				System.out.println(
 						"Quel detective souhaitez-vous faire avancer d'une case ?\n1: Sherlock\n2: Watson\n3: Toby");
 				choix = scanner.nextInt() - 1;
 				listeDetectives[choix].setPlace(1);
 				break;
-			case "Mr. Jack":
+			case 1:
 				System.out.println(
 						"Quel detective souhaitez-vous faire avancer d'une case ?\n0: Aucun détective\n1: Sherlock\n2: Watson\n3: Toby");
 

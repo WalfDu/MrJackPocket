@@ -20,7 +20,7 @@ public class JetonWatson extends Jetons {
         this.nom = nom;
     }
     @Override
-    public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
+    public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
         System.out.println("Waston peut se deplacer d'une ou deux cases. Entrez 1 ou 2 pour le nombre de pas.");
         int choix = scanner.nextInt();
         listeDetectives[1].setPlace(choix);
