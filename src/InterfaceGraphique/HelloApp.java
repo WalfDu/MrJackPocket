@@ -267,6 +267,16 @@ public class HelloApp extends Application {
 				}
 			}
 		});
+		
+		
+		for (int i = 0 ; i<9; i++) {
+		tuile[i].setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				System.out.println(e.getTarget());
+			}
+		});
+		}
 
 		// Echange de tuile a revoir problème avec j et i qui doivent être final
 

@@ -50,7 +50,7 @@ public class Jeu {
     }
 
     public static void initialisation() {
-        System.out.print("Mr Jack, nous allons vous reveler votre identité. Etes-vous prêt ?");
+        System.out.print("Mr Jack, nous allons vous reveler votre identit�e. Etes-vous prêt ?");
         scanner.nextLine();
         nomMrJack = pileAlibi.piocherCarte();
         System.out.print("Vous êtes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
