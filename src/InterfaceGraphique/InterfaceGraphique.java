@@ -52,7 +52,7 @@ public class InterfaceGraphique extends Application {
 	ImageView pileHautAlibiView = new ImageView(pileHautAlibi);
 	Image mrJack = new Image(JetonAlibi.sourceImage(Jeu.nomMrJack[0]), 60, 100, false, false);
 	ImageView mrJackView = new ImageView(mrJack);
-	public static Image alibi2 = new Image("file:/image", 60, 100, false, false);
+	public static Image alibi2 = new Image("file:images/Annuler.png", 60, 100, false, false);
 	public static ImageView alibi2View = new ImageView(alibi2);
 
 	public static Button choixTourner = new Button();
@@ -71,7 +71,8 @@ public class InterfaceGraphique extends Application {
 	Button commencer = new Button();
 	Button terminer = new Button();
 	Button joueurSuivant = new Button();
-	final Text vousEtes = new Text("Vous etes:");
+	static String nomMrJack = "";
+	final Text vousEtes = new Text("Vous etes:" + nomMrJack);
 	public static String idEnCours;
 	
 	ColumnConstraints column = new ColumnConstraints();
@@ -81,6 +82,9 @@ public class InterfaceGraphique extends Application {
 	public static void main(String[] args) {
 		// Jeu.main(args);
 		Jeu.initialisation();
+	for (String i : Jeu.nomMrJack[0].split(" ")){
+		nomMrJack += "\n" + i;
+	}
 		launch(args);
 	}
 
@@ -122,6 +126,10 @@ public class InterfaceGraphique extends Application {
 			root.add(vousEtes, 6, 6);
 			root.add(mrJackView, 6, 7);
 		//Cas MrJack : montrer la carte + sablier
+		} else {
+			root.getChildren().remove(vousEtes);
+			root.getChildren().remove(mrJackView);
+			
 		}
 		for (int nbActions = 0; nbActions < 4; nbActions++) {
 			InterfaceGraphique.action[nbActions].setGraphic((Jeu.choixActions[nbActions]).getImView());
@@ -147,6 +155,7 @@ public class InterfaceGraphique extends Application {
 		root.getChildren().remove(alibi);
 		root.getChildren().remove(terminer);
 		root.getChildren().remove(vousEtes);
+		root.getChildren().remove(alibi2View);
 		root.getColumnConstraints().add(column);
 		root.getRowConstraints().add(row);
 		root.add(joueurSuivant, 5, 0);
@@ -162,6 +171,8 @@ public class InterfaceGraphique extends Application {
 		root.getRowConstraints().add(row);
 		root.add(joueurSuivant, 5, 0);
 		root.add(commencer, 0, 0);
+		root.getChildren().remove(vousEtes);
+		root.getChildren().remove(mrJackView);
 		
 		// Les jetons
 		finDuTour.setText("FIN");
@@ -184,7 +195,8 @@ public class InterfaceGraphique extends Application {
 			}
 		});
 
-		terminer.setText("Terminer l'action");
+		terminer.setText("Terminer\nl'action");
+		terminer.setMinWidth(75);
 		terminer.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
@@ -488,6 +500,7 @@ public class InterfaceGraphique extends Application {
 		 */
 
 		printBoardInterface();
+		root.getChildren().remove(terminer);
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
