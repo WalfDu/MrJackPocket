@@ -1,9 +1,5 @@
 package Autres;
 
-
-import InterfaceGraphique.HelloApp;
-
-
 public class TableauTuiles {
 
 	static Detectives sherlock = new Detectives("Sherlock", 12);

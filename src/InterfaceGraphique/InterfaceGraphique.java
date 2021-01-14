@@ -1,6 +1,7 @@
 package InterfaceGraphique;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Autres.Jeu;
 import javafx.application.Application;
@@ -17,50 +18,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import jetons.JetonAlibi;
+import tour.TourImpairs;
 
-public class HelloApp extends Application {
-
-	public static void main(String[] args) {
-		// Jeu.main(args);
-		launch(args);
-
-	}
+public class InterfaceGraphique extends Application {
 
 	public static GridPane root = new GridPane();
-	static GridPane root2 = new GridPane();
-
-	public static void printBoardInterface() {
-		for (int i = 0; i < 9; i++) {
-			root.add(tuile[i], 2 + i % 3, 3 + i / 3);
-		}
-		for (int i = 0; i < 24; i++) {
-			if (i < 3) {
-				root.add(d[i], i + 2, 2);
-			} else if (i < 6) {
-				root.add(d[i], 5, i);
-			} else if (i < 9) {
-				root.add(d[i], 10 - i, 6);
-			} else if (i < 12) {
-				root.add(d[i], 1, 14 - i);
-			} else if (i < 15) {
-				root.add(d[i], i - 10, 1);
-			} else if (i < 18) {
-				root.add(d[i], 6, i - 12);
-			} else if (i < 21) {
-				root.add(d[i], 22 - i, 7);
-			} else if (i < 24) {
-				root.add(d[i], 0, 26 - i);
-			}
-		}
-		root.add(alibi, 0, 7);
-		root.add(deplacementT, 1, 0);
-		root.add(deplacementS, 2, 0);
-		root.add(deplacementW, 3, 0);
-		root.add(troisD, 4, 0);
-		root.add(finDuTour, 5, 6);
-		root.add(choixTourner, 6, 0);
-		root.add(choixEchangerTuile, 5, 0);
-	}
 
 	Image echanger = new Image("file:images/actions/Jeton1-Face1.png", 50, 50, false, false);
 	ImageView echangerView = new ImageView(echanger);
@@ -97,11 +59,75 @@ public class HelloApp extends Application {
 	Button innocent = new Button();
 	public static Button[] tuile = new Button[9];
 	public static Button finDuTour = new Button();
+	public static Button[] action = new Button[4];
+	Button commencer = new Button();
+	Button terminer = new Button();
+	Button joueurSuivant = new Button();
+
+	public static String idEnCours;
+	String[] joueurActuel = {"M. le detective" ,"Mr. Jack"};
+	int jActuel = 0;
+
+	public static void main(String[] args) {
+		// Jeu.main(args);
+		launch(args);
+	}
+
+	public void printBoardInterface() {
+		for (int i = 0; i < 9; i++) {
+			root.add(tuile[i], 2 + i % 3, 3 + i / 3);
+		}
+		for (int i = 0; i < 24; i++) {
+			if (i < 3) {
+				root.add(d[i], i + 2, 2);
+			} else if (i < 6) {
+				root.add(d[i], 5, i);
+			} else if (i < 9) {
+				root.add(d[i], 10 - i, 6);
+			} else if (i < 12) {
+				root.add(d[i], 1, 14 - i);
+			} else if (i < 15) {
+				root.add(d[i], i - 10, 1);
+			} else if (i < 18) {
+				root.add(d[i], 6, i - 12);
+			} else if (i < 21) {
+				root.add(d[i], 22 - i, 7);
+			} else if (i < 24) {
+				root.add(d[i], 0, 26 - i);
+			}
+		}
+		for (int i = 0; i < 4; i++) {
+			root.add(action[i], i + 2, 0);
+		}
+		root.add(alibi, 0, 7);
+		root.add(commencer, 0, 0);
+		root.add(terminer, 6, 7);
+		/*
+		 * root.add(deplacementT, 1, 0); root.add(deplacementS, 2, 0);
+		 * root.add(deplacementW, 3, 0); root.add(troisD, 4, 0); root.add(finDuTour, 5,
+		 * 6); root.add(choixTourner, 6, 0); root.add(choixEchangerTuile, 5, 0);
+		 */
+	}
+
+	public void joueurSuivant() {
+		for (Button i : d) {
+			root.getChildren().remove(i);
+		}
+		for (Button i : tuile) {
+			root.getChildren().remove(i);
+		}
+		for (Button i : action) {
+			root.getChildren().remove(i);
+		}
+		root.getChildren().remove(alibi);
+		root.getChildren().remove(commencer);
+		root.getChildren().remove(terminer);
+		root.add(joueurSuivant, 3, 3);
+	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception { // primaryStage est juste un nom de parametre on peut le
 																// modifier
-
 		// Les jetons
 		finDuTour.setContentDisplay(ContentDisplay.CENTER);
 		finDuTour.setText("FIN");
@@ -113,7 +139,43 @@ public class HelloApp extends Application {
 			}
 		});
 
-		choixTourner.setGraphic(tournerView);
+		commencer.setContentDisplay(ContentDisplay.CENTER);
+		commencer.setText("Commencer");
+		commencer.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				joueurSuivant();
+			}
+		});
+		
+		terminer.setContentDisplay(ContentDisplay.CENTER);
+		terminer.setText("Terminer le tour");
+		terminer.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				jActuel = (++jActuel % 2);
+				System.out.println(jActuel + "" + joueurActuel[jActuel]);
+				jActuel = (++jActuel % 2);
+				System.out.println(jActuel + "" + joueurActuel[jActuel]);
+				jActuel = (++jActuel % 2);
+				System.out.println(jActuel + "" + joueurActuel[jActuel]);
+				jActuel = (++jActuel % 2);
+				System.out.println(jActuel + "" + joueurActuel[jActuel]);
+				joueurSuivant();
+			}
+		});
+		
+		joueurSuivant.setContentDisplay(ContentDisplay.CENTER);
+		joueurSuivant.setText("C'est à " + joueurActuel[jActuel] + " de jouer.\n Si vous etes pret, cliquer sur ce message");
+		joueurSuivant.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				root.getChildren().remove(joueurSuivant);
+				printBoardInterface();
+			}
+		});
+
+		/*choixTourner.setGraphic(tournerView);
 		choixTourner.setShape(new Circle(30));
 		choixTourner.setStyle("-fx-background-color: transparent;");
 		choixTourner.setContentDisplay(ContentDisplay.CENTER);
@@ -121,7 +183,7 @@ public class HelloApp extends Application {
 		choixEchangerTuile.setGraphic(echangerView);
 		choixEchangerTuile.setShape(new Circle(30));
 		choixEchangerTuile.setStyle("-fx-background-color: transparent;");
-		choixEchangerTuile.setContentDisplay(ContentDisplay.CENTER);
+		choixEchangerTuile.setContentDisplay(ContentDisplay.CENTER);*/
 
 		// Creation des Bouttons
 		ArrayList<ImageView> tuiles2 = new ArrayList<ImageView>();
@@ -133,17 +195,15 @@ public class HelloApp extends Application {
 		for (int i = 0; i < 9; i++) {
 			tuile[i] = new Button();
 			tuile[i].setGraphic(tuiles2.get(i));
-		}
-
-		for (int i = 0; i < 9; i++) {
-			tuile[i].setGraphic(tuiles2.get(i));
 			tuile[i].setStyle("-fx-background-color: transparent;");
 			tuile[i].setRotate((double) Jeu.board[i].getMur() * 90 + 180);
+			tuile[i].setId("Q" + i);
 		}
 
 		// Boutons detectives
 		for (int i = 0; i < 24; i++) {
 			d[i] = new Button();
+			d[i].setId("D" + i);
 			d[i].setMinWidth(50);
 			d[i].setMinHeight(50);
 			d[i].setShape(new Circle(30));
@@ -160,6 +220,49 @@ public class HelloApp extends Application {
 			}
 		}
 
+		// Boutons des actions proposées
+		for (int i = 0; i < 4; i++) {
+			action[i] = new Button();
+			action[i].setMinWidth(50);
+			action[i].setMinHeight(50);
+			action[i].setShape(new Circle(30));
+			action[i].setStyle("-fx-background-color: gray;");
+			action[i].setId("A" + i);
+		}
+
+		/*
+		 * for (Button i : d) { i.setOnAction(event -> /* idEnCours =
+		 *//*
+			 * System.out.println(i.getId())); } for (Button i : tuile) {
+			 * i.setOnAction(event -> System.out.println(i.getId()));// , idEnCours =
+			 * i.getId()); // //System.out.println(i.getId())); } for (Button i : action) {
+			 * i.setOnAction(event -> System.out.println(i.getId()));// , idEnCours =
+			 * i.getId()); // //System.out.println(i.getId())); }
+			 */
+		for (Button i : action) {
+			i.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					System.out.println(i.getId());
+				}
+			});
+		}
+		for (Button i : tuile) {
+			i.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					System.out.println(i.getId());
+				}
+			});
+		}
+		for (Button i : d) {
+			i.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					System.out.println(i.getId());
+				}
+			});
+		}
 		// Bouton Tourner les tuiles
 		choixTourner.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -171,11 +274,23 @@ public class HelloApp extends Application {
 						public void handle(ActionEvent e) {
 							imTuile.setRotate(imTuile.getRotate() + 90);
 						}
-						// tuileTournante = i;
 					});
 				}
 			}
 		});
+
+		/*
+		 * // Bouton Tourner les tuiles choixTourner.setOnAction(new
+		 * EventHandler<ActionEvent>() {
+		 * 
+		 * @Override public void handle(ActionEvent e) { for (int i = 0; i < 9; i++) {
+		 * Node imTuile = tuile[i].getGraphic(); tuile[i].setOnAction(new
+		 * EventHandler<ActionEvent>() {
+		 * 
+		 * @Override public void handle(ActionEvent e) {
+		 * imTuile.setRotate(imTuile.getRotate() + 90); } // tuileTournante = i; }); } }
+		 * });
+		 */
 
 		// Echange de tuile a revoir probleme avec j et i qui doivent etre final
 		choixEchangerTuile.setOnAction(new EventHandler<ActionEvent>() {
@@ -303,13 +418,13 @@ public class HelloApp extends Application {
 		alibi2.setContentDisplay(ContentDisplay.RIGHT);
 		alibi2.setStyle("-fx-background-color: transparent;");
 
-		JetonAlibi pileAlibi = new JetonAlibi("alibi");
+		// JetonAlibi pileAlibi = new JetonAlibi("alibi");
 
 		alibi.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				String[] carte = pileAlibi.piocherCarte();
-				String sourceImage = pileAlibi.sourceImage(carte[0]);
+				String[] carte = ((JetonAlibi) TourImpairs.actionAlibi).piocherCarte();
+				String sourceImage = ((JetonAlibi) TourImpairs.actionAlibi).sourceImage(carte[0]);
 				if (!sourceImage.equals("Lapileestvide-alibi.png")) { // a modifier pour eviter la syntaxe bizare
 					ImageView carteRetournee = new ImageView(getClass().getResource(sourceImage).toString());
 					carteRetournee.setFitHeight(100);
@@ -357,25 +472,36 @@ public class HelloApp extends Application {
 		 * ");
 		 */
 
-		// printBoardInterface();
+		printBoardInterface();
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		// Scene scene2 = new Scene(root2);
-		// Stage otherStage = new Stage();
-		// otherStage.setScene(scene2);
-		// otherStage.show();
-		organisationJeu();
+		// organisationJeu();
+		// System.out.println("out");
 	}
 
 	public void organisationJeu() {
 
-		Jeu.initialisation();
+		Jeu.plateau.lancement();
 		/*
-		 * Jeu.plateau.lancement(); for (int i = 1; i <= 8; i++) { switch (i % 2) { case
-		 * 1: Jeu.tourImpairs(); break; case 0: Jeu.tourPairs(); break; }
-		 * Jeu.finDuTour(); Jeu.finPartie(i); }
+		 * try { Thread.sleep(1000); } catch (InterruptedException e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
 		 */
+
+		Jeu.initialisation();
+		for (int i = 1; i <= 8; i++) {
+			switch (i % 2) {
+			case 1:
+				Jeu.tourImpairs();
+				break;
+			case 0:
+				Jeu.tourPairs();
+				break;
+			}
+			Jeu.finDuTour();
+			Jeu.finPartie(i);
+		}
+
 	}
 
 	public static void innocenter(String nomSuspect) {

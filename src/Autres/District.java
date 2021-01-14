@@ -1,6 +1,5 @@
 package Autres;
 
-import InterfaceGraphique.HelloApp;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 

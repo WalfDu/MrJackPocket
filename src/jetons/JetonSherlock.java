@@ -4,10 +4,14 @@ import java.util.Scanner;
 
 import Autres.Detectives;
 import Autres.District;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class JetonSherlock extends Jetons {
     Scanner scanner = new Scanner(System.in);
     String nom;
+	public static Image im = new Image("file:images/actions/Jeton3-Face1.png", 50, 50, false, false);
+	public static ImageView imView = new ImageView(im);
 
     public JetonSherlock() {
     }
@@ -28,4 +32,8 @@ public class JetonSherlock extends Jetons {
     public String getNom() {
         return nom;
     }
+	@Override
+	public ImageView getImView() {
+		return imView;
+	}
 }
