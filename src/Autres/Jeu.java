@@ -19,7 +19,7 @@ public class Jeu {
 	private static String actionStr;
 	private static int action;
 	public static String[] joueurActuel = {"M. le detective" ,"Mr. Jack"};
-	public static int jActuel = 0;
+	public static int jActuel = 1;
 	private static ArrayDeque<District> visibles = new ArrayDeque<>();
 	private static ArrayDeque<String> visiblesStr = new ArrayDeque<>();
 	static ArrayDeque<String> innocents = new ArrayDeque<>();
@@ -28,9 +28,9 @@ public class Jeu {
 	public static int sabliers = 0;
 	public static int sabliersCaches = 0;
 	public static String winner;
-	public int tourEnCours = -1;
-	public Jetons actionEnCours;
-	public int nbActionsRestantes = -1;
+	public static int tourEnCours = 1;
+	public static Jetons actionEnCours;
+	public static ArrayDeque<Jetons> actionsFaites = new ArrayDeque<>();
 	// private static HelloApp interfaceG = new HelloApp();
 
 	public static void main(String string) {
@@ -124,16 +124,18 @@ public class Jeu {
 			}
 		} else {
 			for (int i=0; i<9; i++) {
-				board[i].innocenter(i);
-				sabliers++;
+				if (visibles.contains(board[i])) {
+					board[i].innocenter(i);
+				}
 			}
+			sabliers++;
 		}
-		TableauTuiles.printBoardConsole(board);
+		//TableauTuiles.printBoardConsole(board);
 		System.out.print("\nLes personnes suivantes sont visibles ");
 		if (visiblesStr.contains(nomMrJack[0])) {
 			System.out.println("dont Mr. Jack:");
 		} else {
-			System.out.println("mais pas Mr. Jack");
+			System.out.println("mais pas Mr. Jack:");
 		}
 		for (District i : visibles) {
 			System.out.println(i.getNomSuspect());
@@ -165,8 +167,8 @@ public class Jeu {
 			// detective.getPlace() renvoie un entier entre 1 et 12, pour les 12 positions
 			// possibles des détectives, avec le 1 étant la position à gauche au Nord, et en
 			// tournant dans le sens des aiguilles d'une montre
-			detectivePosition = (int) (detective.getPlace() - 1) / 3;
-			detectiveInc = (int) 10 * (detective.getPlace() - 1) % 3;
+			detectivePosition = (int) (detective.getPlace()%12 - 1) / 3;
+			detectiveInc = (int) 10 * (detective.getPlace()%12 - 1) % 3;
 			// On défini ici la position de la tuile devant le détective
 			switch (detectivePosition) {
 			case 0:
