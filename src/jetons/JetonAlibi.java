@@ -1,5 +1,6 @@
 package jetons;
 
+import InterfaceGraphique.InterfaceGraphique;
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
@@ -27,11 +28,11 @@ public class JetonAlibi extends Jetons {
 	}
 
 	@Override
-	public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
+	public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
 		String[] carte = piocherCarte();
 		String out = "Vous avez pioché la carte " + carte[0];
-		switch (joueurActuel) {
-			case "Mr. Jack":
+		switch (jActuel) {
+			case 1:
 				out += ", vous ";
 				switch (Integer.parseInt(carte[1])) {
 					case 0:
@@ -46,10 +47,12 @@ public class JetonAlibi extends Jetons {
 				}
 				Jeu.sabliersCaches += Integer.valueOf(carte[1]);
 				break;
-			case "M. le détective":
-				for (District i : board) {
-					if (i.getNomSuspect().equals(carte[0])) {
-						i.innocenter();
+			case 0:
+				InterfaceGraphique.alibi2 = new Image(sourceImage(carte[0]), 60, 100, false, false);
+				InterfaceGraphique.alibi2View = new ImageView(InterfaceGraphique.alibi2);
+				for (int i=0; i<9; i++) {
+					if (board[i].getNomSuspect().equals(carte[0])) {
+						board[i].innocenter(i);
 					}
 				}
 				break;
@@ -90,8 +93,8 @@ public class JetonAlibi extends Jetons {
 		return this.pileAlibi.size();
 	}
 
-	public String sourceImage(String nomSuspect) {
-		String sourceImage = ""; //"../../images/alibis/";
+	public static String sourceImage(String nomSuspect) {
+		String sourceImage = "file:images/alibis/";
 		String[] temp = nomSuspect.substring(0, nomSuspect.length()).split(" ");
 		for (String i : temp) {
 			sourceImage += i;

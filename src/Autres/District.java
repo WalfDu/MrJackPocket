@@ -1,5 +1,6 @@
 package Autres;
 
+import InterfaceGraphique.InterfaceGraphique;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -60,8 +61,8 @@ public class District {
 		this.nomSuspect = nomSuspect;
 	}
 
-	public void innocenter() {
-		// InterfaceGraphique.HelloApp.innocenter(nomSuspect);
+	public void innocenter(int i) {
+		InterfaceGraphique.tuile[i].setGraphic(sourceImageVerso());
 		faceSuspect = "Innocent";
 		Jeu.innocents.addLast(nomSuspect);
 	}

@@ -11,21 +11,26 @@ import tour.TourImpairs;
 import tour.TourPairs;
 
 public class Jeu {
-	private static Jetons[] choixActions = TourImpairs.debut();
-	private static Scanner scanner = new Scanner(System.in);
+	public static Jetons[] choixActions = TourImpairs.debut();
+	//private static Scanner scanner = new Scanner(System.in);
 	// public static JetonAlibi pileAlibi = new JetonAlibi("test");
 	public static District[] board = TableauTuiles.shuffleArray();
 	public static Detectives[] listeDetectives = TableauTuiles.listeDetectives();
+	private static String actionStr;
 	private static int action;
-	private static String joueurActuel;
+	public static String[] joueurActuel = {"M. le detective" ,"Mr. Jack"};
+	public static int jActuel = 0;
 	private static ArrayDeque<District> visibles = new ArrayDeque<>();
 	private static ArrayDeque<String> visiblesStr = new ArrayDeque<>();
 	static ArrayDeque<String> innocents = new ArrayDeque<>();
 	public static TableauTuiles plateau = new TableauTuiles();
-	private static String[] nomMrJack;
+	public static String[] nomMrJack;
 	public static int sabliers = 0;
 	public static int sabliersCaches = 0;
 	public static String winner;
+	public int tourEnCours = -1;
+	public Jetons actionEnCours;
+	public int nbActionsRestantes = -1;
 	// private static HelloApp interfaceG = new HelloApp();
 
 	public static void main(String string) {
@@ -41,8 +46,7 @@ public class Jeu {
 	}
 
 	public static void initialisation() {
-		System.out.print("Mr Jack, nous allons vous reveler votre identité. Etes-vous prêt ?");
-		// scanner.nextLine();
+		System.out.print("Mr Jack, nous allons vous reveler votre identité. Etes-vous prêt ?\n");
 		nomMrJack = ((JetonAlibi) TourImpairs.actionAlibi).piocherCarte();
 		System.out.println("Vous êtes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
 		// scanner.nextLine();
@@ -54,11 +58,11 @@ public class Jeu {
 			switch (nbActionsRestantes) {
 			case 1:
 			case 4:
-				joueurActuel = "M. le détective";
+				jActuel = 0;
 				break;
 			case 2:
 			case 3:
-				joueurActuel = "Mr. Jack";
+				jActuel = 1;
 				break;
 			}
 			finAction(choixActions, nbActionsRestantes);
@@ -71,36 +75,40 @@ public class Jeu {
 			switch (nbActionsRestantes) {
 			case 1:
 			case 4:
-				joueurActuel = "Mr. Jack";
+				jActuel = 1;
 				break;
 			case 2:
 			case 3:
-				joueurActuel = "M. le detective";
+				jActuel = 0;
 				break;
 			}
-			//finAction(choixActions, nbActionsRestantes);
+			finAction(choixActions, nbActionsRestantes);
 		}
 	}
 
 	public static void finAction(Jetons[] choixActions, int nbActionsRestantes) {
 		System.out.println("\n" + joueurActuel + ", c'est votre tour, quelle action voulez-vous faire ?");
 		for (int nbActions = 0; nbActions < nbActionsRestantes; nbActions++) {
-			System.out.println(nbActions + 1 + ": " + choixActions[nbActions].getNom());
 			InterfaceGraphique.action[nbActions].setGraphic((choixActions[nbActions]).getImView());
+			System.out.println(nbActions + 1 + ": " + choixActions[nbActions].getNom());
 		}
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		//actionStr = scanner.next().substring(1);
+		//action = Integer.parseInt(actionStr) + 1;
+		InterfaceGraphique.idEnCours = null;
+		while (InterfaceGraphique.idEnCours == null) {
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		// action = scanner.nextInt() - 1;
-
-		choixActions[action].action(listeDetectives, board, joueurActuel);
+		actionStr = InterfaceGraphique.idEnCours.substring(1);
+		action = Integer.parseInt(actionStr) + 1;
+		choixActions[action].action(listeDetectives, board, jActuel);
 		Jetons temp = choixActions[action];
 		choixActions[action] = choixActions[nbActionsRestantes - 1];
 		choixActions[nbActionsRestantes - 1] = temp;
-		// interfaceG.printBoardInterface();
 	}
 
 	public static void finDuTour() {
@@ -109,14 +117,14 @@ public class Jeu {
 			visiblesStr.add(i.getNomSuspect());
 		}
 		if (visiblesStr.contains(nomMrJack[0])) {
-			for (District i : board) {
-				if (!visibles.contains(i)) {
-					i.innocenter();
+			for (int i=0; i<9; i++){
+				if (!visibles.contains(board[i])) {
+					board[i].innocenter(i);
 				}
 			}
 		} else {
-			for (District i : visibles) {
-				i.innocenter();
+			for (int i=0; i<9; i++) {
+				board[i].innocenter(i);
 				sabliers++;
 			}
 		}

@@ -31,9 +31,9 @@ public class TableauTuiles {
 	};
 
 	public static void tuilesRetournees(District[] board) {
-		for (District i : board) {
+		for (int i=0; i<9; i++) {
 			if (Math.random() > .5) {
-				i.innocenter();
+				board[i].innocenter(i);
 			}
 		}
 	}

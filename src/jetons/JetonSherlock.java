@@ -21,7 +21,7 @@ public class JetonSherlock extends Jetons {
     }
 
     @Override
-    public void action(Detectives[] listeDetectives, District[] board, String joueurActuel) {
+    public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
         System.out.println("Sherlock peut se déplacer d'une ou deux cases. Entrez 1 ou 2 pour le nombre de pas.");
         int choix = scanner.nextInt();
         listeDetectives[0].setPlace(choix);
