@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 import Autres.Detectives;
 import Autres.District;
-import InterfaceGraphique.InterfaceGraphique;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -27,7 +23,7 @@ public class JetonTourner2 extends Jetons {
     
     @Override
     public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
-        /*//HelloApp.idEnCours = "";
+        //HelloApp.idEnCours = "";
     	System.out.println("Entrez l'abscisse puis l'ordonnée de la tuile que vous voulez tourner:");
         /*if (scanner.nextLine().equals("")) {
         	while(!HelloApp.idEnCours.substring(0, 1).equals("Q")) {
@@ -35,7 +31,7 @@ public class JetonTourner2 extends Jetons {
         	}
         	board[Integer.parseInt(HelloApp.idEnCours.substring(1, 2))].setMur();
         	System.out.println("La tuile " + Integer.parseInt(HelloApp.idEnCours.substring(1, 2)) + " a tourné");
-        } else {
+        } else {*/
         int abscisse = scanner.nextInt() - 1;
         int ordonnee = scanner.nextInt() - 1;
         int coordonnee = 3 * abscisse + ordonnee;
@@ -46,16 +42,7 @@ public class JetonTourner2 extends Jetons {
             //interfaceG.printBoardInterface();
             //TableauTuiles.printBoardConsole(board);
         } while (!scanner.nextLine().equals("stop"));
-        //}*/
-		for (int i = 0; i < 9; i++) {
-			Node imTuile = InterfaceGraphique.tuile[i].getGraphic();
-			InterfaceGraphique.tuile[i].setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent e) {
-					imTuile.setRotate(imTuile.getRotate() + 90);
-				}
-			});
-		}
+        //}
     }
     
     @Override

@@ -42,7 +42,7 @@ public class InterfaceGraphique extends Application {
 	ImageView actionAlibiView = new ImageView(actionAlibi);
 	Image troisDetectives = new Image("file:images/actions/Jeton4-Face1.png", 50, 50, false, false);
 	ImageView troisDetectivesView = new ImageView(troisDetectives);
-	Image toby = new Image("file:images/detectives/Tobi.png", 50, 50, false, false);
+	Image toby = new Image("file:images/detectives/Toby.png", 50, 50, false, false);
 	ImageView tobyView = new ImageView(toby);
 	Image sherlock = new Image("file:images/detectives/Sherlock.png", 50, 50, false, false);
 	ImageView sherlockView = new ImageView(sherlock);
@@ -63,7 +63,7 @@ public class InterfaceGraphique extends Application {
 	public static Button deplacementS = new Button();
 	public static Button deplacementT = new Button();
 	public static Button alibi = new Button();
-	// public static Button alibi2 = new Button();
+	//public static Button alibi2 = new Button();
 	Button innocent = new Button();
 	public static Button[] tuile = new Button[9];
 	public static Button finDuTour = new Button();
@@ -73,9 +73,10 @@ public class InterfaceGraphique extends Application {
 	Button joueurSuivant = new Button();
 	final Text vousEtes = new Text("Vous etes:");
 	public static String idEnCours;
-
+	
 	ColumnConstraints column = new ColumnConstraints();
 	RowConstraints row = new RowConstraints();
+
 
 	public static void main(String[] args) {
 		// Jeu.main(args);
@@ -87,7 +88,7 @@ public class InterfaceGraphique extends Application {
 		root.getChildren().remove(joueurSuivant);
 		root.getRowConstraints().remove(row);
 		root.getColumnConstraints().remove(column);
-
+		
 		for (int i = 0; i < 9; i++) {
 			root.add(tuile[i], 2 + i % 3, 3 + i / 3);
 		}
@@ -116,17 +117,16 @@ public class InterfaceGraphique extends Application {
 		root.add(alibi, 0, 7);
 		//root.add(alibi2View, 1, 7);
 		root.add(terminer, 6, 0);
-		// Si le joueur actuel est Mr. Jack, on affiche qui il est et son nombre de
-		// sablier
+		//Si le joueur actuel est Mr. Jack, on affiche qui il est et son nombre de sablier
 		if (Jeu.jActuel == 1) {
 			root.add(vousEtes, 6, 6);
 			root.add(mrJackView, 6, 7);
-			// Cas MrJack : montrer la carte + sablier
+		//Cas MrJack : montrer la carte + sablier
 		}
 		for (int nbActions = 0; nbActions < 4; nbActions++) {
 			InterfaceGraphique.action[nbActions].setGraphic((Jeu.choixActions[nbActions]).getImView());
 		}
-
+		
 		/*
 		 * root.add(deplacementT, 1, 0); root.add(deplacementS, 2, 0);
 		 * root.add(deplacementW, 3, 0); root.add(troisD, 4, 0); root.add(finDuTour, 5,
@@ -178,7 +178,7 @@ public class InterfaceGraphique extends Application {
 			@Override
 			public void handle(ActionEvent e) {
 				Jeu.jActuel = (++Jeu.jActuel % 2);
-				joueurSuivant.setText("	C'est � " + Jeu.joueurActuel[Jeu.jActuel] + " de jouer.\nSi vous etes pret, cliquez sur ce message");
+				joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel] + " de jouer.\nSi vous etes pret, cliquez sur ce message");
 				joueurSuivant();
 				root.getChildren().remove(commencer);
 			}
@@ -189,7 +189,7 @@ public class InterfaceGraphique extends Application {
 			@Override
 			public void handle(ActionEvent e) {
 				Jeu.jActuel = (++Jeu.jActuel % 2);
-				joueurSuivant.setText("	C'est � " + Jeu.joueurActuel[Jeu.jActuel] + " de jouer.\nSi vous etes pret, cliquez sur ce message");
+				joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel] + " de jouer.\nSi vous etes pret, cliquez sur ce message");
 				joueurSuivant();
 			}
 		});
@@ -246,7 +246,7 @@ public class InterfaceGraphique extends Application {
 			action[i].setMinWidth(50);
 			action[i].setMinHeight(50);
 			action[i].setShape(new Circle(30));
-			action[i].setStyle("-fx-background-color: transparent;");
+			action[i].setStyle("-fx-background-color: gray;");
 			action[i].setId("A" + i);
 		}
 
@@ -284,7 +284,20 @@ public class InterfaceGraphique extends Application {
 			});
 		}
 		// Bouton Tourner les tuiles
-
+		choixTourner.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				for (int i = 0; i < 9; i++) {
+					Node imTuile = tuile[i].getGraphic();
+					tuile[i].setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent e) {
+							imTuile.setRotate(imTuile.getRotate() + 90);
+						}
+					});
+				}
+			}
+		});
 
 		/*
 		 * // Bouton Tourner les tuiles choixTourner.setOnAction(new
@@ -300,23 +313,32 @@ public class InterfaceGraphique extends Application {
 		 */
 
 		// Echange de tuile a revoir probleme avec j et i qui doivent etre final
-		
-		action[0].setOnAction(new EventHandler<ActionEvent>() {
+		choixEchangerTuile.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent e) {	
-				Jeu.choixActions[0].action(Jeu.listeDetectives,Jeu.board,Jeu.jActuel);
-			}
-		});
-				
-		action[1].setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {	
-				Jeu.choixActions[0].action(Jeu.listeDetectives,Jeu.board,Jeu.jActuel);
-			}
-		});
+			public void handle(ActionEvent e) {
+				for (int i = 0; i < 9; i++) {
+					Node imTuile1 = tuile[i].getGraphic();
+					final int indice1 = i;
+					tuile[i].setOnAction(new EventHandler<ActionEvent>() {
+						public void handle(ActionEvent e) {
+							for (int j = 0; j < 9; j++) {
+								Node imTuile2 = tuile[j].getGraphic();
+								final int indice2 = j;
+								tuile[j].setOnAction(new EventHandler<ActionEvent>() {
+									public void handle(ActionEvent e) {
+										tuile[indice2].setGraphic(imTuile1);
+										tuile[indice1].setGraphic(imTuile2);
+									}
+								});
+							}
+						}
 
-		
-		
+					});
+
+				}
+
+			}
+		});
 
 		// Deplacement des detectives
 		Button[] listPionDetectives = new Button[] { troisD, deplacementW, deplacementS, deplacementT };
@@ -465,10 +487,7 @@ public class InterfaceGraphique extends Application {
 		 * ");
 		 */
 
-		
-		
 		printBoardInterface();
-		root.getChildren().remove(terminer);
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
