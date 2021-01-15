@@ -25,9 +25,9 @@ public class District {
 			this.sourceImage += i;
 		}
 		this.sourceImage += "-recto.png";
-		this.sourceImageVerso = /* "../../images/districts/ */"common-verso.png";
+		this.sourceImageVerso = "file:images/districts/common-verso.png";
 		if (nomSuspect == "Joseph Lane") {
-			this.sourceImageVerso = /* "../../images/districts/ */"JosephLane-verso.png";
+			this.sourceImageVerso = "file:images/districts/JosephLane-verso.png";
 		}
 	}
 

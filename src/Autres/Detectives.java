@@ -31,10 +31,7 @@ public class Detectives {
 	}
 
 	public void setPlace(int newVar) {
-		place += newVar;
-		if (place > 12) {
-			place -= 12;
-		}
+		place = newVar%24 + 1;
 	}
 
 	public int getPlace() {

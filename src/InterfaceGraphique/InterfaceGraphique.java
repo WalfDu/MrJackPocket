@@ -3,6 +3,7 @@ package InterfaceGraphique;
 import java.util.ArrayList;
 import java.util.List;
 
+import Autres.District;
 import Autres.Jeu;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -52,6 +53,8 @@ public class InterfaceGraphique extends Application {
 	ImageView pileHautAlibiView = new ImageView(pileHautAlibi);
 	Image mrJack = new Image(JetonAlibi.sourceImage(Jeu.nomMrJack[0]), 60, 100, false, false);
 	ImageView mrJackView = new ImageView(mrJack);
+	Image valider = new Image("file:images/Valider.png", 50, 50, false, false);
+	ImageView validerView = new ImageView(valider);
 	public static Image alibi2 = new Image("file:/image", 60, 100, false, false);
 	public static ImageView alibi2View = new ImageView(alibi2);
 
@@ -63,7 +66,8 @@ public class InterfaceGraphique extends Application {
 	public static Button deplacementS = new Button();
 	public static Button deplacementT = new Button();
 	public static Button alibi = new Button();
-	//public static Button alibi2 = new Button();
+	public static Button validerB = new Button();
+	// public static Button alibi2 = new Button();
 	Button innocent = new Button();
 	public static Button[] tuile = new Button[9];
 	public static Button finDuTour = new Button();
@@ -73,9 +77,10 @@ public class InterfaceGraphique extends Application {
 	Button joueurSuivant = new Button();
 	final Text vousEtes = new Text("Vous etes:");
 	public static String idEnCours;
-	
+
 	ColumnConstraints column = new ColumnConstraints();
 	RowConstraints row = new RowConstraints();
+	int tuileClique = -1;
 
 
 	public static void main(String[] args) {
@@ -88,7 +93,7 @@ public class InterfaceGraphique extends Application {
 		root.getChildren().remove(joueurSuivant);
 		root.getRowConstraints().remove(row);
 		root.getColumnConstraints().remove(column);
-		
+
 		for (int i = 0; i < 9; i++) {
 			root.add(tuile[i], 2 + i % 3, 3 + i / 3);
 		}
@@ -115,18 +120,19 @@ public class InterfaceGraphique extends Application {
 			root.add(action[i], i + 2, 0);
 		}
 		root.add(alibi, 0, 7);
-		//root.add(alibi2View, 1, 7);
+		// root.add(alibi2View, 1, 7);
 		root.add(terminer, 6, 0);
-		//Si le joueur actuel est Mr. Jack, on affiche qui il est et son nombre de sablier
+		// Si le joueur actuel est Mr. Jack, on affiche qui il est et son nombre de
+		// sablier
 		if (Jeu.jActuel == 1) {
 			root.add(vousEtes, 6, 6);
 			root.add(mrJackView, 6, 7);
-		//Cas MrJack : montrer la carte + sablier
+			// Cas MrJack : montrer la carte + sablier
 		}
 		for (int nbActions = 0; nbActions < 4; nbActions++) {
 			InterfaceGraphique.action[nbActions].setGraphic((Jeu.choixActions[nbActions]).getImView());
 		}
-		
+
 		/*
 		 * root.add(deplacementT, 1, 0); root.add(deplacementS, 2, 0);
 		 * root.add(deplacementW, 3, 0); root.add(troisD, 4, 0); root.add(finDuTour, 5,
@@ -154,15 +160,15 @@ public class InterfaceGraphique extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception { // primaryStage est juste un nom de parametre on peut le
-															// modifier
-		
+																// modifier
+
 		column.setPercentWidth(32);
 		row.setPercentHeight(90);
 		root.getColumnConstraints().add(column);
 		root.getRowConstraints().add(row);
 		root.add(joueurSuivant, 5, 0);
 		root.add(commencer, 0, 0);
-		
+
 		// Les jetons
 		finDuTour.setText("FIN");
 
@@ -178,7 +184,8 @@ public class InterfaceGraphique extends Application {
 			@Override
 			public void handle(ActionEvent e) {
 				Jeu.jActuel = (++Jeu.jActuel % 2);
-				joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel] + " de jouer.\nSi vous etes pret, cliquez sur ce message");
+				joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel]
+						+ " de jouer.\nSi vous etes pret, cliquez sur ce message");
 				joueurSuivant();
 				root.getChildren().remove(commencer);
 			}
@@ -189,11 +196,12 @@ public class InterfaceGraphique extends Application {
 			@Override
 			public void handle(ActionEvent e) {
 				Jeu.jActuel = (++Jeu.jActuel % 2);
-				joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel] + " de jouer.\nSi vous etes pret, cliquez sur ce message");
+				joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel]
+						+ " de jouer.\nSi vous etes pret, cliquez sur ce message");
 				joueurSuivant();
 			}
 		});
-		
+
 		joueurSuivant.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
@@ -201,17 +209,23 @@ public class InterfaceGraphique extends Application {
 			}
 		});
 
-		/*choixTourner.setGraphic(tournerView);
-		choixTourner.setShape(new Circle(30));
-		choixTourner.setStyle("-fx-background-color: transparent;");
-		choixTourner.setContentDisplay(ContentDisplay.CENTER);
-
-		choixEchangerTuile.setGraphic(echangerView);
-		choixEchangerTuile.setShape(new Circle(30));
-		choixEchangerTuile.setStyle("-fx-background-color: transparent;");
-		choixEchangerTuile.setContentDisplay(ContentDisplay.CENTER);*/
+		/*
+		 * choixTourner.setGraphic(tournerView); choixTourner.setShape(new Circle(30));
+		 * choixTourner.setStyle("-fx-background-color: transparent;");
+		 * choixTourner.setContentDisplay(ContentDisplay.CENTER);
+		 * 
+		 * choixEchangerTuile.setGraphic(echangerView); choixEchangerTuile.setShape(new
+		 * Circle(30));
+		 * choixEchangerTuile.setStyle("-fx-background-color: transparent;");
+		 * choixEchangerTuile.setContentDisplay(ContentDisplay.CENTER);
+		 */
 
 		// creation des tuiles
+		
+		validerB.setGraphic(validerView);
+		validerB.setStyle("-fx-background-color: transparent;");
+		root.add(validerB, 10, 11);
+		
 		for (int i = 0; i < 9; i++) {
 			tuile[i] = new Button();
 			tuile[i].setGraphic(Jeu.board[i].sourceImage());
@@ -228,7 +242,7 @@ public class InterfaceGraphique extends Application {
 			d[i].setMinHeight(50);
 			d[i].setShape(new Circle(30));
 			d[i].setStyle("-fx-background-color: transparent;");
-			//d[i].setContentDisplay(ContentDisplay.CENTER);
+			// d[i].setContentDisplay(ContentDisplay.CENTER);
 			if (i == 3) {
 				d[i].setGraphic(watsonView);
 			}
@@ -249,24 +263,18 @@ public class InterfaceGraphique extends Application {
 			action[i].setStyle("-fx-background-color: gray;");
 			action[i].setId("A" + i);
 		}
-
-		/*
-		 * for (Button i : d) { i.setOnAction(event -> /* idEnCours =
-		 *//*
-			 * System.out.println(i.getId())); } for (Button i : tuile) {
-			 * i.setOnAction(event -> System.out.println(i.getId()));// , idEnCours =
-			 * i.getId()); // //System.out.println(i.getId())); } for (Button i : action) {
-			 * i.setOnAction(event -> System.out.println(i.getId()));// , idEnCours =
-			 * i.getId()); // //System.out.println(i.getId())); }
-			 */
-		for (Button i : action) {
-			i.setOnAction(new EventHandler<ActionEvent>() {
+		
+		
+		for (int i =0; i<4; i++) {
+			final int k =i;
+		action[i].setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent e) {
-					System.out.println(i.getId());
+					Jeu.choixActions[k].action(Jeu.listeDetectives,Jeu.board,Jeu.jActuel);
 				}
 			});
 		}
+		/*
 		for (Button i : tuile) {
 			i.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -283,62 +291,14 @@ public class InterfaceGraphique extends Application {
 				}
 			});
 		}
-		// Bouton Tourner les tuiles
-		choixTourner.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				for (int i = 0; i < 9; i++) {
-					Node imTuile = tuile[i].getGraphic();
-					tuile[i].setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent e) {
-							imTuile.setRotate(imTuile.getRotate() + 90);
-						}
-					});
-				}
-			}
-		});
-
-		/*
-		 * // Bouton Tourner les tuiles choixTourner.setOnAction(new
-		 * EventHandler<ActionEvent>() {
-		 * 
-		 * @Override public void handle(ActionEvent e) { for (int i = 0; i < 9; i++) {
-		 * Node imTuile = tuile[i].getGraphic(); tuile[i].setOnAction(new
-		 * EventHandler<ActionEvent>() {
-		 * 
-		 * @Override public void handle(ActionEvent e) {
-		 * imTuile.setRotate(imTuile.getRotate() + 90); } // tuileTournante = i; }); } }
-		 * });
-		 */
+	*/
 
 		// Echange de tuile a revoir probleme avec j et i qui doivent etre final
-		choixEchangerTuile.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				for (int i = 0; i < 9; i++) {
-					Node imTuile1 = tuile[i].getGraphic();
-					final int indice1 = i;
-					tuile[i].setOnAction(new EventHandler<ActionEvent>() {
-						public void handle(ActionEvent e) {
-							for (int j = 0; j < 9; j++) {
-								Node imTuile2 = tuile[j].getGraphic();
-								final int indice2 = j;
-								tuile[j].setOnAction(new EventHandler<ActionEvent>() {
-									public void handle(ActionEvent e) {
-										tuile[indice2].setGraphic(imTuile1);
-										tuile[indice1].setGraphic(imTuile2);
-									}
-								});
-							}
-						}
 
-					});
+		Button choixEchangerTuile = new Button();
+		root.add(choixEchangerTuile, 10, 10);
 
-				}
-
-			}
-		});
+		
 
 		// Deplacement des detectives
 		Button[] listPionDetectives = new Button[] { troisD, deplacementW, deplacementS, deplacementT };
@@ -445,7 +405,7 @@ public class InterfaceGraphique extends Application {
 					ImageView carteRetournee = new ImageView(getClass().getResource(sourceImage).toString());
 					carteRetournee.setFitHeight(100);
 					carteRetournee.setFitWidth(60);
-					//alibi2.setGraphic(carteRetournee);
+					// alibi2.setGraphic(carteRetournee);
 				} else {
 					// Enlever image alibi
 				}
@@ -475,17 +435,11 @@ public class InterfaceGraphique extends Application {
 		});
 
 		// Bouttons actions
-		/**
-		 * Button Valider = new Button (); Valider.setGraphic(ticverte);
-		 * Valider.setStyle("-fx-background-color: transparent;");
-		 * Valider.setContentDisplay(ContentDisplay.RIGHT); //Valider.setText("Valider
-		 * ");
-		 * 
-		 * Button Annuler = new Button (); Annuler.setGraphic(False);
-		 * Annuler.setStyle("-fx-background-color: transparent;");
-		 * Annuler.setContentDisplay(ContentDisplay.RIGHT); //Annuler.setText("Annuler
-		 * ");
-		 */
+
+		// Button Annuler = new Button ();
+		// Annuler.setGraphic(False);
+		// Annuler.setStyle("-fx-background-color: transparent;");
+		// Annuler.setContentDisplay(ContentDisplay.RIGHT); //Annuler.setText("Annuler
 
 		printBoardInterface();
 		Scene scene = new Scene(root);
