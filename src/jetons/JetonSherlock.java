@@ -58,9 +58,9 @@ public class JetonSherlock extends Jetons {
 					InterfaceGraphique.d[k].setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent e) {
-							
 						}
 					});
+					InterfaceGraphique.finAction();
 				}
 
 			});

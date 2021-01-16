@@ -56,6 +56,7 @@ public class JetonEchanger extends Jetons {
 								Jeu.board[indice1] = Jeu.board[indice2];
 								Jeu.board[indice2] = temp;
 								InterfaceGraphique.tuile[indice1].setDisable(false);
+								InterfaceGraphique.finAction();
 								for (int h = 0; h < 9; h++) {
 									InterfaceGraphique.tuile[h].setOnAction(new EventHandler<ActionEvent>() {
 										@Override

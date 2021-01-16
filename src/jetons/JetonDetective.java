@@ -41,6 +41,25 @@ public class JetonDetective extends Jetons {
 		 * choix = scanner.nextInt() - 1; if (choix > -1) {
 		 * listeDetectives[choix].setPlace(1); } break;
 		 */
+		if (jActuel == 1) {
+			InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
+			InterfaceGraphique.validerB.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					for (int m = 0; m < 24; m++) {
+						InterfaceGraphique.d[m].setStyle("-fx-background-color: transparent;");
+						InterfaceGraphique.d[m].setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent e) {
+							}
+						});
+					}
+					InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.validerB);
+					InterfaceGraphique.finAction();
+				}
+			});
+		}
+
 		for (int i = 0; i < 3; i++) {
 			int positionPotentielle = Jeu.listeDetectives[i].getPlace();
 			final int I = i;
@@ -60,10 +79,10 @@ public class JetonDetective extends Jetons {
 						InterfaceGraphique.d[m].setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent e) {
-
 							}
 						});
 					}
+					InterfaceGraphique.finAction();
 
 				}
 
@@ -76,6 +95,7 @@ public class JetonDetective extends Jetons {
 	public String getNom() {
 		return nom;
 	}
+
 	@Override
 	public ImageView getImView() {
 		return imView;

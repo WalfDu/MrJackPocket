@@ -1,8 +1,6 @@
 package Autres;
 
 import java.util.ArrayDeque;
-import java.util.Scanner;
-
 import InterfaceGraphique.InterfaceGraphique;
 //import InterfaceGraphique.HelloApp;
 import jetons.JetonAlibi;
@@ -12,26 +10,23 @@ import tour.TourPairs;
 
 public class Jeu {
 	public static Jetons[] choixActions = TourImpairs.debut();
-	//private static Scanner scanner = new Scanner(System.in);
-	// public static JetonAlibi pileAlibi = new JetonAlibi("test");
 	public static District[] board = TableauTuiles.shuffleArray();
 	public static Detectives[] listeDetectives = TableauTuiles.listeDetectives();
 	private static String actionStr;
 	private static int action;
 	public static String[] joueurActuel = {"M. le detective" ,"Mr. Jack"};
-	public static int jActuel = 1;
+	public static int jActuel = -1;
 	private static ArrayDeque<District> visibles = new ArrayDeque<>();
 	private static ArrayDeque<String> visiblesStr = new ArrayDeque<>();
 	static ArrayDeque<String> innocents = new ArrayDeque<>();
 	public static TableauTuiles plateau = new TableauTuiles();
-	public static String[] nomMrJack;
+	public static String[] nomMrJack = ((JetonAlibi) TourImpairs.actionAlibi).piocherCarte();
 	public static int sabliers = 0;
 	public static int sabliersCaches = 0;
 	public static String winner;
 	public static int tourEnCours = 1;
 	public static Jetons actionEnCours;
 	public static ArrayDeque<Jetons> actionsFaites = new ArrayDeque<>();
-	// private static HelloApp interfaceG = new HelloApp();
 
 	public static void main(String string) {
 		// interfaceG.printBoardInterface();
@@ -47,7 +42,7 @@ public class Jeu {
 
 	public static void initialisation() {
 		System.out.print("Mr Jack, nous allons vous reveler votre identité. Etes-vous prêt ?\n");
-		nomMrJack = ((JetonAlibi) TourImpairs.actionAlibi).piocherCarte();
+		//nomMrJack = ((JetonAlibi) TourImpairs.actionAlibi).piocherCarte();
 		System.out.println("Vous êtes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
 		// scanner.nextLine();
 	}
@@ -131,6 +126,7 @@ public class Jeu {
 			sabliers++;
 		}
 		//TableauTuiles.printBoardConsole(board);
+		System.out.println(visibles.size());
 		System.out.print("\nLes personnes suivantes sont visibles ");
 		if (visiblesStr.contains(nomMrJack[0])) {
 			System.out.println("dont Mr. Jack:");
@@ -149,7 +145,7 @@ public class Jeu {
 		// tuiles du suspect que l'on va regarder
 		int abscisse = -1;
 		int ordonnee = -1;
-		int coordonnee = 3 * abscisse + ordonnee;
+		int coordonnee = 3 * ordonnee + abscisse;
 		District tuile = new District();
 		// La variable détective intancie les 3 détectives les uns après les autres
 		Detectives detective;
@@ -164,11 +160,12 @@ public class Jeu {
 		// un
 		for (int i = 0; i < listeDetectives.length; i++) {
 			detective = listeDetectives[i];
+			System.out.println(i + "   " + detective.getPlace());
 			// detective.getPlace() renvoie un entier entre 1 et 12, pour les 12 positions
 			// possibles des détectives, avec le 1 étant la position à gauche au Nord, et en
 			// tournant dans le sens des aiguilles d'une montre
-			detectivePosition = (int) (detective.getPlace()%12 - 1) / 3;
-			detectiveInc = (int) 10 * (detective.getPlace()%12 - 1) % 3;
+			detectivePosition = (int) ((detective.getPlace() - 1)%12) / 3;
+			detectiveInc = (int) (/*10 **/ (detective.getPlace() - 1)%12) % 3;
 			// On défini ici la position de la tuile devant le détective
 			switch (detectivePosition) {
 			case 0:
@@ -187,10 +184,10 @@ public class Jeu {
 				abscisse = 0;
 				ordonnee = 2 - detectiveInc;
 			}
-			coordonnee = 3 * abscisse + ordonnee;
 			// On effectue 3 fois les instructions suivantes, car un détective peut voir 3
 			// suspects au maximum
 			for (int k = 0; k < 3; k++) {
+			coordonnee = 3 * ordonnee + abscisse;
 				tuile = board[coordonnee];
 				if (tuile.getMur() == detectivePosition) {
 					// Si le mur est entre le détective et le suspect, on termine la boucle for, et
@@ -201,7 +198,7 @@ public class Jeu {
 					// d'après
 					visibles.add(tuile);
 					k = 3;
-				} else if (tuile.getMur() != detectivePosition) {
+				} else {
 					// Sinon, le suspect est visible, et on continue en regardant la tuile du board
 					// suivante
 					visibles.add(tuile);
@@ -225,7 +222,7 @@ public class Jeu {
 	}
 
 	public static void finPartie(int i) {
-		if (sabliers + sabliersCaches >= 8) {
+		if (sabliers + sabliersCaches >= 6) {
 			i = 9;
 			winner = "Mr. Jack";
 		}

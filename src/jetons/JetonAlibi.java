@@ -44,8 +44,10 @@ public class JetonAlibi extends Jetons {
 			break;
 		case 1:
 			Jeu.sabliersCaches += Integer.valueOf(carte[1]);
+			System.out.println("Vous avez " + Jeu.sabliersCaches + " sabliers caches");
 			break;
 		}
+		InterfaceGraphique.finAction();
 	}
 
 	@Override
