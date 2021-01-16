@@ -25,9 +25,9 @@ public class District {
 			this.sourceImage += i;
 		}
 		this.sourceImage += "-recto.png";
-		this.sourceImageVerso = /* "../../images/districts/ */"common-verso.png";
+		this.sourceImageVerso = "file:images/districts/common-verso.png";
 		if (nomSuspect == "Joseph Lane") {
-			this.sourceImageVerso = /* "../../images/districts/ */"JosephLane-verso.png";
+			this.sourceImageVerso = "file:images/districts/JosephLane-verso.png";
 		}
 	}
 
@@ -63,6 +63,8 @@ public class District {
 
 	public void innocenter(int i) {
 		InterfaceGraphique.tuile[i].setGraphic(sourceImageVerso());
+		InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.tuile[i]);
+		InterfaceGraphique.root.add(InterfaceGraphique.tuile[i], 2 + i % 3, 3 + i / 3);
 		faceSuspect = "Innocent";
 		Jeu.innocents.addLast(nomSuspect);
 	}

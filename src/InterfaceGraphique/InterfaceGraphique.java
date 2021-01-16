@@ -3,6 +3,7 @@ package InterfaceGraphique;
 import java.util.ArrayList;
 import java.util.List;
 
+import Autres.District;
 import Autres.Jeu;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -22,7 +23,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import jetons.JetonAlibi;
-import jetons.Jetons;
 import tour.TourImpairs;
 import tour.TourPairs;
 

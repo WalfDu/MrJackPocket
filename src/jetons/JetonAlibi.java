@@ -30,34 +30,22 @@ public class JetonAlibi extends Jetons {
 	@Override
 	public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
 		String[] carte = piocherCarte();
-		String out = "Vous avez pioché la carte " + carte[0];
 		switch (jActuel) {
-			case 1:
-				out += ", vous ";
-				switch (Integer.parseInt(carte[1])) {
-					case 0:
-						out += "ne gagnez aucun sablier";
-						break;
-					case 1:
-						out += "gagnez 1 sablier";
-						break;
-					case 2:
-						out += "gagnez 2 sabliers";
-						break;
+		case 0:
+			InterfaceGraphique.alibi2 = new Image(sourceImage(carte[0]), 60, 100, false, false);
+			InterfaceGraphique.alibi2View = new ImageView(InterfaceGraphique.alibi2);
+			InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.alibi2View);
+			InterfaceGraphique.root.add(InterfaceGraphique.alibi2View, 1, 7);
+			for (int i = 0; i < 9; i++) {
+				if (board[i].getNomSuspect().equals(carte[0])) {
+					board[i].innocenter(i);
 				}
-				Jeu.sabliersCaches += Integer.valueOf(carte[1]);
-				break;
-			case 0:
-				InterfaceGraphique.alibi2 = new Image(sourceImage(carte[0]), 60, 100, false, false);
-				InterfaceGraphique.alibi2View = new ImageView(InterfaceGraphique.alibi2);
-				for (int i=0; i<9; i++) {
-					if (board[i].getNomSuspect().equals(carte[0])) {
-						board[i].innocenter(i);
-					}
-				}
-				break;
+			}
+			break;
+		case 1:
+			Jeu.sabliersCaches += Integer.valueOf(carte[1]);
+			break;
 		}
-		System.out.println(out);
 	}
 
 	@Override
@@ -102,7 +90,7 @@ public class JetonAlibi extends Jetons {
 		sourceImage += "-alibi.png";
 		return sourceImage;
 	}
-	
+
 	@Override
 	public ImageView getImView() {
 		return imView;
