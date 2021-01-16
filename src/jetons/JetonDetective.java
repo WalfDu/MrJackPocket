@@ -76,7 +76,6 @@ public class JetonDetective extends Jetons {
 	public String getNom() {
 		return nom;
 	}
-
 	@Override
 	public ImageView getImView() {
 		return imView;

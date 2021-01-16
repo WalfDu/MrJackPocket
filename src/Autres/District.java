@@ -63,6 +63,8 @@ public class District {
 
 	public void innocenter(int i) {
 		InterfaceGraphique.tuile[i].setGraphic(sourceImageVerso());
+		InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.tuile[i]);
+		InterfaceGraphique.root.add(InterfaceGraphique.tuile[i], 2 + i % 3, 3 + i / 3);
 		faceSuspect = "Innocent";
 		Jeu.innocents.addLast(nomSuspect);
 	}
