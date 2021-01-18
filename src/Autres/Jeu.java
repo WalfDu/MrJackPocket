@@ -19,7 +19,7 @@ public class Jeu {
 	private static String actionStr;
 	private static int action;
 	public static String[] joueurActuel = {"M. le detective" ,"Mr. Jack"};
-	public static int jActuel = -1;
+	public static int jActuel = 1;
 	private static ArrayDeque<District> visibles = new ArrayDeque<>();
 	private static ArrayDeque<String> visiblesStr = new ArrayDeque<>();
 	static ArrayDeque<String> innocents = new ArrayDeque<>();

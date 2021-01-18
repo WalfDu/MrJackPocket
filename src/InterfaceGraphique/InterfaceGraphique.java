@@ -1,10 +1,7 @@
 package InterfaceGraphique;
 
-
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 import Autres.District;
 import Autres.Jeu;
@@ -18,14 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
@@ -218,14 +208,14 @@ public class InterfaceGraphique extends Application {
 		
 		validerB.setGraphic(validerView);
 		validerB.setStyle("-fx-background-color: transparent;");
-		//root.add(validerB, 10, 11);
+		root.add(validerB, 10, 11);
 		
 		terminer.setText("Commencer\nla partie");
 		terminer.setMinWidth(75);
 		terminer.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				if (Jeu.actionsFaites.size() % 2 == 1 || Jeu.jActuel == -1) {
+				if (Jeu.actionsFaites.size() % 2 == 1) {
 						Jeu.jActuel = (++Jeu.jActuel % 2);
 						terminer.setText("Terminer\nl'action");
 						joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel]
@@ -537,14 +527,8 @@ public class InterfaceGraphique extends Application {
 		 * ");
 		 */
 
-		BackgroundImage myBI= new BackgroundImage(new Image("file:images/bleu.jpg",1000,1000,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT); 
-		root.setBackground(new Background(myBI));
-
-
-
 		printBoardInterface();
-		Scene scene = new Scene(root,700,700);
-		
+		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
