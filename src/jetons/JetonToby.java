@@ -55,6 +55,7 @@ public class JetonToby extends Jetons {
 					for (int m = 0; m < 24; m++) {
 						InterfaceGraphique.d[m].setStyle("-fx-background-color: transparent;");
 					}
+					InterfaceGraphique.finAction();
 					InterfaceGraphique.d[k].setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent e) {

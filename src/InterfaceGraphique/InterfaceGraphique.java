@@ -3,6 +3,7 @@ package InterfaceGraphique;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import Autres.District;
 import Autres.Jeu;
 import javafx.application.Application;
@@ -15,6 +16,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -23,6 +29,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import jetons.JetonAlibi;
+import jetons.Jetons;
 import tour.TourImpairs;
 import tour.TourPairs;
 
@@ -52,14 +59,14 @@ public class InterfaceGraphique extends Application {
 	ImageView watsonView = new ImageView(watson);
 	Image pileHautAlibi = new Image("file:images/alibis/alibi-card.png", 60, 100, false, false);
 	ImageView pileHautAlibiView = new ImageView(pileHautAlibi);
-	Image mrJack = new Image(JetonAlibi.sourceImage(Jeu.nomMrJack[0]), 60, 100, false, false);
-	ImageView mrJackView = new ImageView(mrJack);
+	static Image mrJack = new Image(JetonAlibi.sourceImage(Jeu.nomMrJack[0]), 60, 100, false, false);
+	static ImageView mrJackView = new ImageView(mrJack);
 	public static Image alibi2 = new Image("file:images/Annuler.png", 60, 100, false, false);
 	public static ImageView alibi2View = new ImageView(alibi2);
-	Image valider = new Image("file:images/Valider.png", 50, 50, false, false);
-	ImageView validerView = new ImageView(valider);
-	Image sablier = new Image("file:images/sablier.png", 30, 30, false, false);
-	ImageView sablierView = new ImageView(sablier);
+	static Image valider = new Image("file:images/Valider.png", 50, 50, false, false);
+	static ImageView validerView = new ImageView(valider);
+	static Image sablier = new Image("file:images/sablier.png", 30, 30, false, false);
+	static ImageView sablierView = new ImageView(sablier);
 
 	public static Button choixTourner = new Button();
 	public static Button choixEchangerTuile = new Button();
@@ -75,27 +82,30 @@ public class InterfaceGraphique extends Application {
 	public static Button finDuTour = new Button();
 	public static Button[] action = new Button[4];
 	Button commencer = new Button();
-	Button terminer = new Button();
-	Button joueurSuivant = new Button();
+	public static Button terminer = new Button();
+	static Button joueurSuivant = new Button();
 	public static Button validerB = new Button();
 	static String nomMrJack = "";
-	final Text vousEtes = new Text("Vous etes:" + nomMrJack);
-	final Text nbSabliers = new Text("Vous avez:" + Jeu.sabliers);
+	final static Text vousEtes = new Text("Vous etes:" + nomMrJack);
+	final static Text nbSabliers = new Text("Vous avez:" + Jeu.sabliers);
+	
 	public static String idEnCours;
 
-	ColumnConstraints column = new ColumnConstraints();
-	RowConstraints row = new RowConstraints();
+	static ColumnConstraints column = new ColumnConstraints();
+	static RowConstraints row = new RowConstraints();
 
 	public static void main(String[] args) {
 		// Jeu.main(args);
 		Jeu.initialisation();
 		for (String i : Jeu.nomMrJack[0].split(" ")) {
-			nomMrJack += "\n" + i;
+			nomMrJack += "\n" + i; 					//Cela sert à avoir le nom de Mr. Jack sur deux lignes en bas à droite
 		}
 		launch(args);
 	}
 
-	public void printBoardInterface() {
+	public static void printBoardInterface() {
+		nbSabliers.setText("Vous avez:\n" + Jeu.sabliers + Jeu.sabliersCaches);
+		
 		root.getChildren().remove(joueurSuivant);
 		root.getRowConstraints().remove(row);
 		root.getColumnConstraints().remove(column);
@@ -125,39 +135,32 @@ public class InterfaceGraphique extends Application {
 		root.add(alibi, 0, 7);
 		root.add(alibi2View, 1, 7);
 		root.add(terminer, 6, 0);
-		root.add(commencer, 0, 0);
-		root.add(sablierView, 5, 7);
 		// Si le joueur actuel est Mr. Jack, on affiche qui il est et son nombre de
 		// sablier
 		if (Jeu.jActuel == 1) {
+			root.add(sablierView, 5, 7);
 			root.add(vousEtes, 6, 6);
+			root.add(nbSabliers, 5, 6);
 			root.add(mrJackView, 6, 7);
-			// Cas MrJack : montrer la carte + sablier
-		} else {
-			root.getChildren().remove(vousEtes);
-			root.getChildren().remove(mrJackView);
-
 		}
 		for (int nbActions = 0; nbActions < 4; nbActions++) {
-			if (!Jeu.actionsFaites.contains(Jeu.choixActions[nbActions])) {
 			root.add(action[nbActions], nbActions + 2, 0);
-				InterfaceGraphique.action[nbActions].setGraphic((Jeu.choixActions[nbActions]).getImView());
-				final int i = nbActions;
-				action[nbActions].setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent e) {
-						// System.out.println(k.getId());
-						Jeu.actionsFaites.addLast(Jeu.choixActions[i]);
-						Jeu.actionEnCours = Jeu.choixActions[i];
-						Jeu.choixActions[i].action(Jeu.listeDetectives, Jeu.board, Jeu.jActuel);
+			InterfaceGraphique.action[nbActions].setGraphic((Jeu.choixActions[nbActions]).getImView());
+			final int i = nbActions;
+			action[nbActions].setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					// System.out.println(k.getId());
+					Jeu.actionsFaites.addLast(Jeu.choixActions[i]);
+					Jeu.actionEnCours = Jeu.choixActions[i];
+					action[i].setDisable(true);
+					Jeu.choixActions[i].action(Jeu.listeDetectives, Jeu.board, Jeu.jActuel);
 					}
 				});
 			}
 		}
-	}
 
-	
-	public void joueurSuivant() {
+	public static void joueurSuivant() {
 		for (Button i : d) {
 			root.getChildren().remove(i);
 		}
@@ -167,19 +170,65 @@ public class InterfaceGraphique extends Application {
 		for (Button i : action) {
 			root.getChildren().remove(i);
 		}
+		if (Jeu.jActuel == 0) {
+			root.getChildren().remove(sablierView);
+			root.getChildren().remove(vousEtes);
+			root.getChildren().remove(nbSabliers);
+			root.getChildren().remove(mrJackView);
+		}
+		// root.getChildren().remove(commencer);
 		root.getChildren().remove(alibi);
 		root.getChildren().remove(terminer);
-		root.getChildren().remove(vousEtes);
+		root.getChildren().remove(validerB);
 		root.getChildren().remove(alibi2View);
 		root.getColumnConstraints().add(column);
 		root.getRowConstraints().add(row);
 		root.add(joueurSuivant, 5, 0);
 	}
 
+	public static void finAction() {
+
+		terminer.setText("Terminer\nl'action");
+		if (Jeu.actionsFaites.size() > 3) {
+			for (Button i : action) {
+				i.setDisable(false);
+			}
+			for (Jetons i : Jeu.actionsFaites) {
+				System.out.println(i.getNom());
+			}
+			Jeu.finDuTour();
+			Jeu.tourEnCours++;
+			if (Jeu.tourEnCours % 2 == 0) {
+				Jeu.choixActions = TourPairs.debut(Jeu.choixActions);
+			} else {
+				Jeu.choixActions = TourImpairs.debut();
+			}
+			Jeu.actionsFaites.clear();
+			Jeu.finPartie(Jeu.tourEnCours);
+			/*try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+		}
+		if (Jeu.actionsFaites.size() != 2) {
+			Jeu.jActuel = (++Jeu.jActuel % 2);
+			joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel]
+					+ " de jouer.\nSi vous etes pret, cliquez sur ce message");
+			/*try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+			joueurSuivant();
+		}
+	}
+
 	@Override
 	public void start(Stage primaryStage) throws Exception { // primaryStage est juste un nom de parametre on peut le
 																// modifier
-
 		column.setPercentWidth(32);
 		row.setPercentHeight(90);
 		root.getColumnConstraints().add(column);
@@ -187,9 +236,9 @@ public class InterfaceGraphique extends Application {
 		root.add(joueurSuivant, 6, 0);
 		root.getChildren().remove(vousEtes);
 		root.getChildren().remove(mrJackView);
-
-		// Les jetons
+	
 		
+		// Les jetons
 		finDuTour.setText("FIN");
 		finDuTour.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -205,33 +254,21 @@ public class InterfaceGraphique extends Application {
 			}
 		});
 
-		
 		validerB.setGraphic(validerView);
 		validerB.setStyle("-fx-background-color: transparent;");
-		root.add(validerB, 10, 11);
-		
+		// root.add(validerB, 10, 11);
+
 		terminer.setText("Commencer\nla partie");
 		terminer.setMinWidth(75);
 		terminer.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				if (Jeu.actionsFaites.size() % 2 == 1) {
-						Jeu.jActuel = (++Jeu.jActuel % 2);
-						terminer.setText("Terminer\nl'action");
-						joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel]
-								+ " de jouer.\nSi vous etes pret, cliquez sur ce message");
-						joueurSuivant();
-				}
-				if (Jeu.actionsFaites.size() == 4) {
-					Jeu.finDuTour();
-					Jeu.tourEnCours++;
-					if (Jeu.tourEnCours % 2 == 0) {
-						Jeu.choixActions = TourPairs.debut(Jeu.choixActions);
-					} else {
-						Jeu.choixActions = TourImpairs.debut();
+				if (Jeu.jActuel == -1) {
+					for (Button i : action) {
+						i.setDisable(false);
 					}
-					Jeu.actionsFaites.clear();
 				}
+				finAction();
 			}
 		});
 
@@ -288,8 +325,9 @@ public class InterfaceGraphique extends Application {
 			action[i].setMinWidth(50);
 			action[i].setMinHeight(50);
 			action[i].setShape(new Circle(30));
-			action[i].setStyle("-fx-background-color: gray;");
+			action[i].setStyle("-fx-background-color: transparent;");
 			action[i].setId("A" + i);
+			action[i].setDisable(true);
 		}
 
 		/*
@@ -392,6 +430,8 @@ public class InterfaceGraphique extends Application {
 			i.setStyle("-fx-background-color: transparent;");
 		}
 
+		
+		
 		deplacementW.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
@@ -527,8 +567,11 @@ public class InterfaceGraphique extends Application {
 		 * ");
 		 */
 
+		BackgroundImage myBI= new BackgroundImage(new Image("file:images/bleuv2.jpg", 675, 675,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+		root.setBackground(new Background(myBI));
+		nbSabliers.setStyle("-fx-text-fill: green;");
 		printBoardInterface();
-		Scene scene = new Scene(root);
+		Scene scene = new Scene(root, 675, 675);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

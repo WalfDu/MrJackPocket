@@ -48,6 +48,7 @@ public class JetonTourner2 extends Jetons {
             //TableauTuiles.printBoardConsole(board);
         } while (!scanner.nextLine().equals("stop"));
         //}*/
+		InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
     	for (int i = 0; i < 9; i++) {
 			InterfaceGraphique.tuile[i].setDisable(false);
 			Node imTuile = InterfaceGraphique.tuile[i].getGraphic();
@@ -57,15 +58,17 @@ public class JetonTourner2 extends Jetons {
 				@Override
 				public void handle(ActionEvent e) {
 					imTuile.setRotate(imTuile.getRotate() + 90);
-					int tuileClique = k;
-					Jeu.board[tuileClique].setMur();
+					Jeu.board[k].setMur();
+					//int tuileClique = k;
 					for (int j = 0; j < 9; j++) {
 						InterfaceGraphique.tuile[j].setDisable(true);
-						InterfaceGraphique.tuile[tuileClique].setDisable(false);
 					}
+					InterfaceGraphique.tuile[k].setDisable(false);
 					InterfaceGraphique.validerB.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent e) {
+							InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.validerB);
+							InterfaceGraphique.finAction();
 							for (int h = 0; h < 9; h++) {
 								InterfaceGraphique.tuile[h].setDisable(false);
 								InterfaceGraphique.tuile[h].setOnAction(new EventHandler<ActionEvent>() {

@@ -20,10 +20,7 @@ public class Detectives {
 	}
 
 	public static int move(int place) {
-		if (place < 12) {
-			return place++;
-		} else
-			return 1;
+		return (place++)%12;
 	}
 
 	public String getNom() {
