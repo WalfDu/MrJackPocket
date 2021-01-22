@@ -25,7 +25,6 @@ public class Jeu {
 	public static int sabliersCaches = 0;
 	public static String winner = "nobody";
 	public static int tourEnCours = 1;
-	public static Jetons actionEnCours;
 	public static ArrayDeque<Jetons> actionsFaites = new ArrayDeque<>();
 
 	public static void finDuTour() {

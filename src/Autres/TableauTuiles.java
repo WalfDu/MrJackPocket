@@ -24,20 +24,6 @@ public class TableauTuiles {
 	public TableauTuiles() {
 	}
 
-	public void lancement() {
-
-		//tuilesRetournees(initialBoard);
-		//printBoardConsole(shuffleArray());
-	};
-
-	public static void tuilesRetournees(District[] board) {
-		for (int i=0; i<9; i++) {
-			if (Math.random() > .5) {
-				board[i].innocenter(i);
-			}
-		}
-	}
-
 	public static District[] shuffleArray() {
 		for (int i = board.length - 1; i > 0; i--) {
 			int j = (int) (Math.random() * (i + 1));
@@ -60,39 +46,5 @@ public class TableauTuiles {
 	public static Detectives[] listeDetectives() {
 		Detectives[] listeDetectives = { sherlock, watson, toby };
 		return listeDetectives;
-	}
-
-	public static void printBoardConsole(District[] board) {
-		String out = "\n";
-		for (int i = 0; i < board.length; i++) {
-			String nom = board[i].toString();
-			if (board[i].getFaceSuspect() == "Innocent") {
-				nom = "  ";
-			}
-			switch (board[i].getMur()) {
-				case 0:
-					nom = " " + String.join("\u0305", nom.toString().split("", -1)) + " ";
-					break;
-				case 1:
-					nom = " " + nom + "|";
-					break;
-				case 2:
-					nom = " " + String.join("\u035f", nom.toString().split("", -1)) + " ";
-					break;
-				case 3:
-					nom = "|" + nom + " ";
-					break;
-				case -1:
-					nom = "  " + nom + " ";
-					break;
-			}
-			out += nom + " ";
-			out += "\n\n";
-		}
-		System.out.print(out);
-		for (Detectives i : listeDetectives) {
-			System.out.print(i.getNom() + ": " + i.getPlace() + ",     ");
-		}
-		System.out.println();
 	}
 }

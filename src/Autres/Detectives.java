@@ -19,10 +19,6 @@ public class Detectives {
 		return nom.substring(0, 1);
 	}
 
-	public static int move(int place) {
-		return (place++)%12;
-	}
-
 	public String getNom() {
 		return nom;
 	}
