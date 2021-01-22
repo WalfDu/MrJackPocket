@@ -12,7 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class JetonTourner2 extends Jetons {
+public class JetonTourner2 extends Jetons { // Nous avons commente cette classe dans la classe JetonTourner
     Scanner scanner = new Scanner(System.in);
     String nom;
 	public static Image im = new Image("file:images/actions/Jeton4-Face2.png", 50, 50, false, false);

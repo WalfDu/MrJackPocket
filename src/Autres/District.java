@@ -76,7 +76,7 @@ public class District {
 	}
 
 	public void setMur() {
-		if (mur <4) { //Pour Joseph Lane verso, on défini un mur > 4
+		if (mur <4) { //Pour Joseph Lane verso, on defini un mur > 4
 			mur = (mur+1)%4;
 		} else {
 			mur++;

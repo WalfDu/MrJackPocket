@@ -11,11 +11,11 @@ public class TourPairs {
 	public static Jetons[] debut(Jetons[] actionTourPrecedent) {
 		Jetons[] actionsDuTour = new Jetons[4];
 		for (int i = 0; i < actionsDuTour.length; i++) {
-			actionsDuTour[i] = jetonsAction[i][0];		//On met tous les jetons du côté pile
+			actionsDuTour[i] = jetonsAction[i][0];		//On met tous les jetons du cote pile
 		}
 		for (int i = 0; i < actionsDuTour.length; i++) {
 			for (int j = 0; j < actionsDuTour.length; j++) {
-				if (actionsDuTour[i].equals(actionTourPrecedent[j])) {		//Si le jeton côté pile a été joué au tour précédent, on met le côté face
+				if (actionsDuTour[i].equals(actionTourPrecedent[j])) {		//Si le jeton cote pile a ete joue au tour precedent, on met le cote face
 					actionsDuTour[i] = jetonsAction[i][1];
 				}
 			}

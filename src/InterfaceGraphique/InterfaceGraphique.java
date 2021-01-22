@@ -79,9 +79,9 @@ public class InterfaceGraphique extends Application {
 	static RowConstraints row = new RowConstraints();
 
 	public static void main(String[] args) {		// fonction qui permet de lancer le jeu et d'initialiser tous les
-													// paramètres pour le début de la partie
+													// parametres pour le debut de la partie
 		for (String i : Jeu.nomMrJack[0].split(" ")) {
-			nomMrJack += "\n" + i; 					//Cela sert à avoir le nom de Mr. Jack sur deux lignes en bas à droite
+			nomMrJack += "\n" + i; 					//Cela sert a avoir le nom de Mr. Jack sur deux lignes en bas a droite		}
 		}
 		launch(args);
 	}
@@ -106,15 +106,15 @@ public class InterfaceGraphique extends Application {
 		// plateau de tuile
 		for (int i = 0; i < 24; i++) {
 			if (i < 3) {
-				root.add(d[i], i + 2, 2);	// ajout d'une première ligne de bouton autour du plateau
+				root.add(d[i], i + 2, 2);	// ajout d'une premiere ligne de bouton autour du plateau
 			} else if (i < 6) {
 				root.add(d[i], 5, i);		// ajout d'une colonne de bouton autour du plateau
 			} else if (i < 9) {
 				root.add(d[i], 10 - i, 6);
 			} else if (i < 12) {
 				root.add(d[i], 1, 14 - i);
-			} else if (i < 15) {				// On ajoute d'une deuxième rangée de bouton pour satisfaire le cas où 2
-				root.add(d[i], i - 10, 1);		// detectives seraient présents sur la même case
+			} else if (i < 15) {				// On ajoute d'une deuxieme rangee de bouton pour satisfaire le cas ou 2
+				root.add(d[i], i - 10, 1);		// detectives seraient presents sur la meme case
 			} else if (i < 18) {
 				root.add(d[i], 6, i - 12);
 			} else if (i < 21) {
@@ -130,20 +130,20 @@ public class InterfaceGraphique extends Application {
 		// Si le joueur actuel est Mr. Jack, on affiche qui il est et son nombre de
 		// sablier
 		if (Jeu.jActuel == 1) {
-			nbSabliers.setText("Vous avez:\n" + (int) (Jeu.sabliers + Jeu.sabliersCaches));	//Par défaut, le texte est écrit au début : "Mr. Jack a:\n" + Jeu.sabliers
+			nbSabliers.setText("Vous avez:\n" + (int) (Jeu.sabliers + Jeu.sabliersCaches));	//Par defaut, le texte est ecrit au debut : "Mr. Jack a:\n" + Jeu.sabliers
 			root.add(vousEtes, 6, 6);
 			root.add(mrJackView, 6, 7);
 		}
 		root.add(nbSabliers, 5, 6);
 		
-		//On place ensuite les jetons actions qui seront disponibles à ce tour
+		//On place ensuite les jetons actions qui seront disponibles a ce tour
 		for (int nbActions = 0; nbActions < 4; nbActions++) {
 			root.add(action[nbActions], nbActions + 2, 0);
 			InterfaceGraphique.action[nbActions].setGraphic((Jeu.choixActions[nbActions]).getImView());
-			final int i = nbActions;		//Déclaration d'une valeur finale sinon, il y a une erreur dans la méthode qui suit
+			final int i = nbActions;		//Declaration d'une valeur finale sinon, il y a une erreur dans la methode qui suit
 			action[nbActions].setOnAction(new EventHandler<ActionEvent>() {
 				@Override
-				public void handle(ActionEvent e) {		//L'action représentée sur l'image est jouée
+				public void handle(ActionEvent e) {		//L'action representee sur l'image est jouee
 					Jeu.actionsFaites.addLast(Jeu.choixActions[i]);
 					action[i].setDisable(true);
 					Jeu.choixActions[i].action(Jeu.listeDetectives, Jeu.board, Jeu.jActuel);
@@ -167,16 +167,17 @@ public class InterfaceGraphique extends Application {
 			}
 			Jeu.finDuTour();		//On innocentes les suspects qui sont visibles / invisibles
 			Jeu.tourEnCours++;
-			if (Jeu.tourEnCours % 2 == 0) {		//choixActions est la liste des actions qui vont être jouées au tour suivant
+			if (Jeu.tourEnCours % 2 == 0) {		//choixActions est la liste des actions qui vont etre jouees au tour suivant
 				Jeu.choixActions = TourPairs.debut(Jeu.choixActions);
 			} else {
 				Jeu.choixActions = TourImpairs.debut();
 			}
 			Jeu.actionsFaites.clear();
 		}
-		if (Jeu.actionsFaites.size() != 2) {	//Le seul moment où le joueur ne change pas est après la 2e action
-			Jeu.jActuel = (++Jeu.jActuel % 2);	//Prend la valeur 1 si elle était à 0 et inversement
-			joueurSuivant.setText("C'est à " + Jeu.joueurActuel[Jeu.jActuel]
+
+		if (Jeu.actionsFaites.size() != 2) {	//Le seul moment ou le joueur ne change pas est aprs la 2e action
+			Jeu.jActuel = (++Jeu.jActuel % 2);	//Prend la valeur 1 si elle etait a  0 et inversement
+			joueurSuivant.setText("C'est a " + Jeu.joueurActuel[Jeu.jActuel]
 					+ " de jouer.\nSi vous etes pret, cliquez sur ce message");
 			joueurSuivant();
 		}
@@ -185,7 +186,7 @@ public class InterfaceGraphique extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		BackgroundImage myBI= new BackgroundImage(new Image("file:images/bleuv2.jpg", 675, 675,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+		BackgroundImage myBI= new BackgroundImage(new Image("file:images/Vert.jpeg", 675, 675,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		root.setBackground(new Background(myBI));
 		
 		column.setPercentWidth(32);
@@ -224,7 +225,7 @@ public class InterfaceGraphique extends Application {
 			tuile[i] = new Button();
 			tuile[i].setGraphic(Jeu.board[i].sourceImage());
 			tuile[i].setStyle("-fx-background-color: transparent;");
-			tuile[i].setRotate((double) Jeu.board[i].getMur() * 90 + 180);	//Le mur est à 0 si celui-ci est au Nord, puis 1 à l'Est…
+			tuile[i].setRotate((double) Jeu.board[i].getMur() * 90 + 180);	//Le mur est a 0 si celui-ci est au Nord, puis 1 a l'Est
 		}
 
 		// Boutons detectives
@@ -245,14 +246,14 @@ public class InterfaceGraphique extends Application {
 			}
 		}
 
-		// Boutons des actions proposées
+		// Boutons des actions proposees
 		for (int i = 0; i < 4; i++) {
 			action[i] = new Button();
 			action[i].setMinWidth(50);
 			action[i].setMinHeight(50);
 			action[i].setShape(new Circle(30));
 			action[i].setStyle("-fx-background-color: transparent;");
-			action[i].setDisable(true);		//initialisé ainsi pour que le jeu commence en cliquant sur le bouton commencer
+			action[i].setDisable(true);		//initialise ainsi pour que le jeu commence en cliquant sur le bouton commencer
 		}
 
 		printBoardInterface();
