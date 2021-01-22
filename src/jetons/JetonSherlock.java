@@ -13,66 +13,59 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class JetonSherlock extends Jetons {
-    Scanner scanner = new Scanner(System.in);
-    String nom;
+	Scanner scanner = new Scanner(System.in);
+	String nom;
 	public static Image im = new Image("file:images/actions/Jeton3-Face1.png", 50, 50, false, false);
 	public static ImageView imView = new ImageView(im);
 
-    public JetonSherlock() {
-    }
+	public JetonSherlock() {
+	}
 
-    public JetonSherlock(String nom) {
-        this.nom = nom;
-    }
+	public JetonSherlock(String nom) {
+		this.nom = nom;
+	}
 
-    @Override
-    public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
-        /*System.out.println("Sherlock peut se d√©placer d'une ou deux cases. Entrez 1 ou 2 pour le nombre de pas.");
-        int choix = scanner.nextInt();
-        listeDetectives[0].setPlace(choix);
-        System.out.println("Sherlock a avanc√© de " + choix + " pas.");*/
-    	
-		final Detectives sherlock = Jeu.listeDetectives[0];
-		Node imD1 = InterfaceGraphique.d[sherlock.getPlace() -1].getGraphic();
+	@Override
+	public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
+		final Detectives sherlock = Jeu.listeDetectives[0]; // Sherlock correspond ‡ l'indice 0, Waston est l'indice 1 et Toby est l'indice 2
 		for (int i = 1; i < 3; i++) {
-			int j = (sherlock.getPlace() -1 + i) % 24;
-			if (InterfaceGraphique.d[j].getGraphic() != null) {
+			int j = (sherlock.getPlace() - 1 + i) % 24; // RÈccupÈration de la place Sherlock, le modulo 24 est prÈsent car on a 24 positions possibles pour les dÈtectives 
+			if (InterfaceGraphique.d[j].getGraphic() != null) { // dÈcalage du detective sur la seconde ligne dans le cas de deux detectives au mÍme en endroit
 				j = (j + 12) % 24;
 			}
-			InterfaceGraphique.d[(j)].setStyle("-fx-background-color: grey;");
+			InterfaceGraphique.d[(j)].setStyle("-fx-background-color: grey;"); // Les cases o˘ l'on peut avancer le dÈtective sont grisÈes
 		}
 		for (int i = 1; i < 3; i++) {
-			int j = (sherlock.getPlace() -1 + i) % 24;
+			int j = (sherlock.getPlace() - 1 + i) % 24;
 			if (InterfaceGraphique.d[j].getGraphic() != null) {
 				j = (j + 12) % 24;
 			}
 			final int k = j;
-			InterfaceGraphique.d[k].setOnAction(new EventHandler<ActionEvent>() {
+			InterfaceGraphique.d[k].setOnAction(new EventHandler<ActionEvent>() { // choix de la nouvelle position de Sherlock
 				@Override
 				public void handle(ActionEvent e) {
-					InterfaceGraphique.d[k].setGraphic(imD1);
-					Jeu.listeDetectives[0].setPlace(k);
-					for (int m = 0; m < 24; m++) {
+					InterfaceGraphique.d[k].setGraphic(InterfaceGraphique.sherlockView); // placement de Sherlock sur l'interface
+					Jeu.listeDetectives[0].setPlace(k); // ReccupÈration de la nouvelle position
+					for (int m = 0; m < 24; m++) { 
 						InterfaceGraphique.d[m].setStyle("-fx-background-color: transparent;");
+						InterfaceGraphique.d[m].setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent e) {
+							}
+						});
 					}
-					InterfaceGraphique.d[k].setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent e) {
-						}
-					});
 					InterfaceGraphique.finAction();
 				}
-
 			});
-			
 		}
-			
-    }
+	}
 
-    @Override
-    public String getNom() {
-        return nom;
-    }
+	//Getters
+	@Override
+	public String getNom() {
+		return nom;
+	}
+
 	@Override
 	public ImageView getImView() {
 		return imView;

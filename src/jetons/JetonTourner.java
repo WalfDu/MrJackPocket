@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 public class JetonTourner extends Jetons {
 	Scanner scanner = new Scanner(System.in);
 	String nom;
-	public static Image im = new Image("file:images/actions/Jeton1-Face2.png", 50, 50, false, false); // on définit l'image du jeton tourner
+	public static Image im = new Image("file:images/actions/Jeton1-Face2.png", 50, 50, false, false); // image du jeton tourner
 	public static ImageView imView = new ImageView(im);
 
 	public JetonTourner() {
@@ -29,33 +29,29 @@ public class JetonTourner extends Jetons {
 	public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
 		InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
 		for (int i = 0; i < 9; i++) {
-			InterfaceGraphique.tuile[i].setDisable(false);
-			Node imTuile = InterfaceGraphique.tuile[i].getGraphic();
-			// double rotation = imTuile.getRotate();
-			final int k = i;
+			final int k = i; // déclaration d'une variable final pour éviter une erreur dans la méthode qui suit
 			InterfaceGraphique.tuile[i].setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent e) {
-					imTuile.setRotate(imTuile.getRotate() + 90);
-					Jeu.board[k].setMur();
-					//int tuileClique = k;
+					Jeu.board[k].setMur(); //On reccupère la position du mur à chaque clique
+					InterfaceGraphique.tuile[k].setRotate((double) Jeu.board[k].getMur() * 90 + 180); // rotation de 90° de la tuile à chaque clique
 					for (int j = 0; j < 9; j++) {
-						InterfaceGraphique.tuile[j].setDisable(true);
+						InterfaceGraphique.tuile[j].setDisable(true); // on désactive les autres boutons tuiles pour n'en faire tourner qu'une seule
 					}
 					InterfaceGraphique.tuile[k].setDisable(false);
-				InterfaceGraphique.validerB.setOnAction(new EventHandler<ActionEvent>() {
+					InterfaceGraphique.validerB.setOnAction(new EventHandler<ActionEvent>() { // Le joueur doit valider la rotation qu'il a choisit
 						@Override
 						public void handle(ActionEvent e) {
 							InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.validerB);
-							InterfaceGraphique.finAction();
 							for (int h = 0; h < 9; h++) {
 								InterfaceGraphique.tuile[h].setDisable(false);
-								InterfaceGraphique.tuile[h].setOnAction(new EventHandler<ActionEvent>() {
+								InterfaceGraphique.tuile[h].setOnAction(new EventHandler<ActionEvent>() { // Empeche le joueur de faire tourner une autre tuille
 									@Override
 									public void handle(ActionEvent e) {
 									}
 								});
 							}
+							InterfaceGraphique.finAction();
 							
 						}
 					});
@@ -65,7 +61,7 @@ public class JetonTourner extends Jetons {
 		}
 	}
 
-	// Getters
+	//Getters
 	@Override
 	public String getNom() {
 		return nom;

@@ -60,7 +60,7 @@ public class JetonEchanger extends Jetons {
 		}
     }
 
-    // Getters and Setters
+    // Getters
     @Override
     public String getNom() {
         return nom;

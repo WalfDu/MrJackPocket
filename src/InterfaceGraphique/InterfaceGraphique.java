@@ -55,10 +55,10 @@ public class InterfaceGraphique extends Application {
 	ImageView actionAlibiView = new ImageView(actionAlibi);
 	Image troisDetectives = new Image("file:images/actions/Jeton4-Face1.png", 50, 50, false, false);
 	ImageView troisDetectivesView = new ImageView(troisDetectives);
-	Image toby = new Image("file:images/detectives/Toby.png", 50, 50, false, false);
-	ImageView tobyView = new ImageView(toby);
-	Image sherlock = new Image("file:images/detectives/Sherlock.png", 50, 50, false, false);
-	ImageView sherlockView = new ImageView(sherlock);
+	static Image toby = new Image("file:images/detectives/Toby.png", 50, 50, false, false);
+	public static ImageView tobyView = new ImageView(toby);
+	static Image sherlock = new Image("file:images/detectives/Sherlock.png", 50, 50, false, false);
+	public static ImageView sherlockView = new ImageView(sherlock);
 	Image watson = new Image("file:images/detectives/Watson.png", 50, 50, false, false);
 	ImageView watsonView = new ImageView(watson);
 	Image pileHautAlibi = new Image("file:images/alibis/alibi-card.png", 60, 100, false, false);
@@ -96,7 +96,7 @@ public class InterfaceGraphique extends Application {
 
 	static String nomMrJack = "";
 	final static Text vousEtes = new Text("Vous etes:" + nomMrJack);
-	final static Text nbSabliers = new Text("Vous avez:" + Jeu.sabliers);
+	public final static Text nbSabliers = new Text("Vous avez:" + Jeu.sabliers);
 	public static String idEnCours;
 
 	// Colonnes et lignes vides afin de pouvoir centrer un message au centre de
