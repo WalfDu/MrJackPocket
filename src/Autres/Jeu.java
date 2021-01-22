@@ -1,6 +1,9 @@
 package Autres;
 
 import java.util.ArrayDeque;
+import java.util.HashSet;
+import java.util.Set;
+
 import InterfaceGraphique.InterfaceGraphique;
 //import InterfaceGraphique.HelloApp;
 import jetons.JetonAlibi;
@@ -9,165 +12,59 @@ import tour.TourImpairs;
 import tour.TourPairs;
 
 public class Jeu {
-	public static Jetons[] choixActions = TourImpairs.debut();
+	public static Jetons[] choixActions = TourImpairs.debut();						//Les 4 actions possibles au debut sont definies à ce moment là
 	public static District[] board = TableauTuiles.shuffleArray();
-	public static Detectives[] listeDetectives = TableauTuiles.listeDetectives();
-	private static String actionStr;
-	private static int action;
-	public static String[] joueurActuel = {"M. le detective" ,"Mr. Jack"};
+	public static Detectives[] listeDetectives = TableauTuiles.listeDetectives();	//Liste de detectives contenant entre autre leurs positions
+	public static String[] joueurActuel = { "M. le detective", "Mr. Jack" };
 	public static int jActuel = -1;
 	private static ArrayDeque<District> visibles = new ArrayDeque<>();
 	private static ArrayDeque<String> visiblesStr = new ArrayDeque<>();
 	static ArrayDeque<String> innocents = new ArrayDeque<>();
-	public static TableauTuiles plateau = new TableauTuiles();
-	public static String[] nomMrJack = ((JetonAlibi) TourImpairs.actionAlibi).piocherCarte();
+	public static String[] nomMrJack = ((JetonAlibi) TourImpairs.actionAlibi).piocherCarte(); //initialisation de Mr. Jack
 	public static int sabliers = 0;
 	public static int sabliersCaches = 0;
-	public static String winner;
+	public static String winner = "nobody";
 	public static int tourEnCours = 1;
-	public static Jetons actionEnCours;
 	public static ArrayDeque<Jetons> actionsFaites = new ArrayDeque<>();
 
-	public static void main(String string) {
-		// interfaceG.printBoardInterface();
-		// Scene scene = new Scene(root);
-		// primaryStage.setScene(scene);
-		// primaryStage.show();
-		/*
-		 * initialisation(); plateau.lancement(); for (int i = 1; i <= 8; i++) { switch
-		 * (i % 2) { case 1: tourImpairs(); break; case 0: tourPairs(); break; }
-		 * finDuTour(); finPartie(i); }
-		 */
-	}
-
-	public static void initialisation() {
-		System.out.print("Mr Jack, nous allons vous reveler votre identité. Etes-vous prêt ?\n");
-		//nomMrJack = ((JetonAlibi) TourImpairs.actionAlibi).piocherCarte();
-		System.out.println("Vous êtes " + nomMrJack[0] + "\nAppuyez sur <entrer> pour continuer");
-		// scanner.nextLine();
-	}
-
-	public static void tourImpairs() {
-		choixActions = TourImpairs.debut();
-		for (int nbActionsRestantes = 4; nbActionsRestantes > 0; nbActionsRestantes--) {
-			switch (nbActionsRestantes) {
-			case 1:
-			case 4:
-				jActuel = 0;
-				break;
-			case 2:
-			case 3:
-				jActuel = 1;
-				break;
-			}
-			finAction(choixActions, nbActionsRestantes);
-		}
-	}
-
-	public static void tourPairs() {
-		choixActions = TourPairs.debut(choixActions);
-		for (int nbActionsRestantes = 4; nbActionsRestantes > 0; nbActionsRestantes--) {
-			switch (nbActionsRestantes) {
-			case 1:
-			case 4:
-				jActuel = 1;
-				break;
-			case 2:
-			case 3:
-				jActuel = 0;
-				break;
-			}
-			finAction(choixActions, nbActionsRestantes);
-		}
-	}
-
-	public static void finAction(Jetons[] choixActions, int nbActionsRestantes) {
-		System.out.println("\n" + joueurActuel + ", c'est votre tour, quelle action voulez-vous faire ?");
-		for (int nbActions = 0; nbActions < nbActionsRestantes; nbActions++) {
-			InterfaceGraphique.action[nbActions].setGraphic((choixActions[nbActions]).getImView());
-			System.out.println(nbActions + 1 + ": " + choixActions[nbActions].getNom());
-		}
-		//actionStr = scanner.next().substring(1);
-		//action = Integer.parseInt(actionStr) + 1;
-		InterfaceGraphique.idEnCours = null;
-		while (InterfaceGraphique.idEnCours == null) {
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		actionStr = InterfaceGraphique.idEnCours.substring(1);
-		action = Integer.parseInt(actionStr) + 1;
-		choixActions[action].action(listeDetectives, board, jActuel);
-		Jetons temp = choixActions[action];
-		choixActions[action] = choixActions[nbActionsRestantes - 1];
-		choixActions[nbActionsRestantes - 1] = temp;
-	}
-
 	public static void finDuTour() {
-		estVisible(listeDetectives);
+		estVisible();
+		// Le nom de Mr. Jack est une string, d'ou necessite d'avoir un tableau de tuile et un tableau de String
 		for (District i : visibles) {
 			visiblesStr.add(i.getNomSuspect());
 		}
 		if (visiblesStr.contains(nomMrJack[0])) {
-			for (int i=0; i<9; i++){
+			for (int i = 0; i < 9; i++) {
 				if (!visibles.contains(board[i])) {
 					board[i].innocenter(i);
 				}
 			}
 		} else {
-			for (int i=0; i<9; i++) {
+			for (int i = 0; i < 9; i++) {
 				if (visibles.contains(board[i])) {
 					board[i].innocenter(i);
 				}
 			}
 			sabliers++;
 		}
-		//TableauTuiles.printBoardConsole(board);
-		System.out.println(visibles.size());
-		System.out.print("\nLes personnes suivantes sont visibles ");
-		if (visiblesStr.contains(nomMrJack[0])) {
-			System.out.println("dont Mr. Jack:");
-		} else {
-			System.out.println("mais pas Mr. Jack:");
-		}
-		for (District i : visibles) {
-			System.out.println(i.getNomSuspect());
-		}
-		visibles.clear();
-		visiblesStr.clear();
 	}
 
-	public static void estVisible(Detectives[] listeDetectives) {
-		// Les abscisses et ordonnees servent à définir les abscisses et ordonnees de la
-		// tuiles du suspect que l'on va regarder
-		int abscisse = -1;
-		int ordonnee = -1;
+	public static void estVisible() {
+		int abscisse = -1;			// Les abscisses et ordonnees servent à definir les abscisses et ordonnees de la
+		int ordonnee = -1;			// tuiles du suspect que l'on va regarder
 		int coordonnee = 3 * ordonnee + abscisse;
 		District tuile = new District();
-		// La variable détective intancie les 3 détectives les uns après les autres
-		Detectives detective;
-		// L'entier detectivePosition prend la valeur 0, 1, 2, ou 3 si le détective en
-		// question est au Nord, à l'Est, au Sud, ou à l'Ouest
-		int detectivePosition;
-		// L'entier detectiveInc prend la valeur 0, 1 ou 2 si le détective est à la 1e,
-		// 2e ou 3e du côté où il est, en tournant dans le sens des aiguilles d'une
-		// montre
-		int detectiveInc;
-		// La boucle suivante permet traiter la visibilité des trois détectives un par
-		// un
-		for (int i = 0; i < listeDetectives.length; i++) {
+		Detectives detective;		// La variable detective intancie les 3 detectives les uns apres les autres
+		int detectivePosition;		// L'entier detectivePosition prend la valeur 0, 1,�2, ou�3�si le detective en
+									// question est au Nord, à l'Est, au Sud, ou a l'Ouest
+		int detectiveInc;			// L'entier detectiveInc prend la valeur 0, 1 ou 2 si le detective est a� la 1e,
+									// 2e ou 3e du cote ou il est, en tournant dans le sens horaire
+		for (int i = 0; i < listeDetectives.length; i++) {// Cette boucle permet traiter la visibilite des trois detectives un par  un
 			detective = listeDetectives[i];
-			System.out.println(i + "   " + detective.getPlace());
-			// detective.getPlace() renvoie un entier entre 1 et 12, pour les 12 positions
-			// possibles des détectives, avec le 1 étant la position à gauche au Nord, et en
-			// tournant dans le sens des aiguilles d'une montre
-			detectivePosition = (int) ((detective.getPlace() - 1)%12) / 3;
-			detectiveInc = (int) (/*10 **/ (detective.getPlace() - 1)%12) % 3;
-			// On défini ici la position de la tuile devant le détective
-			switch (detectivePosition) {
+			detectivePosition = (int) ((detective.getPlace() - 1) % 12) / 3;		// detective.getPlace() renvoie un entier entre 1 et 24, pour les 24 positions
+			detectiveInc = (int) (/* 10 **/ (detective.getPlace() - 1) % 12) % 3;	// possibles des detectives, avec le 1 etant la position à gauche au Nord, et en
+																					// tournant dans le sens horaire, faisant ainsi 2 tours
+			switch (detectivePosition) {	// On defini ici la position de la tuile devant le detective
 			case 0:
 				abscisse = detectiveInc;
 				ordonnee = 0;
@@ -184,24 +81,19 @@ public class Jeu {
 				abscisse = 0;
 				ordonnee = 2 - detectiveInc;
 			}
-			// On effectue 3 fois les instructions suivantes, car un détective peut voir 3
-			// suspects au maximum
-			for (int k = 0; k < 3; k++) {
-			coordonnee = 3 * ordonnee + abscisse;
+			for (int k = 0; k < 3; k++) {	// On effectue 3 fois les instructions suivantes,
+											// car un detective peut voir 3 suspects au maximum
+				coordonnee = 3 * ordonnee + abscisse;
 				tuile = board[coordonnee];
-				if (tuile.getMur() == detectivePosition) {
-					// Si le mur est entre le détective et le suspect, on termine la boucle for, et
-					// on passe au détective suivant
+				if (tuile.getMur() == detectivePosition) {// Si le mur est entre le detective et le suspect, on termine 
+														  //  la boucle for, et on passe au detective suivant
 					k = 3;
-				} else if (tuile.getMur() % 2 == detectivePosition % 2) {
-					// Si le mur est à l'opposé du détective, le suspect est visible, mais pas celui
-					// d'après
-					visibles.add(tuile);
+				} else if (tuile.getMur() % 2 == detectivePosition % 2) {// Si le mur est à l'oppose du detective, le suspect
+					visibles.add(tuile);								 // est visible, mais pas celui d'apres
 					k = 3;
-				} else {
-					// Sinon, le suspect est visible, et on continue en regardant la tuile du board
-					// suivante
-					visibles.add(tuile);
+				} else {					// Sinon, le suspect est visible, et on continue en regardant
+					visibles.add(tuile);	// la tuile du board suivante
+					
 					switch (detectivePosition) {
 					case 0:
 						ordonnee++;
@@ -222,15 +114,14 @@ public class Jeu {
 	}
 
 	public static void finPartie(int i) {
-		if (sabliers + sabliersCaches >= 6) {
-			i = 9;
-			winner = "Mr. Jack";
-		}
-		if (i == 8) {
-			winner = "Mr. Jack";
-		}
-		if (innocents.size() >= 8) {
-			winner = "M. le detective";
-		}
+		winner = 
+			(sabliers + sabliersCaches >= 6 && innocents.size() == 8 && visiblesStr.contains(nomMrJack[0])) ? joueurActuel[0]	//On rappelle que 	
+			: (innocents.size() >= 8) 																		? joueurActuel[0]	//joueurActuel[0] == "M. le detective"
+			: ((sabliers + sabliersCaches >= 6) || i >= 8) 													? joueurActuel[1]	// et joueurActuel[1] == "Mr. Jack"
+			: "nobody";
+		System.out.println((!winner.equals("nobody")) ? "Le vainqueur est: " + winner : "");
+
+		visibles.clear();
+		visiblesStr.clear();
 	}
 }

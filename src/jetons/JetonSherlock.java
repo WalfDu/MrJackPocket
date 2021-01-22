@@ -27,13 +27,13 @@ public class JetonSherlock extends Jetons {
 
 	@Override
 	public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
-		final Detectives sherlock = Jeu.listeDetectives[0]; // Sherlock correspond à l'indice 0, Waston est l'indice 1 et Toby est l'indice 2
+		final Detectives sherlock = Jeu.listeDetectives[0]; // Sherlock correspond a l'indice 0, Waston est l'indice 1 et Toby est l'indice 2
 		for (int i = 1; i < 3; i++) {
-			int j = (sherlock.getPlace() - 1 + i) % 24; // Réccupération de la place Sherlock, le modulo 24 est présent car on a 24 positions possibles pour les détectives 
-			if (InterfaceGraphique.d[j].getGraphic() != null) { // décalage du detective sur la seconde ligne dans le cas de deux detectives au même en endroit
+			int j = (sherlock.getPlace() - 1 + i) % 24; // Reccuperation de la place Sherlock, le modulo 24 est present car on a 24 positions possibles pour les detectives 
+			if (InterfaceGraphique.d[j].getGraphic() != null) { // decalage du detective sur la seconde ligne dans le cas de deux detectives au meme en endroit
 				j = (j + 12) % 24;
 			}
-			InterfaceGraphique.d[(j)].setStyle("-fx-background-color: grey;"); // Les cases où l'on peut avancer le détective sont grisées
+			InterfaceGraphique.d[(j)].setStyle("-fx-background-color: grey;"); // Les cases ou l'on peut avancer le detective sont grisees
 		}
 		for (int i = 1; i < 3; i++) {
 			int j = (sherlock.getPlace() - 1 + i) % 24;
@@ -45,12 +45,12 @@ public class JetonSherlock extends Jetons {
 				@Override
 				public void handle(ActionEvent e) {
 					InterfaceGraphique.d[k].setGraphic(InterfaceGraphique.sherlockView); // placement de Sherlock sur l'interface
-					Jeu.listeDetectives[0].setPlace(k); // Reccupération de la nouvelle position
-					for (int m = 0; m < 24; m++) { 
+					Jeu.listeDetectives[0].setPlace(k); // Reccuperation de la nouvelle position
+					for (int m = 0; m < 24; m++) {
 						InterfaceGraphique.d[m].setStyle("-fx-background-color: transparent;");
 						InterfaceGraphique.d[m].setOnAction(new EventHandler<ActionEvent>() {
 							@Override
-							public void handle(ActionEvent e) {
+							public void handle(ActionEvent e) { // empeche le joueur de redeplacer Sherlock
 							}
 						});
 					}

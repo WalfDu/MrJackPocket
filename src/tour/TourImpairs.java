@@ -26,7 +26,7 @@ public class TourImpairs {
 	public TourImpairs() {
 	};
 
-	public static Jetons[][] jetonsAction() {
+	public static Jetons[][] jetonsAction() {		//Les couples de jetons sont definis en fonction du recto et du verso des jetons
 		Jetons[][] jetonsAction = { { echanger, tourner2 }, { deplacementToby, deplacementWatson }, { deplacementSherlock, actionAlibi },
 				{ tourner, troisDetectives } };
 		return jetonsAction;

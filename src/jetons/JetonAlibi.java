@@ -15,9 +15,9 @@ public class JetonAlibi extends Jetons {
 	public static String nom;
 	public static Image im = new Image("file:images/actions/Jeton3-Face2.png", 50, 50, false, false);
 	public static ImageView imView = new ImageView(im);
-	public static ArrayDeque<String> pileAlibi = new ArrayDeque<>(); // Définition de la pile de carte
+	public static ArrayDeque<String> pileAlibi = new ArrayDeque<>(); // Definition de la pile de carte
 	static String[] debutPile = { "William Gull 1", "Sgt Goodley 0", "Madame 2", "Joseph Lane 1", "John Smith 1",
-			"John Pizer 1", "Inspector Lestrade 0", "Jeremy Bert 1", "Miss Stealthy 1" }; // ajout de toutes les cartes
+			"John Pizer 1", "Inspector Lestrade 0", "Jeremy Bert 1", "Miss Stealthy 1" };// ajout de toutes les cartes
 																							// dans la pile avec leur
 																							// nombre de sablier
 
@@ -45,18 +45,22 @@ public class JetonAlibi extends Jetons {
 			}
 			break;
 		case 1: // Si le joueur est Mr Jack
-			Jeu.sabliersCaches += Integer.valueOf(carte[1]); // ajout du nombre de sablier de la carte au nombre de
-																// sablier total
+			Jeu.sabliersCaches += Integer.valueOf(carte[1]);// ajout du nombre de sablier de la carte au nombre de
+															// sablier total
 			InterfaceGraphique.nbSabliers.setText("Mr. Jack a:\n" + (int) (Jeu.sabliers + Jeu.sabliersCaches));
 			InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.nbSabliers);
 			InterfaceGraphique.root.add(InterfaceGraphique.nbSabliers, 5, 6);
-			System.out.println("Vous avez " + Jeu.sabliersCaches + " sabliers caches");
 			break;
 		}
 		InterfaceGraphique.finAction();
 	}
 
-	public void shuffleArray(String[] initialAlibi) { // Mélange la pile d'alibi
+	@Override
+	public String getNom() {
+		return nom;
+	}
+
+	public void shuffleArray(String[] initialAlibi) { // Melange la pile d'alibi
 		for (int i = initialAlibi.length - 1; i > 0; i--) {
 			int j = (int) (Math.random() * (i + 1));
 			String temp = initialAlibi[i];
@@ -68,11 +72,11 @@ public class JetonAlibi extends Jetons {
 		}
 	}
 
-	// Revele la première carte du paquet
+	// Revele la premiere carte du paquet
 	public String[] piocherCarte() {
 		if (!this.pileAlibi.isEmpty()) {
 			String carte = this.pileAlibi.pollFirst();
-			String nomAlibi = carte.substring(0, carte.length() - 2); // on sépare le nom du nombre de sablier
+			String nomAlibi = carte.substring(0, carte.length() - 2);
 			String sablier = carte.substring(carte.length() - 1, carte.length());
 			String[] out = { nomAlibi, sablier };
 			return out;
@@ -81,7 +85,10 @@ public class JetonAlibi extends Jetons {
 		return out;
 	}
 
-	// On renvoie le chemin menant à l'image dans le dossier image
+	public int getSize() {
+		return this.pileAlibi.size();
+	}
+	// On renvoie le chemin menant a l'image dans le dossier image
 	public static String sourceImage(String nomSuspect) {
 		String sourceImage = "file:images/alibis/";
 		String[] temp = nomSuspect.substring(0, nomSuspect.length()).split(" ");
@@ -90,16 +97,6 @@ public class JetonAlibi extends Jetons {
 		}
 		sourceImage += "-alibi.png";
 		return sourceImage;
-	}
-
-	// Getters
-	@Override
-	public String getNom() {
-		return nom;
-	}
-
-	public int getSize() {
-		return this.pileAlibi.size();
 	}
 
 	@Override
