@@ -17,7 +17,7 @@ public class JetonAlibi extends Jetons {
 	public static ImageView imView = new ImageView(im);
 	public static ArrayDeque<String> pileAlibi = new ArrayDeque<>();
 	static String[] debutPile = { "William Gull 1", "Sgt Goodley 0", "Madame 2", "Joseph Lane 1", "John Smith 1",
-			"John Pizer 1", "Inspecteur Lestrade 0", "Jeremy Bert 1", "Miss Stealthy 1" };
+			"John Pizer 1", "Inspector Lestrade 0", "Jeremy Bert 1", "Miss Stealthy 1" };
 
 	public JetonAlibi() {
 	}
@@ -44,6 +44,9 @@ public class JetonAlibi extends Jetons {
 			break;
 		case 1:
 			Jeu.sabliersCaches += Integer.valueOf(carte[1]);
+			InterfaceGraphique.nbSabliers.setText("Mr. Jack a:\n" + (int) (Jeu.sabliers + Jeu.sabliersCaches));
+			InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.nbSabliers);
+			InterfaceGraphique.root.add(InterfaceGraphique.nbSabliers, 5, 6);
 			System.out.println("Vous avez " + Jeu.sabliersCaches + " sabliers caches");
 			break;
 		}

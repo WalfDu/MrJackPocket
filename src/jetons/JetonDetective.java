@@ -29,18 +29,6 @@ public class JetonDetective extends Jetons {
 	@Override
 
 	public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
-		/*
-		 * switch (jActuel) { case 0: System.out.println(
-		 * "Quel detective souhaitez-vous faire avancer d'une case ?\n1: Sherlock\n2: Watson\n3: Toby"
-		 * ); choix = scanner.nextInt() - 1; listeDetectives[choix].setPlace(1); break;
-		 * case 1: System.out.println(
-		 * "Quel detective souhaitez-vous faire avancer d'une case ?\n0: Aucun détective\n1: Sherlock\n2: Watson\n3: Toby"
-		 * );
-		 * 
-		 * 
-		 * choix = scanner.nextInt() - 1; if (choix > -1) {
-		 * listeDetectives[choix].setPlace(1); } break;
-		 */
 		if (jActuel == 1) {
 			InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
 			InterfaceGraphique.validerB.setOnAction(new EventHandler<ActionEvent>() {
@@ -59,9 +47,8 @@ public class JetonDetective extends Jetons {
 				}
 			});
 		}
-
 		for (int i = 0; i < 3; i++) {
-			int positionPotentielle = Jeu.listeDetectives[i].getPlace();
+			int positionPotentielle = Jeu.listeDetectives[i].getPlace()%24;
 			final int I = i;
 			if (InterfaceGraphique.d[positionPotentielle].getGraphic() != null) {
 				positionPotentielle = (positionPotentielle + 12) % 24;
@@ -71,7 +58,7 @@ public class JetonDetective extends Jetons {
 			InterfaceGraphique.d[k].setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent e) {
-					Node imD1 = InterfaceGraphique.d[k - 1].getGraphic();
+					Node imD1 = InterfaceGraphique.d[Jeu.listeDetectives[I].getPlace() - 1].getGraphic();
 					InterfaceGraphique.d[k].setGraphic(imD1);
 					Jeu.listeDetectives[I].setPlace(k);
 					for (int m = 0; m < 24; m++) {
@@ -82,8 +69,8 @@ public class JetonDetective extends Jetons {
 							}
 						});
 					}
+					InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.validerB);
 					InterfaceGraphique.finAction();
-
 				}
 
 			});

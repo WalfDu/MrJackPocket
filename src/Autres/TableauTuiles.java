@@ -2,7 +2,7 @@ package Autres;
 
 public class TableauTuiles {
 
-	static Detectives sherlock = new Detectives("Sherlock", 12);
+	static Detectives sherlock = new Detectives("Sherlock", 24);
 	static Detectives watson = new Detectives("Watson", 4);
 	static Detectives toby = new Detectives("Toby", 8);
 

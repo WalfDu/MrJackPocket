@@ -28,6 +28,39 @@ public class JetonTourner extends Jetons {
 
 	@Override
 	public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
+		
+		InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
+		for (int i = 0; i < 9; i++) {
+			final int k = i;
+			InterfaceGraphique.tuile[i].setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					Jeu.board[k].setMur();
+					InterfaceGraphique.tuile[k].setRotate((double) Jeu.board[k].getMur() * 90 + 180);
+					for (int j = 0; j < 9; j++) {
+						InterfaceGraphique.tuile[j].setDisable(true);
+					}
+					InterfaceGraphique.tuile[k].setDisable(false);
+					InterfaceGraphique.validerB.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent e) {
+							InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.validerB);
+							for (int h = 0; h < 9; h++) {
+								InterfaceGraphique.tuile[h].setDisable(false);
+								InterfaceGraphique.tuile[h].setOnAction(new EventHandler<ActionEvent>() {
+									@Override
+									public void handle(ActionEvent e) {
+									}
+								});
+							}
+							InterfaceGraphique.finAction();
+							
+						}
+					});
+
+				}
+			});
+		}
 		/*// HelloApp.idEnCours = "";
 		System.out.println("Entrez l'abscisse puis l'ordonnée de la tuile que vous voulez tourner:");
 		/*
@@ -48,42 +81,6 @@ public class JetonTourner extends Jetons {
 			// TableauTuiles.printBoardConsole(board);
 		} while (!scanner.nextLine().equals("stop"));
 		// }*/
-		InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
-		for (int i = 0; i < 9; i++) {
-			InterfaceGraphique.tuile[i].setDisable(false);
-			Node imTuile = InterfaceGraphique.tuile[i].getGraphic();
-			// double rotation = imTuile.getRotate();
-			final int k = i;
-			InterfaceGraphique.tuile[i].setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent e) {
-					imTuile.setRotate(imTuile.getRotate() + 90);
-					Jeu.board[k].setMur();
-					//int tuileClique = k;
-					for (int j = 0; j < 9; j++) {
-						InterfaceGraphique.tuile[j].setDisable(true);
-					}
-					InterfaceGraphique.tuile[k].setDisable(false);
-				InterfaceGraphique.validerB.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent e) {
-							InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.validerB);
-							InterfaceGraphique.finAction();
-							for (int h = 0; h < 9; h++) {
-								InterfaceGraphique.tuile[h].setDisable(false);
-								InterfaceGraphique.tuile[h].setOnAction(new EventHandler<ActionEvent>() {
-									@Override
-									public void handle(ActionEvent e) {
-									}
-								});
-							}
-							
-						}
-					});
-
-				}
-			});
-		}
 	}
 
 	@Override

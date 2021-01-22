@@ -24,21 +24,7 @@ public class JetonEchanger extends Jetons {
 
     @Override
     public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
-       /* System.out.println(
-                "Quelle est la 1ere tuile que vous voulez echanger (entrez l'abscisse puis l'ordonnee de la tuile (entre 1 et 3)");
-        int abscisse = scanner.nextInt() - 1;
-        int ordonnee = scanner.nextInt() - 1;
-        int coordonnee = 3 * abscisse + ordonnee;
-        System.out.println(
-                "Quelle est la 2eme tuile que vous voulez échanger (entrez l'abscisse puis l'ordonnée de la tuile (entre 1 et 3))");
-
-        int abscisse2 = scanner.nextInt() - 1;
-        int ordonnee2 = scanner.nextInt() - 1;
-        int coordonnee2 = 3 * abscisse2 + ordonnee2;
-        District temp = board[coordonnee];
-        board[coordonnee] = board[coordonnee2];
-        board[coordonnee2] = temp;
-        */
+       
 		for (int i = 0; i < 9; i++) {
 			Node imTuile1 = InterfaceGraphique.tuile[i].getGraphic();
 			final int indice1 = i;
@@ -52,6 +38,8 @@ public class JetonEchanger extends Jetons {
 							public void handle(ActionEvent e) {
 								InterfaceGraphique.tuile[indice2].setGraphic(imTuile1);
 								InterfaceGraphique.tuile[indice1].setGraphic(imTuile2);
+								InterfaceGraphique.tuile[indice1].setRotate((double) Jeu.board[indice1].getMur() * 90 + 180);
+								InterfaceGraphique.tuile[indice2].setRotate((double) Jeu.board[indice2].getMur() * 90 + 180);
 								District temp = Jeu.board[indice1];
 								Jeu.board[indice1] = Jeu.board[indice2];
 								Jeu.board[indice2] = temp;
@@ -73,6 +61,21 @@ public class JetonEchanger extends Jetons {
 			});
 
 		}
+		/* System.out.println(
+        "Quelle est la 1ere tuile que vous voulez echanger (entrez l'abscisse puis l'ordonnee de la tuile (entre 1 et 3)");
+		int abscisse = scanner.nextInt() - 1;
+		int ordonnee = scanner.nextInt() - 1;
+		int coordonnee = 3 * abscisse + ordonnee;
+		System.out.println(
+        "Quelle est la 2eme tuile que vous voulez échanger (entrez l'abscisse puis l'ordonnée de la tuile (entre 1 et 3))");
+
+		int abscisse2 = scanner.nextInt() - 1;
+		int ordonnee2 = scanner.nextInt() - 1;
+		int coordonnee2 = 3 * abscisse2 + ordonnee2;
+		District temp = board[coordonnee];
+		board[coordonnee] = board[coordonnee2];
+		board[coordonnee2] = temp;
+		 */
     }
 
     @Override
