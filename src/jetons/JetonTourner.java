@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 public class JetonTourner extends Jetons {
 	Scanner scanner = new Scanner(System.in);
 	String nom;
+	int[] positionMurOrigine = new int[9];
 	public static Image im = new Image("file:images/actions/Jeton1-Face2.png", 50, 50, false, false); // image du jeton tourner
 	public static ImageView imView = new ImageView(im);
 
@@ -28,15 +29,20 @@ public class JetonTourner extends Jetons {
 	@Override
 	public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
 		
-		InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
 		for (int i = 0; i < 9; i++) {
 			final int k = i; // declaration d'une variable final pour eviter une erreur dans la methode qui suit
+			positionMurOrigine[k] = Jeu.board[k].getMur();
 			InterfaceGraphique.tuile[i].setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent e) {
 					Jeu.board[k].setMur(); //On reccupere la position du mur a chaque clique
+					if (Jeu.board[k].getMur() == positionMurOrigine[k]) {
+						InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.validerB);
+					} else if (Jeu.board[k].getMur() == (positionMurOrigine[k] + 1)%4) {
+						InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
+					}
 					InterfaceGraphique.tuile[k].setRotate((double) Jeu.board[k].getMur() * 90 + 180);  
-					// rotation de 90� de la tuile a chaque clique
+					// rotation de 90 de la tuile a chaque clique
 					for (int j = 0; j < 9; j++) {
 						InterfaceGraphique.tuile[j].setDisable(true);
 					}

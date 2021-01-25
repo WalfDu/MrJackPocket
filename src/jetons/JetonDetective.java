@@ -12,7 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class JetonDetective extends Jetons { // Cette classe est un cas particulier de JetonsSherlock où l'on avance seulement d'une case un des détectives
+public class JetonDetective extends Jetons { // Cette classe est un cas particulier de JetonsSherlock o l'on avance seulement d'une case un des dtectives
 	Scanner scanner = new Scanner(System.in);
 	String nom;
 	public static Image im = new Image("file:images/actions/Jeton4-Face1.png", 50, 50, false, false);

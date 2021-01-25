@@ -89,7 +89,6 @@ public class InterfaceGraphique extends Application {
 	
 	//printBoardInterface() permet d'afficher le plateau de jeu
 	public static void printBoardInterface() {
-		
 		root.getChildren().clear();
 		root.getRowConstraints().remove(row);
 		root.getColumnConstraints().remove(column);
@@ -160,12 +159,14 @@ public class InterfaceGraphique extends Application {
 	}
 
 	public static void finAction() {
-		Jeu.finPartie(Jeu.tourEnCours);
 		if (Jeu.actionsFaites.size() > 3) {
 			for (Button i : action) {
 				i.setDisable(false);
 			}
-			Jeu.finDuTour();		//On innocentes les suspects qui sont visibles / invisibles
+			Jeu.finDuTour();			//On innocente les suspects qui sont visibles / invisibles
+			
+			if (Jeu.winner.equals("nobody")) {
+			Jeu.finPartie(Jeu.tourEnCours);
 			Jeu.tourEnCours++;
 			if (Jeu.tourEnCours % 2 == 0) {		//choixActions est la liste des actions qui vont etre jouees au tour suivant
 				Jeu.choixActions = TourPairs.debut(Jeu.choixActions);
@@ -173,9 +174,10 @@ public class InterfaceGraphique extends Application {
 				Jeu.choixActions = TourImpairs.debut();
 			}
 			Jeu.actionsFaites.clear();
+			}
 		}
 
-		if (Jeu.actionsFaites.size() != 2) {	//Le seul moment ou le joueur ne change pas est aprs la 2e action
+		if (Jeu.actionsFaites.size() != 2 && Jeu.winner.equals("nobody")) {	//Le seul moment ou le joueur ne change pas est aprs la 2e action
 			Jeu.jActuel = (++Jeu.jActuel % 2);	//Prend la valeur 1 si elle etait a  0 et inversement
 			joueurSuivant.setText("C'est a " + Jeu.joueurActuel[Jeu.jActuel]
 					+ " de jouer.\nSi vous etes pret, cliquez sur ce message");

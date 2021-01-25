@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import InterfaceGraphique.InterfaceGraphique;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 //import InterfaceGraphique.HelloApp;
 import jetons.JetonAlibi;
 import jetons.Jetons;
@@ -55,9 +57,9 @@ public class Jeu {
 		int coordonnee = 3 * ordonnee + abscisse;
 		District tuile = new District();
 		Detectives detective;		// La variable detective intancie les 3 detectives les uns apres les autres
-		int detectivePosition;		// L'entier detectivePosition prend la valeur 0, 1,�2, ou�3�si le detective en
+		int detectivePosition;		// L'entier detectivePosition prend la valeur 0, 1,2, ou3si le detective en
 									// question est au Nord, à l'Est, au Sud, ou a l'Ouest
-		int detectiveInc;			// L'entier detectiveInc prend la valeur 0, 1 ou 2 si le detective est a� la 1e,
+		int detectiveInc;			// L'entier detectiveInc prend la valeur 0, 1 ou 2 si le detective est a la 1e,
 									// 2e ou 3e du cote ou il est, en tournant dans le sens horaire
 		for (int i = 0; i < listeDetectives.length; i++) {// Cette boucle permet traiter la visibilite des trois detectives un par  un
 			detective = listeDetectives[i];
@@ -114,13 +116,34 @@ public class Jeu {
 	}
 
 	public static void finPartie(int i) {
-		winner = 
+		if (sabliers + sabliersCaches >= 6 && innocents.size() == 8 && visiblesStr.contains(nomMrJack[0])) {
+			winner = joueurActuel[0];
+		} else if (innocents.size() >= 8) {
+			winner = joueurActuel[0];
+		} else if ((sabliers + sabliersCaches >= 6) || i >= 8) {
+			winner = joueurActuel[1];
+		}
+		/*winner = 
 			(sabliers + sabliersCaches >= 6 && innocents.size() == 8 && visiblesStr.contains(nomMrJack[0])) ? joueurActuel[0]	//On rappelle que 	
-			: (innocents.size() >= 8) 																		? joueurActuel[0]	//joueurActuel[0] == "M. le detective"
-			: ((sabliers + sabliersCaches >= 6) || i >= 8) 													? joueurActuel[1]	// et joueurActuel[1] == "Mr. Jack"
-			: "nobody";
-		System.out.println((!winner.equals("nobody")) ? "Le vainqueur est: " + winner : "");
-
+			: (innocents.size() >= 8) ? joueurActuel[0]	//joueurActuel[0] == "M. le detective"
+			: ((sabliers + sabliersCaches >= 6) || i >= 8) ? joueurActuel[1]	// et joueurActuel[1] == "Mr. Jack"
+			: "nobody";*/
+		if (!winner.equals("nobody")){
+			System.out.println(winner);
+			InterfaceGraphique.root.getChildren().clear();
+			
+			String[] temp = winner.split(" ");
+			String victoireStr = "file:images/Victoire";
+			for (String k : temp) {
+				victoireStr += "-" + k;
+			}
+			victoireStr += ".png";
+			System.out.println(victoireStr);
+			Image victoire = new Image(victoireStr, 675, 675, false, false);
+			ImageView victoireView = new ImageView(victoire);
+			InterfaceGraphique.root.getChildren().clear();
+			InterfaceGraphique.root.add(victoireView, 1, 1);
+		}
 		visibles.clear();
 		visiblesStr.clear();
 	}

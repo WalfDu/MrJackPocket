@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 public class JetonTourner2 extends Jetons { // Nous avons commente cette classe dans la classe JetonTourner
     Scanner scanner = new Scanner(System.in);
     String nom;
+	int[] positionMurOrigine = new int[9];
 	public static Image im = new Image("file:images/actions/Jeton4-Face2.png", 50, 50, false, false);
 	public static ImageView imView = new ImageView(im);
 
@@ -27,13 +28,19 @@ public class JetonTourner2 extends Jetons { // Nous avons commente cette classe 
     
     @Override
     public void action(Detectives[] listeDetectives, District[] board, int jActuel) {
-		InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
+		
     	for (int i = 0; i < 9; i++) {
 			final int k = i;
+			positionMurOrigine[k] = Jeu.board[k].getMur();
 			InterfaceGraphique.tuile[i].setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent e) {
 					Jeu.board[k].setMur();
+					if (Jeu.board[k].getMur() == positionMurOrigine[k]) {
+						InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.validerB);
+					} else if (Jeu.board[k].getMur() == (positionMurOrigine[k] + 1)%4) {
+						InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
+					}
 					for (int j = 0; j < 9; j++) {
 						InterfaceGraphique.tuile[j].setDisable(true);
 					}
