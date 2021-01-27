@@ -46,7 +46,7 @@ public class InterfaceGraphique extends Application {
 	ImageView pileHautAlibiView = new ImageView(pileHautAlibi);
 	static Image mrJack = new Image(JetonAlibi.sourceImage(Jeu.nomMrJack[0]), 60, 100, false, false);
 	static ImageView mrJackView = new ImageView(mrJack);
-	public static Image alibi2 = new Image("file:images/Annuler.png", 60, 100, false, false);
+	public static Image alibi2 = new Image("file:images/Annule.png", 60, 100, false, false);
 	public static ImageView alibi2View = new ImageView(alibi2);
 	static Image valider = new Image("file:images/Valider.png", 50, 50, false, false);
 	static ImageView validerView = new ImageView(valider);
@@ -75,7 +75,7 @@ public class InterfaceGraphique extends Application {
 	public final static Text nbTours = new Text();
 
 	//Cette colonne et ligne permettent de centrer le message du changement de jouueur
-	static ColumnConstraints column = new ColumnConstraints();
+	public static ColumnConstraints column = new ColumnConstraints();
 	static RowConstraints row = new RowConstraints();
 
 	public static void main(String[] args) {		// fonction qui permet de lancer le jeu et d'initialiser tous les
@@ -86,7 +86,6 @@ public class InterfaceGraphique extends Application {
 		launch(args);
 	}
 
-	
 	//printBoardInterface() permet d'afficher le plateau de jeu
 	public static void printBoardInterface() {
 		root.getChildren().clear();

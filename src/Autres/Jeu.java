@@ -129,19 +129,17 @@ public class Jeu {
 			: ((sabliers + sabliersCaches >= 6) || i >= 8) ? joueurActuel[1]	// et joueurActuel[1] == "Mr. Jack"
 			: "nobody";*/
 		if (!winner.equals("nobody")){
-			System.out.println(winner);
-			InterfaceGraphique.root.getChildren().clear();
-			
 			String[] temp = winner.split(" ");
 			String victoireStr = "file:images/Victoire";
 			for (String k : temp) {
 				victoireStr += "-" + k;
 			}
 			victoireStr += ".png";
-			System.out.println(victoireStr);
-			Image victoire = new Image(victoireStr, 675, 675, false, false);
+			Image victoire = new Image(victoireStr, 415, 646, true, false);
 			ImageView victoireView = new ImageView(victoire);
 			InterfaceGraphique.root.getChildren().clear();
+			InterfaceGraphique.column.setPercentWidth(20);
+			InterfaceGraphique.root.getColumnConstraints().add(InterfaceGraphique.column);
 			InterfaceGraphique.root.add(victoireView, 1, 1);
 		}
 		visibles.clear();
