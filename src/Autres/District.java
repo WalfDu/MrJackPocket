@@ -26,7 +26,7 @@ public class District {
 		}
 		this.sourceImage += "-recto.png";
 		this.sourceImageVerso = "file:images/districts/common-verso.png";
-		if (nomSuspect == "Joseph Lane") {
+		if (nomSuspect.equals("Joseph Lane")) {
 			this.sourceImageVerso = "file:images/districts/JosephLane-verso.png";
 		}
 	}
@@ -66,6 +66,9 @@ public class District {
 		InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.tuile[i]);
 		InterfaceGraphique.root.add(InterfaceGraphique.tuile[i], 2 + i % 3, 3 + i / 3);
 		faceSuspect = "Innocent";
+		if (nomSuspect.equals("Joseph Lane")) {
+			mur = 5;
+		}
 		if (!Jeu.innocents.contains(nomSuspect)) {
 			Jeu.innocents.addLast(nomSuspect);
 		}
@@ -76,7 +79,7 @@ public class District {
 	}
 
 	public void setMur() {
-		if (mur <4) { //Pour Joseph Lane verso, on defini un mur > 4
+		if (mur<4) { //Pour Joseph Lane verso, on defini un mur > 4
 			mur = (mur+1)%4;
 		} else {
 			mur++;
@@ -84,9 +87,6 @@ public class District {
 	}
 
 	public int getMur() {
-		if (nomSuspect.equals("Joseph Lane") && faceSuspect.equals("Innocent")) {
-			return 5;
-		}
 		return mur;
 	}
 }

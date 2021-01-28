@@ -38,7 +38,7 @@ public class JetonTourner2 extends Jetons { // Nous avons commente cette classe 
 					Jeu.board[k].setMur();
 					if (Jeu.board[k].getMur() == positionMurOrigine[k]) {
 						InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.validerB);
-					} else if (Jeu.board[k].getMur() == (positionMurOrigine[k] + 1)%4) {
+					} else if (Jeu.board[k].getMur() == (positionMurOrigine[k] + 1)%4 || Jeu.board[k].getMur() == (positionMurOrigine[k] + 1)) {
 						InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
 					}
 					for (int j = 0; j < 9; j++) {

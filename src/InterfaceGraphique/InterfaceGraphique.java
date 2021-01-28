@@ -164,7 +164,7 @@ public class InterfaceGraphique extends Application {
 			}
 			Jeu.finDuTour();			//On innocente les suspects qui sont visibles / invisibles
 			
-			if (Jeu.winner.equals("nobody")) {
+			if (!Jeu.winner.substring(0, 1).equals("M")) {
 			Jeu.finPartie(Jeu.tourEnCours);
 			Jeu.tourEnCours++;
 			if (Jeu.tourEnCours % 2 == 0) {		//choixActions est la liste des actions qui vont etre jouees au tour suivant
@@ -176,7 +176,7 @@ public class InterfaceGraphique extends Application {
 			}
 		}
 
-		if (Jeu.actionsFaites.size() != 2 && Jeu.winner.equals("nobody")) {	//Le seul moment ou le joueur ne change pas est aprs la 2e action
+		if (Jeu.actionsFaites.size() != 2 && !Jeu.winner.substring(0, 1).equals("M")) {	//Le seul moment ou le joueur ne change pas est aprs la 2e action
 			Jeu.jActuel = (++Jeu.jActuel % 2);	//Prend la valeur 1 si elle etait a  0 et inversement
 			joueurSuivant.setText("C'est a " + Jeu.joueurActuel[Jeu.jActuel]
 					+ " de jouer.\nSi vous etes pret, cliquez sur ce message");

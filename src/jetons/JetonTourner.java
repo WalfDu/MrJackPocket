@@ -38,7 +38,7 @@ public class JetonTourner extends Jetons {
 					Jeu.board[k].setMur(); //On reccupere la position du mur a chaque clique
 					if (Jeu.board[k].getMur() == positionMurOrigine[k]) {
 						InterfaceGraphique.root.getChildren().remove(InterfaceGraphique.validerB);
-					} else if (Jeu.board[k].getMur() == (positionMurOrigine[k] + 1)%4) {
+					} else if (Jeu.board[k].getMur() == (positionMurOrigine[k] + 1)%4 || Jeu.board[k].getMur() == (positionMurOrigine[k] + 1)) {
 						InterfaceGraphique.root.add(InterfaceGraphique.validerB, 6, 1);
 					}
 					InterfaceGraphique.tuile[k].setRotate((double) Jeu.board[k].getMur() * 90 + 180);  

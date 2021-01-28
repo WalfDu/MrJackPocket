@@ -116,19 +116,20 @@ public class Jeu {
 	}
 
 	public static void finPartie(int i) {
-		if (sabliers + sabliersCaches >= 6 && innocents.size() == 8 && visiblesStr.contains(nomMrJack[0])) {
-			winner = joueurActuel[0];
-		} else if (innocents.size() >= 8) {
-			winner = joueurActuel[0];
+		/*if (sabliers + sabliersCaches >= 6 && innocents.size() == 8 && i < 8 && !visiblesStr.contains(nomMrJack[0])) {
 		} else if ((sabliers + sabliersCaches >= 6) || i >= 8) {
 			winner = joueurActuel[1];
-		}
-		/*winner = 
-			(sabliers + sabliersCaches >= 6 && innocents.size() == 8 && visiblesStr.contains(nomMrJack[0])) ? joueurActuel[0]	//On rappelle que 	
-			: (innocents.size() >= 8) ? joueurActuel[0]	//joueurActuel[0] == "M. le detective"
-			: ((sabliers + sabliersCaches >= 6) || i >= 8) ? joueurActuel[1]	// et joueurActuel[1] == "Mr. Jack"
-			: "nobody";*/
-		if (!winner.equals("nobody")){
+		} else if (innocents.size() >= 8) {
+			winner = joueurActuel[0];
+		}*/
+		winner = 
+			(sabliers + sabliersCaches >= 6 && innocents.size() == 8 && i<8 && !visiblesStr.contains(nomMrJack[0])) ? "tryAgain"	//On rappelle que
+			: (winner.equals("tryAgain") && visiblesStr.contains(nomMrJack[0])) ? joueurActuel[0]									//joueurActuel[0] == "M. le detective"
+			: ((sabliers + sabliersCaches >= 6) || i >= 8) ? joueurActuel[1]														//et joueurActuel[1] == "Mr. Jack" 	
+			: (innocents.size() >= 8) ? joueurActuel[0]
+			: "nobody";
+		if (winner.substring(0, 1).equals("M")){
+			System.out.println("Il y a un vainqueur");
 			String[] temp = winner.split(" ");
 			String victoireStr = "file:images/Victoire";
 			for (String k : temp) {
