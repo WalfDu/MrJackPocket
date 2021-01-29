@@ -129,7 +129,6 @@ public class Jeu {
 			: (innocents.size() >= 8) ? joueurActuel[0]
 			: "nobody";
 		if (winner.substring(0, 1).equals("M")){
-			System.out.println("Il y a un vainqueur");
 			String[] temp = winner.split(" ");
 			String victoireStr = "file:images/Victoire";
 			for (String k : temp) {
