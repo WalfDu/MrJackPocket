@@ -64,7 +64,7 @@ public class Jeu {
 		for (int i = 0; i < listeDetectives.length; i++) {// Cette boucle permet traiter la visibilite des trois detectives un par  un
 			detective = listeDetectives[i];
 			detectivePosition = (int) ((detective.getPlace() - 1) % 12) / 3;		// detective.getPlace() renvoie un entier entre 1 et 24, pour les 24 positions
-			detectiveInc = (int) (/* 10 **/ (detective.getPlace() - 1) % 12) % 3;	// possibles des detectives, avec le 1 etant la position à gauche au Nord, et en
+			detectiveInc = (int) ((detective.getPlace() - 1) % 12) % 3;	// possibles des detectives, avec le 1 etant la position à gauche au Nord, et en
 																					// tournant dans le sens horaire, faisant ainsi 2 tours
 			switch (detectivePosition) {	// On defini ici la position de la tuile devant le detective
 			case 0:
@@ -116,17 +116,10 @@ public class Jeu {
 	}
 
 	public static void finPartie(int i) {
-		/*if (sabliers + sabliersCaches >= 6 && innocents.size() == 8 && i < 8 && !visiblesStr.contains(nomMrJack[0])) {
-		} else if ((sabliers + sabliersCaches >= 6) || i >= 8) {
-			winner = joueurActuel[1];
-		} else if (innocents.size() >= 8) {
-			winner = joueurActuel[0];
-		}*/
 		winner = 
-			(sabliers + sabliersCaches >= 6 && innocents.size() == 8 && i<8 && !visiblesStr.contains(nomMrJack[0])) ? "tryAgain"	//On rappelle que
-			: (winner.equals("tryAgain") && visiblesStr.contains(nomMrJack[0])) ? joueurActuel[0]									//joueurActuel[0] == "M. le detective"
-			: ((sabliers + sabliersCaches >= 6) || i >= 8) ? joueurActuel[1]														//et joueurActuel[1] == "Mr. Jack" 	
-			: (innocents.size() >= 8) ? joueurActuel[0]
+			(sabliers + sabliersCaches >= 6 && innocents.size() == 8 && i<8 && !visiblesStr.contains(nomMrJack[0])) ? "tryAgain"		//On rappelle que
+			: (winner.equals("tryAgain") && visiblesStr.contains(nomMrJack[0]) || innocents.size() == 8) 			? joueurActuel[0]	//joueurActuel[0] == "M. le detective"
+			: ((sabliers + sabliersCaches >= 6) || i >= 8) 															? joueurActuel[1]	//et joueurActuel[1] == "Mr. Jack" 	
 			: "nobody";
 		if (winner.substring(0, 1).equals("M")){
 			String[] temp = winner.split(" ");
